@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    /*1. Los textos enfatizados dentro de cualquier título deben ser rojos.*/
+    h1 b {
+      color: red;
+    }
+
+    /*2. Cualquier elemento que tenga asignado el atributo "href" y que esté dentro de cualquier párrafo que a 
+        su vez esté dentro de un bloque debe ser color negro.*/
+    *[style*="display:block"] p *[href] {
+      color: black;
+    }
+
+    /*3. El texto de las listas no ordenadas que estén dentro del bloque identificado como “ultimo” debe ser 
+        amarillo pero si es un enlace a otra página debe ser azul.*/
+    #ultimo ul {
+      color: yellow;
+    }
+    #ultimo ul[href$="http"] {
+      color: blue;
+    }
+
+    /*4. Los elementos identificados como “importante” dentro de cualquier bloque deben ser verdes, pero si 
+están dentro de un título deben ser rojos.*/
+    *[style*="display:block"] #importante {
+      background-color: green;
+    }
+    *[style*="display:block"] h1 #importante {
+      background-color: red;
+    }
+
+    /* 5. Todos los elementos h1 que especifique el atributo title, cualquiera que sea su valor, deben ser azules.*/
+    h1[title] {
+      background-color: blue;
+    }
+
+    /* 6. El color de los enlaces en las listas ordenadas debe ser azul para los enlaces aún no visitados, y violeta 
+        para los ya visitados y, además, no deben aparecer subrayados.*/
+    ol a {
+      color: blue;
+    }
+    ol a:visited {
+      text-decoration: none;
+      color: violet;
+    }
+  </style>
+
+  <body>
+    <noscript>
+      1. Los textos enfatizados dentro de cualquier título deben ser rojos. 2.
+      Cualquier elemento que tenga asignado el atributo "href" y que esté dentro
+      de cualquier párrafo que a su vez esté dentro de un bloque debe ser color
+      negro. 3. El texto de las listas no ordenadas que estén dentro del bloque
+      identificado como “ultimo” debe ser amarillo pero si es un enlace a otra
+      página debe ser azul. 4. Los elementos identificados como “importante”
+      dentro de cualquier bloque deben ser verdes, pero si están dentro de un
+      título deben ser rojos. 5. Todos los elementos h1 que especifique el
+      atributo title, cualquiera que sea su valor, deben ser azules. 6. El color
+      de los enlaces en las listas ordenadas debe ser azul para los enlaces aún
+      no visitados, y violeta para los ya visitados y, además, no deben aparecer
+      subrayados.
+    </noscript>
+  </body>
+</html>
