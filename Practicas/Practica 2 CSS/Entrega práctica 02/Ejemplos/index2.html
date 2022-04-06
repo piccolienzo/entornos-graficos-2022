@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      /*Esta regla aplica el color verde a todo el texto de la página. 
+        Este estilo se aplica de igual manera en ambas paginas, 
+        aunque es sobreescrito y se termina aplicando solo en los td de las páginas */
+      * {
+        color: green;
+      }
+
+      /* aplica el gris verde a todos los elementos a de la página. 
+      Este estilo se aplica de igual manera en ambas paginas*/
+      a:link {
+        color: gray;
+      }
+
+      /* aplica el color azul a todos los elementos a de la 
+      página que han sido visitados. Este estilo se aplica de 
+      igual manera en ambas paginas */
+      a:visited {
+        color: blue;
+      }
+
+      /*al pasar el mouse subre un link en la página, 
+      se pinta el texto de color fucsia. Este estilo se aplica de 
+      igual manera en ambas paginas*/
+      a:hover {
+        color: fuchsia;
+      }
+
+      /*Al presionar sobre un link, se pinta de rojo. 
+      Este estilo se aplica de igual manera en ambas paginas*/
+      a:active {
+        color: red;
+      }
+
+      /*Estas reglas se aplican para todos los elementos p en la página*/
+      p {
+        font-family: arial, helvetica;
+        font-size: 10px;
+        color: black;
+      }
+
+      /* En la primera página se aplican estos estilos solamente en el elemento p, 
+      pero el font-weight es sobreescrito por un estilo en linea. 
+      En la segunda lo aplica a toda la página, pero por ejemplo, 
+      en la segunda página en el primer p no es posible apreciarlo 
+      dado que es sobreescrito por la regla que se encuentra antes que esta*/
+      .contenido {
+        font-size: 14px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="contenido" style="font-weight: normal">
+      Este es un texto ...............
+    </p>
+    <table>
+      <tr>
+        <td>Y esta es una tabla.......</td>
+      </tr>
+      <tr>
+        <td><a href="http://www.google.com.ar">con un enlace</a></td>
+      </tr>
+    </table>
+  </body>
+
+  <body class="contenido">
+    <p>Este es un texto................</p>
+    <table>
+      <tr>
+        <td>Y esta es una tabla.......</td>
+      </tr>
+      <tr>
+        <td><a href="http://www.google.com.ar">con un enlace</a></td>
+      </tr>
+    </table>
+  </body>
+</html>
