@@ -1,0 +1,24 @@
+.contenedor{
+    background-color: tan;
+}
+
+.ejer2-1 .col{
+    background-color: rgb(201, 226, 248);
+    border:1px solid rgba(152, 167, 253, 0.9); 
+}
+.ejer2-1 .row{
+    border: 1px solid rgb(255, 161, 161);
+    background-color:   rgb(255, 224, 224);
+    padding: 3px;
+}
+
+
+.ejer2-2 .col{
+    background-color: rgb(201, 226, 248);
+    border:1px solid rgba(152, 167, 253, 0.9); 
+}
+.ejer2-2 .row{
+    border: 1px solid rgb(255, 161, 161);
+    background-color:   rgb(255, 224, 224);
+    padding: 3px;
+}
