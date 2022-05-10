@@ -5,7 +5,7 @@
     <body>
         <?php
             echo "El $flor $color \n";
-            include 'datos.php';
+            include '4-datos.php';
             echo " El $flor $color";
         ?>
     </body>

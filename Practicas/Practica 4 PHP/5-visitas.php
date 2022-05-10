@@ -2,6 +2,8 @@
 <html>
     <head></head>
     <body>
-        <? include("contador.php")?>
+        <?php
+            include '5-contador.php';
+        ?>
     </body>
 </html>

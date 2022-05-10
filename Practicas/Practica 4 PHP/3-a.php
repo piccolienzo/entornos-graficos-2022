@@ -4,7 +4,6 @@
     </head>
     <body>
         <?php
-            <?php
                 echo "<table width = 90% border = '1' >";
                 $row = 5;
                 $col = 2;
@@ -16,7 +15,6 @@
                     echo "</tr>\n";
                 }
                 echo "</table>\n";
-            ?>
         ?>
     </body>
 </html>

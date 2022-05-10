@@ -22,6 +22,19 @@
                 echo $nombre_usuario . " es válido<br>";
                 return true;
             }
+
+            if (!isset($_POST['submit'])) {
+                ?>
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                        Nombre de usuario: <input name="name" size="10">
+                        <input type="submit" name="submit" value="Comprobar">
+                </form>
+                <?php
+            }
+            else {
+                $name = $_POST['name'];
+                comprobar_nombre_usuario($name);
+            }
         ?>
     </body>
 </html>
