@@ -5,7 +5,12 @@
     <body>
         <a href="4-cuenta.php"></a>
         <?php
-            echo "Has visitado " . ($_SESSION["contador"]) . " páginas";
+            if (!isset($_SESSION["contador"])){
+                $_SESSION["contador"] = 1;
+            }else{
+                $_SESSION["contador"]++;
+            }
+            echo "Has visitado " . $_SESSION["contador"] . " páginas";
         ?>
         <br>
         <a href="4-cuenta.php">Otra página</a>

@@ -3,18 +3,18 @@
         <title>Document</title>
     </head>
     <body>
-        <form action="2-enviar.php" method="post">
+        <form action="3-enviar.php" method="post">
             <fieldset>
                 <p>
                     <label>
                         Mi nombre
-                        <input type="text" name="nombre" size="25" />
+                        <input type="text" name="nombre" size="25" required/>
                     </label>
                 </p>
                 <p>
                     <label>
                         Email del invitado
-                        <input type="text" name="email" size="25" />
+                        <input type="text" name="email" size="25" type="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required/>
                     </label>
                 </p>
                 <input type="submit" value="Recomendar"/>
