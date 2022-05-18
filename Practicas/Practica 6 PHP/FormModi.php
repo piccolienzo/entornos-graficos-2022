@@ -6,10 +6,10 @@
 
         $vCiudad = $_POST['ciudad'];
         //Arma la instrucción SQL y luego la ejecuta
-        $vSql = "SELECT * FROM capitales WHERE ciudad ='$vCiudad' ";
+        $vSql = "SELECT * FROM ciudades WHERE ciudad ='$vCiudad' ";
         $vResultado = mysqli_query($link, $vSql) or die (mysqli_error($link));;
         $fila = mysqli_fetch_array($vResultado);
-        
+        echo($fila['tiene_metro'] ? 'true' : 'false');
         if(mysqli_num_rows($vResultado) == 0) {
             echo ("Ciudad Inexistente...!!! <br>");
             echo ("<A href='FormModiIni.html'>Continuar</A>");
@@ -28,15 +28,15 @@
             </tr>
             <tr>
                 <td width="103"> Habitantes: </td>
-                <td width="243"> <input type="text" name="habitantes" value="<?php echo($fila['habitantes']); ?>"></td>
+                <td width="243"> <input type="number" name="habitantes" value="<?php echo($fila['habitantes']); ?>"></td>
             </tr>
             <tr>
                 <td width="103"> Superficie: </td>
-                <td width="243"> <input type="text" name="superficie" value="<?php echo($fila['superficie']); ?>"></td>
+                <td width="243"> <input type="number" name="superficie" value="<?php echo($fila['superficie']); ?>"></td>
             </tr>
             <tr>
-                <td width="103"> ¿Tiene metro? </td>
-                <td width="243"> <input type="text" name="tieneMetro" value="<?php echo($fila['tieneMetro']); ?>"></td>
+                <td width="103"> Tiene metro? </td>
+                <td width="243"> <input type="checkbox" name="tieneMetro" ></td>
             </tr>
             <tr>
                 <td colspan="2" align="center">

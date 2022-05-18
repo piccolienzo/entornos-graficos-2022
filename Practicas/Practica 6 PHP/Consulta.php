@@ -5,7 +5,7 @@
     <body>
         <?php
             include("conexion.inc");
-            $vSql = "SELECT * FROM capitales";
+            $vSql = "SELECT * FROM ciudades";
             $vResultado = mysqli_query($link, $vSql);
             $total_registros=mysqli_num_rows($vResultado);
         ?>
@@ -15,7 +15,7 @@
                 <td><b>País</b></td>
                 <td><b>Superficie</b></td>
                 <td><b>Habitantes</b></td>
-                <td><b>¿Tiene metro?</b></td>
+                <td><b>Tiene metro?</b></td>
             </tr>
             <?php
                 while ($fila = mysqli_fetch_array($vResultado))
@@ -42,7 +42,7 @@
         </table>
         <p>&nbsp;</p>
         <p align="center">
-            <a href="Menu.html">Volver al menu; del ABM</a>
+            <a href="Menu.html">Volver al menu del ABM</a>
         </p>
     </body>
 </html>

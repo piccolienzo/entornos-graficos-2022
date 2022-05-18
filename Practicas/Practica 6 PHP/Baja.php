@@ -5,8 +5,8 @@
     <body>
         <?php
             include ("conexion.inc");
-            $vNombre = $_POST ['nombre'];
-            $vSql = "SELECT * FROM capitales WHERE nombre='$vNombre' ";
+            $vCiudad = $_POST ['ciudad'];
+            $vSql = "SELECT * FROM ciudades WHERE ciudad='$vCiudad' ";
             $vResultado = mysqli_query($link, $vSql);
             if(mysqli_num_rows($vResultado) == 0)
             {
@@ -16,7 +16,7 @@
             else{
             
             //Arma la instrucción SQL y luego la ejecuta
-            $vSql= "DELETE FROM capitales WHERE nombre = '$vNombre' ";
+            $vSql= "DELETE FROM ciudades WHERE ciudad = '$vCiudad' ";
             mysqli_query($link, $vSql);
             echo("La ciudad fue borrada<br>");
             echo("<A href='Menu.html'>Volver al Menu del ABM</A>");
