@@ -29,7 +29,7 @@
             }
             else {
             $vSql = "INSERT INTO ciudades (ciudad, pais, superficie, habitantes, tiene_metro)
-            values ('$vCiudad','$vPais', '$vHabitantes', '$vSuperficie', '$vTieneMetro')";
+            values ('$vCiudad','$vPais', '$vSuperficie', '$vHabitantes', '$vTieneMetro')";
             mysqli_query($link, $vSql) or die (mysqli_error($link));
             echo("La ciudad fue registrada con éxito<br>");
             echo ("<A href='Menu.html'>VOLVER AL MENU</A>");
