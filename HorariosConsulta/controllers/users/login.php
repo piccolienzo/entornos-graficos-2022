@@ -21,7 +21,7 @@
     include('../connection.inc');
     
     extract($_GET);
-    $query = "select * from usuarios where email like '%".$email."%'";
+    $query = "select * from usuarios where email like '".$email."'";
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
     if(mysqli_num_rows($result) == 0) {
@@ -29,9 +29,10 @@
     }
     else {
         $fila = mysqli_fetch_array($result);
-        if($fila["clave"] == ($password)) {
+
+        if(isset($password) && $fila["clave"] == ($password)) {
             $_SESSION["usuario"] = $fila;
-            include('role.php');
+            include('roles.php');
             echo("Ingreso correcto");
         }
         else {

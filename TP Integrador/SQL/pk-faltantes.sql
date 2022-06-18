@@ -8,3 +8,7 @@ ADD PRIMARY KEY (`idUsuario`);
 ALTER TABLE `tpeg-horariosconsulta`.`alumnos` 
 ADD PRIMARY KEY (`idUsuario`);
 ;
+
+ALTER TABLE `tpeg-horariosconsulta`.`administradores` 
+ADD PRIMARY KEY (`idUsuario`);
+;
