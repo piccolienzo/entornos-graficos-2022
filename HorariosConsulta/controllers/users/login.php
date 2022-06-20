@@ -20,7 +20,7 @@
     //Agreguen su archivo connection.inc con sus credenciales para entrar a MySQl
     include('../connection.inc');
     
-    extract($_GET);
+    extract($_POST);
     $query = "select * from usuarios where email like '".$email."'";
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
