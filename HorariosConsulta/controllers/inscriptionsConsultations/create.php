@@ -4,7 +4,7 @@
 
     $query = "
         select * from inscripciones_consultas
-        where idAlumno = ".$idAlumno;
+        where idAlumno = ".$idAlumno. " and idConsulta = ".$idConsulta;
 
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 

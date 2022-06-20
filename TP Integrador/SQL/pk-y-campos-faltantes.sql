@@ -12,3 +12,6 @@ ADD PRIMARY KEY (`idUsuario`);
 ALTER TABLE `tpeg-horariosconsulta`.`administradores` 
 ADD PRIMARY KEY (`idUsuario`);
 ;
+
+ALTER TABLE `tpeg-horariosconsulta`.`consultas` 
+ADD COLUMN `fecha` DATETIME NULL AFTER `lugar`;

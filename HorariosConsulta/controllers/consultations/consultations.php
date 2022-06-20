@@ -3,13 +3,6 @@
     include('../connection.inc');   
     extract($_GET);
 
-    $joinQuery = "
-        inner join consultas on profesores_materias.id = consultas.idProfesorMateria
-        inner join materias on profesores_materias.idMateria = materias.id
-        inner join profesores on profesores_materias.idProfesor = profesores.idUsuario
-        inner join usuarios on profesores.idUsuario = usuarios.id
-    ";
-
     if(isset($typeSearch)) {
         $isSubject = ($typeSearch == 'materias') ? 1 : 0;
 
@@ -35,9 +28,16 @@
     }
     else {
         $query = "select * from profesores_materias";
+        //La feche debe venir el formato yyyy-mm-dd
+        if(isset($date))    $extraWhere = "date(".$date.") = '".date('Y-m-d')."'";
     }
 
-    $query .= $joinQuery;
+    $query .= "
+        inner join consultas on profesores_materias.id = consultas.idProfesorMateria
+        inner join materias on profesores_materias.idMateria = materias.id
+        inner join profesores on profesores_materias.idProfesor = profesores.idUsuario
+        inner join usuarios on profesores.idUsuario = usuarios.id
+    ";
     if(isset($extraWhere)) {
         $query .= " where ".$extraWhere;
     }
