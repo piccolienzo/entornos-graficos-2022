@@ -1,0 +1,115 @@
+  /* Customize the label (the container) */
+  .check {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 100px;
+    height: 30px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .check input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+  .checkmark#chm:after{
+    content: "Materia";
+    color: var(--violeta);
+    text-align: center;
+    font-size: 16px;
+    padding-top:10px;
+
+  }
+  .checkmark#chp:after{
+    content: "Profesor";
+    color: var(--violeta);
+    text-align: center;
+    font-size: 16px;
+    padding-top:10px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .check:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .check input:checked ~ .checkmark {
+    background-color: transparent;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+ .checkmark:after {
+    position: absolute;
+  }
+ 
+
+  /* Show the checkmark when checked */
+  .check input:checked ~ .checkmark:after {
+    display: block;
+    
+    left:0;
+    top: 5px;
+    width: 100px;
+    height: 30px;
+    border: 3px solid var(--violeta-medium);
+    background-color: var(--violeta-light);
+    border-radius: 30px;
+  }
+  
+  /* Style the checkmark/indicator */
+  .check .checkmark:after {
+    left: 0;
+    top: 5px;
+    width: 100px;
+    height: 30px;
+    background-color: var(--violeta-light);
+    border: 3px solid var(--violeta-light);
+    border-radius: 30px;
+  }
+
+  .card{
+    padding: 5% 0 1% 0;
+  }
+
+  h2{
+    text-align: center;
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn.btn-violeta{
+    width: 140px;
+    height: 40px;
+    align-self: flex-end;
+    margin-right: 30px;
+  }
+
+  .btn span.icon-entrar {
+    background: url("/horariosconsulta/static/images/icons/arrow-left.svg") no-repeat;
+    float: right;
+    margin-top: 2px;
+    width: 20px;
+    height: 20px;
+   }   
+   #busqueda{
+    width: 70%;
+    margin-bottom: 20px;
+   }

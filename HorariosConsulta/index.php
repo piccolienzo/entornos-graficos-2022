@@ -7,14 +7,25 @@
     <title>asd</title>
     <link rel="stylesheet" href="static/css/global.css" /> 
 </head>
+<?php
+    require('views/components/header.php')
+?>
 <body>
- <h1>Ingreso alumnos</h1>
-<form action="controllers/login/login.php" method="post">
-    <input type="text" id="legajo" name="legajo" />
-    <input type="password" id="password" name="password" />
-    <button type="submit" class="btn-violeta"> Entrar </button>
-</form>
 
-<p>¿Olviaste tu contraseña? <a href="views/forgot-password.php" target="_blank" rel="noopener noreferrer">Click acá</a></p>
+<main class="container">
+
+<section class="">
+    <?php 
+
+    if(isset($_SESSION["usuario"])){  
+        echo 'Bienvenido '.$_SESSION["usuario"]["nombre"];  
+    }
+    ?>
+</section>
+
+</main>
 </body>
+<?php
+    require('views/components/footer.php')
+?>
 </html>

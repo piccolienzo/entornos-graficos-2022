@@ -1,0 +1,43 @@
+@import url('/horariosconsulta/static/css/global.css');
+
+.login, .formulario{
+    display: flex;
+    flex-direction: column;
+}
+
+.login p{
+    font-size: 14px;
+}
+.formulario{
+    display: flex;
+    justify-content: center;
+}
+
+.formulario input{
+    margin: 14px 0 14px 0;
+}
+
+.formulario label{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+}
+.formulario .btn{
+    align-self:flex-end;
+}
+
+.btn span.icon-entrar {
+    background: url("/horariosconsulta/static/images/icons/arrow-left.svg") no-repeat;
+    float: right;
+    margin-top: 2px;
+    width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 720px) {
+    .header img{
+        padding-left: 10px;
+        width: 70px; 
+    }
+  }

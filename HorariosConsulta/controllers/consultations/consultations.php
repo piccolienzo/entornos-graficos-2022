@@ -1,57 +1,36 @@
 <?php 
     session_start();
     include('../connection.inc');   
+
     extract($_GET);
+    /* Parte1 */
+    $isSubject = ($searchtype == 'materias') ? 1 : 0;
 
-    if(isset($typeSearch)) {
-        $isSubject = ($typeSearch == 'materias') ? 1 : 0;
+    $query = "select m.nombre matNombre ,u.nombre profNombre, u.apellido, u.email, c.esVirtual,c.id,c.dia,c.horaInicio,c.horaFin,c.cupo 
+    from materias m
+    inner join profesores_materias pm on m.id = pm.idMateria
+    inner join profesores p on p.idUsuario = pm.idProfesor
+    inner join usuarios u on u.id = p.idUsuario
+    inner join consultas c on c.idProfesorMateria = pm.id ";
 
-        $field = $isSubject ? "idMateria" : "idProfesor";
-        $extraWhere = $isSubject
-            ? "where nombre like '%".$name."%'"
-            : "where nombre like '%".$name."%' or apellido like '%".$name."%'";
-        
-        $query = "select * from ".$typeSearch." ".$extraWhere;
+    $extraWhere = $isSubject
+        ? "where m.nombre like '%".$search."%'"
+        : "where u.nombre like '%".$search."%' or u.apellido like '%".$search."%'";
 
-        $result = mysqli_query($link, $query) or die(mysqli_error($link));
-        
-        $query = "select * from profesores_materias ";
-        unset($extraWhere);
-        
-        if(mysqli_num_rows($result) > 0) {
-            require("../../core/functions.php");
-            $extraWhere = getQueryArray($result, $field);
-        }
-        else {
-            echo "No hay resultados";
-        }
-    }
-    else {
-        $query = "select * from profesores_materias";
-        //La feche debe venir el formato yyyy-mm-dd
-        if(isset($date))    $extraWhere = "date(".$date.") = '".date('Y-m-d')."'";
-    }
-
-    $query .= "
-        inner join consultas on profesores_materias.id = consultas.idProfesorMateria
-        inner join materias on profesores_materias.idMateria = materias.id
-        inner join profesores on profesores_materias.idProfesor = profesores.idUsuario
-        inner join usuarios on profesores.idUsuario = usuarios.id
-    ";
-    if(isset($extraWhere)) {
-        $query .= " where ".$extraWhere;
-    }
-    $query .=  " order by horaInicio";
-    
+    $query.= $extraWhere;
+    $query.=  " order by horaInicio";
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
-    if(mysqli_num_rows($result) == 0) {
-        echo("No se encontraron resultados");
+    //$_SESSION["resultados_consulta"] = mysqli_fetch_assoc($result);
+    //$_SESSION["resultados_consulta"] =  mysqli_fetch_array($result);
+
+    $array = array();
+    while($row = mysqli_fetch_array($result)){
+        array_push($array, $row);
     }
-    else {
-        while($fila = mysqli_fetch_array($result)){
-            echo $fila["nombre"];
-        }
-    }
+    $_SESSION["resultados_consulta"] = $array;
+
     mysqli_close($link);
+    header("Location: ../../views/pages/listado-consultas.php");
+
 ?>

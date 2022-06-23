@@ -1,0 +1,4 @@
+Options +FollowSymLinks
+RewriteEngine on
+RewriteRule ^~img/(.*) /horariosconsulta/static/images/$1
+RewriteRule ^~css/(.*) /horariosconsulta/static/css/$1

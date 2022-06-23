@@ -21,7 +21,7 @@
     include('../connection.inc');
     
     extract($_POST);
-    $query = "select * from usuarios where email like '".$email."'";
+    $query = "select * from usuarios where legajo like '".$legajo."'";
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
     if(mysqli_num_rows($result) == 0) {
@@ -33,12 +33,13 @@
         if(isset($password) && $fila["clave"] == ($password)) {
             $_SESSION["usuario"] = $fila;
             include('roles.php');
-            echo("Ingreso correcto");
+            header("Location: ../../index.php");
         }
         else {
             echo("Contraseña incorrecta");
         }
     }
+
 
     mysqli_close($link);
 ?>
