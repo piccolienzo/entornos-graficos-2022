@@ -8,7 +8,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
     --violeta: #7929E8;
     --violeta-medium: #A670F0;
     --violeta-light:#F1ECF8;
-    
+    --rojo: #F82424;
+    --verde: #6DCC76;
 }
 
 @font-face {
@@ -59,9 +60,27 @@ body{
     border: none;
 }
 
+.ancho{
+    width: 214px !important;
+}
+
 .btn-violeta{       
     background: var(--violeta);   
     color: white;   
+}
+
+.btn-rojo{       
+    background: var(--rojo);   
+    color: white;   
+    text-align: center;
+    margin: 5px;
+}
+
+.btn-verde{       
+    background: var(--verde);   
+    color: white;
+    text-align: center;
+    margin: 5px;
 }
 
 .btn#volver span.icon-volver {

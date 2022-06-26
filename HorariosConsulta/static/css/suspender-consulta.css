@@ -1,0 +1,50 @@
+h2{
+    text-align: center;
+}
+
+p{
+    text-align: center;
+}
+
+.subtitulo {
+    text-align: left;
+    margin: 5px;
+}
+
+.input {
+    margin: 5px 0px 8px 5px;
+    border: 1;
+    border-color: grey;
+}
+
+.text-area {
+    height: 200px;
+}
+
+.contenedor-botones {
+    display: flex;    
+    margin-bottom: 30px;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+.contenedor-botones-vertical {
+    display: flex;    
+    margin-bottom: 30px;
+    margin-top: 40px;
+    align-items: center;
+}
+
+.contenedor-botones-derecha {
+    display: flex;    
+    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-right: 10px;
+    justify-content: right;
+}
+
+.contenedor-volver {
+    display: flex !important;
+    align-content: center !important;
+    align-items: center !important;
+}
