@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-05-2022 a las 22:05:06
+-- Tiempo de generación: 28-06-2022 a las 00:41:36
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `tpeg-horariosconsulta`
 --
-CREATE DATABASE IF NOT EXISTS `tpeg-horariosconsulta` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `tpeg-horariosconsulta`;
 
 -- --------------------------------------------------------
 
@@ -76,7 +74,8 @@ CREATE TABLE `consultas` (
   `horaFinEspecial` time DEFAULT NULL,
   `motivoSuspension` varchar(50) DEFAULT NULL,
   `comentarioSuspension` varchar(500) DEFAULT NULL,
-  `lugar` varchar(500) NOT NULL
+  `lugar` varchar(500) NOT NULL,
+  `fecha` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -180,12 +179,14 @@ CREATE TABLE `usuarios` (
 -- Indices de la tabla `administradores`
 --
 ALTER TABLE `administradores`
+  ADD PRIMARY KEY (`idUsuario`),
   ADD KEY `fk_administradores_usuarios` (`idUsuario`);
 
 --
 -- Indices de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
+  ADD PRIMARY KEY (`idUsuario`),
   ADD KEY `fk_alumnos_usuarios` (`idUsuario`);
 
 --
@@ -236,6 +237,7 @@ ALTER TABLE `materias`
 -- Indices de la tabla `profesores`
 --
 ALTER TABLE `profesores`
+  ADD PRIMARY KEY (`idUsuario`),
   ADD KEY `fk_profesores_usuarios` (`idUsuario`);
 
 --
