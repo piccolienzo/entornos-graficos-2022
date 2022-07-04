@@ -24,7 +24,7 @@
                             <a href="http://">Consultas</a>
                         </li>
                         <li>
-                            <a href="/horariosconsulta/views/logout.php">Logout</a>
+                            <a href="/horariosconsulta/views/logout.php">Cerrar sesión</a>
                         </li>
                     '; 
                     }
@@ -43,7 +43,7 @@
                             <a href="http://">Mis Consultas</a>
                         </li>
                         <li>
-                            <a href="/horariosconsulta/views/logout.php">Logout</a>
+                            <a href="/horariosconsulta/views/logout.php">Cerrar sesión</a>
                         </li>
                     ';
                     }
@@ -56,10 +56,10 @@
                             <a href="/horariosconsulta/index.php">Inicio</a>
                         </li>
                         <li>
-                            <a href="http://">Consultas</a>
+                            <a href=/horariosconsulta/views/listado-consultas.php">Consultas</a>
                         </li>
                         <li>
-                            <a href="/horariosconsulta/views/logout.php">Logout</a>
+                            <a href="/horariosconsulta/views/logout.php">Cerrar sesión</a>
                         </li>
                     ';
                     }                   
