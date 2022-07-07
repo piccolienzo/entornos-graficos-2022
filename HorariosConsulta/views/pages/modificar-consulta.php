@@ -33,7 +33,7 @@
                 ?>
 
                 <div id="modificar">
-                    <form class="formulario" action="../../controllers/consultations/create.php" method="post">
+                    <form class="formulario" action="reprogramar-consulta.php" method="post">
                         <label class="subtitulo">Modalidad</label>
                         <br>
                         <div class="contenedor-botones">
@@ -43,7 +43,7 @@
                         <br>
                         <label class="subtitulo">Lugar</label>
                         <br>
-                        <input type="text" class="input text-area" name="comentarioSuspension" width="auto"/>
+                        <input type="text" class="input text-area" name="lugar" width="auto"/>
                         <div class="contenedor-botones-derecha">
                             <button type="submit" class="btn btn-violeta"> Confirmar <span class="icon-entrar"></span> </button>
                         </div>
