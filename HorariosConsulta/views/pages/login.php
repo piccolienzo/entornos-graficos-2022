@@ -31,7 +31,7 @@
     <button type="submit" class="btn btn-violeta"> Entrar <span class="icon-entrar"></span> </button>
 </form>
 
-<p>¿Olvidaste tu contraseña?<a href="forgot-password.php" target="_blank" rel="noopener noreferrer">Click acá</a></p>
+<p>¿Olvidaste tu contraseña?<a href="/pages/forgot-password.php" target="_blank" rel="noopener noreferrer">Click acá</a></p>
 </section>
 
 </main>
