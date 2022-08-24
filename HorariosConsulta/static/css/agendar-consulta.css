@@ -1,0 +1,21 @@
+.container .card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 5% 20px 5%;
+}
+
+.infoconsulta {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+    justify-content: center;
+	/*grid-gap: 10px;*/
+}
+.infoconsulta li::marker{
+    display: none;
+}
+.infoconsulta li {
+    margin: 0 10px 0 10px;
+}

@@ -1,0 +1,79 @@
+table {
+	width: 90%;
+	text-align: left;
+	border-collapse: separate;
+	border-spacing: 0 10px;
+}
+
+.container .card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.tb th,
+.tb td {
+	padding: 20px 15px 20px 15px;
+}
+
+.tb tr {
+	background-color: var(--violeta);
+	color: white;
+	border-radius: 4px;
+	margin-top: 10px;
+}
+
+.detail-row {
+	position: absolute;
+	height: 50px;
+	left: 0;
+	bottom: -50px;
+	width: 100%;
+	background-color: white;
+	color: black;
+}
+
+.tb tr {
+	position: relative;
+}
+
+.tb td:first-child {
+	border-left-style: solid var(--violeta);
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+.tb td:last-child {
+	border-right-style: solid var(--violeta);
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.ht {
+	margin-top: -10px;
+}
+.ht td:first-child {
+	border-bottom-left-radius: 10px;
+	box-shadow: 1px 7px 7px -3px rgba(0, 0, 0, 0.68);
+	-webkit-box-shadow: 1px 7px 7px -3px rgba(0, 0, 0, 0.68);
+	-moz-box-shadow: 1px 7px 7px -3px rgba(0, 0, 0, 0.68);
+}
+.ht td:last-child {
+	border-bottom-right-radius: 10px;
+	box-shadow: 1px 7px 7px -3px rgba(0, 0, 0, 0.68);
+	-webkit-box-shadow: 1px 7px 7px -3px rgba(0, 0, 0, 0.68);
+	-moz-box-shadow: 1px 7px 7px -3px rgba(0, 0, 0, 0.68);
+}
+
+.btn-detalles {
+	background: #f9f9f9;
+	border: 1px solid #a670f0;
+	border-radius: 14px;
+	padding: 0;
+	text-align: center;
+	color: var(--violeta);
+	font-size: 12px;
+	line-height: 16px;
+	width: 7em;
+	height: 2em;
+}
