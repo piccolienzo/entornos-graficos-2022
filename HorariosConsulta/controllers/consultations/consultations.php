@@ -21,9 +21,6 @@
     $query.=  " order by horaInicio";
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
-    //$_SESSION["resultados_consulta"] = mysqli_fetch_assoc($result);
-    //$_SESSION["resultados_consulta"] =  mysqli_fetch_array($result);
-
     $array = array();
     while($row = mysqli_fetch_array($result)){
         array_push($array, $row);
@@ -31,6 +28,6 @@
     $_SESSION["resultados_consulta"] = $array;
 
     mysqli_close($link);
-    header("Location: ../../views/pages/listado-consultas.php");
+    header("Location: ../../views/pages/listado-consultas.php?backurl=".$backurl);
 
 ?>
