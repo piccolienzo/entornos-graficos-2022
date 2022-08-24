@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>asd</title>
-    <link rel="stylesheet" href="../../static/css/global.css" /> 
-    <link rel="stylesheet" href="../../static/css/tipo-consulta.css" /> 
+    <title>Tipo de Consulta</title>
+    <link rel="stylesheet" href="font/fonts.css" /> 
+    <link rel="stylesheet" href="styles/global.css" /> 
+    <link rel="stylesheet" href="styles/tipo-consulta.css" /> 
 </head>
 <body>
 
@@ -17,7 +18,7 @@
 <section class="card">
     <h2>¿Cómo desea realizar su consulta?</h2>
     <form action="../../controllers/consultations/consultations.php" method="GET">
-        
+        <input type="hidden" id="thisurl" name="backurl">
         <label  for="materia" class="check"> &nbsp
             <input type="radio" id="materia" name="searchtype" value="materias">
             <span class="checkmark" id="chm"></span>
@@ -46,6 +47,7 @@
 
     (function() {
         document.querySelector("#next").addEventListener("click", next);
+        document.querySelector("#thisurl").value = btoa(window.location.href);
     })();
 
     function next(){

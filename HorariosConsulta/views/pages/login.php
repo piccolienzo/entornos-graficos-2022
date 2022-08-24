@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="font/fonts.css" /> 
+    <link rel="stylesheet" href="styles/global.css" /> 
+    <link rel="stylesheet" href="styles/login.css" /> 
     <title>asd</title>
 </head>
 
@@ -31,7 +34,7 @@
     <button type="submit" class="btn btn-violeta"> Entrar <span class="icon-entrar"></span> </button>
 </form>
 
-<p>¿Olvidaste tu contraseña?<a href="/pages/forgot-password.php" target="_blank" rel="noopener noreferrer">Click acá</a></p>
+<p>¿Olvidaste tu contraseña?<a href="forgot-password.php" target="_blank" rel="noopener noreferrer">Click acá</a></p>
 </section>
 
 </main>
@@ -40,7 +43,6 @@
     require('../components/footer.php')
 ?>
 <style>
-    @import url('/horariosconsulta/static/css/login.css');
 </style>
 </body>
 </html>
