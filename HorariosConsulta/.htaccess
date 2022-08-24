@@ -1,4 +1,11 @@
 Options +FollowSymLinks
 RewriteEngine on
-RewriteRule ^~img/(.*) /horariosconsulta/static/images/$1
-RewriteRule ^~css/(.*) /horariosconsulta/static/css/$1
+RewriteRule img/(.*) static/images/$1
+RewriteRule icon/(.*) static/images/icons/$1
+RewriteRule styles/(.*) static/css/$1
+RewriteRule font/(.*) static/fonts/$1 
+#RewriteRule ctrl/(.*) %{HTTP_HOST}/controllers/$1
+#RewriteRule pags/(.*) views/pages/$1
+#RewriteRule logout views/logout.php
+#RewriteRule index index.php
+php_flag output_buffering on
