@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="font/fonts.css" /> 
     <link rel="stylesheet" href="styles/global.css" /> 
     <link rel="stylesheet" href="styles/listado-consultas.css" /> 
-    <title>asd</title>
+    <title>Consultas</title>
 </head>
 
 <body>
