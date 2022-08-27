@@ -3,7 +3,7 @@
         <p class="footer-title">Quienes somos</p>
         <p class="footer-descripcion">texto de ejemplo</p>
 
-        <a href="mapa-sitio.php">Mapa del sitio</a>
+        <a href="views/pages/mapa-sitio.php">Mapa del sitio</a>
     </div>
 
     <div>

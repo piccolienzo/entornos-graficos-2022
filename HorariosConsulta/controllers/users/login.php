@@ -1,19 +1,4 @@
 <?php 
-// const PASSWORD_DEF = 'pass';
-// const LEGAJO = 'k123';
-
-// $legajo =  htmlspecialchars($_POST['legajo']);
-// $password =  htmlspecialchars($_POST['password']);
-
-// if($legajo != LEGAJO && $password != PASSWORD_DEF){
-//     echo 'err';
-// }
-// else{
-//     echo $password;
-//     echo $legajo;
-//     header("Location: /horariosconsulta/views/tipo-consulta.php");
-//     exit();
-// }
  
     session_start();
     
@@ -25,7 +10,7 @@
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
     if(mysqli_num_rows($result) == 0) {
-        echo("Usuario no registrado");
+        header("Location: ../../views/pages/login.php?error=noUserFound");
     }
     else {
         $fila = mysqli_fetch_array($result);
@@ -36,7 +21,7 @@
             header("Location: ../../index.php");
         }
         else {
-            echo("Contraseña incorrecta");
+            header("Location: ../../views/pages/login.php?error=wrongPassword");
         }
     }
 
