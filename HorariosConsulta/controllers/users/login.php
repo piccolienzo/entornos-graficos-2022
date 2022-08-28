@@ -2,7 +2,7 @@
  
     session_start();
     
-    //Agreguen su archivo connection.inc con sus credenciales para entrar a MySQl
+    //Agreguen su archivo connection.inc con sus credenciales para entrar a MySQL
     include('../connection.inc');
     
     extract($_POST);

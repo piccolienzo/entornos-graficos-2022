@@ -42,9 +42,7 @@
                         <td>{$user["nombre"]}</td>
                         <td>{$user["usuario"]}</td>
                         <td>
-                            <i></i>
-                            <i></i>
-                            <i></i>
+                            Poner íconos de edición y deshabilitar
                         </td>
                     </tr> 
                 <tbody>
