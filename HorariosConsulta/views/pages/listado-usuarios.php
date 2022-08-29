@@ -10,10 +10,29 @@
     <title>Usuarios</title>
 </head>
 
+<?php
+    extract($_GET);
+
+    include("../../controllers/connection.inc");
+
+    $query = "select * from usuarios";
+    if( isset($rol) ) $query .= " inner join ".$rol." on usuarios.id = ".$rol.".idUsuario";
+    if( isset($textSearch) ) $query .= " where legajo like '%".$textSearch."%' or nombre like '%".$textSearch."%' or apellido like '%".$textSearch."%'";
+    
+    $result = mysqli_query($link, $query) or die(mysqli_error($link));
+
+    $usuarios = array();
+    while($row = mysqli_fetch_array($result)){
+        array_push($usuarios, $row);
+    }
+
+    mysqli_close($link);
+?>
+
 <body>
 
 <?php
-    require('../components/header.php')
+    require('../components/header.php');
 ?>
 
 <main class="container">
@@ -31,23 +50,21 @@
         </tr>
     </thead>
     <?php
-        if(isset($_SESSION["resultados_usuario"])){
-            $result = $_SESSION["resultados_usuario"];
-            foreach($result as $x => $user){ 
-                echo "
+        foreach($result as $x => $user){ 
+            echo ("
                 <tbody class='tb'>
                     <tr>
                         <td>{$user["legajo"]}</td>
                         <td>{$user["apellido"]}</td>
                         <td>{$user["nombre"]}</td>
-                        <td>{$user["usuario"]}</td>
+                        <td>{$user["email"]}</td>
                         <td>
-                            Poner íconos de edición y deshabilitar
+                            <a href='usuario.php?edit=true&id=".$user["id"]."'>Editar</a>
+                            <a href='../../controllers/users/disable.php?id=".$user["id"]."&habilitado=".$user["habilitado"]."'>Deshabilitar</a>
                         </td>
                     </tr> 
                 <tbody>
-                ";
-            }
+            ");
         }
     ?>
 </table>
