@@ -1,6 +1,7 @@
 <?php
+
     //TO DO: Ver como pasar rol
-    // $rol="alumnos";
+    $rol="alumnos";
 
     include('../connection.inc');
     extract($_POST);

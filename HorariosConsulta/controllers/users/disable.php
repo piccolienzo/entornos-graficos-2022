@@ -4,11 +4,13 @@
 
     extract($_GET);
 
-    $query = "update usuarios set "
-        ."habilitado = ".($habilitado ? '0' : '1')
-        ." where id = ".$id;
+        $query = "update usuarios set "
+            ."habilitado = ".($habilitado ? '0' : '1')
+            ." where id = ".$id;
 
-    $result = mysqli_query($link, $query) or die(mysqli_error($link));
+        echo($query);
 
-    header("Location: ../../views/pages/listado-usuarios.php");
+        $result = mysqli_query($link, $query) or die(mysqli_error($link));
+
+        header("Location: ../../views/pages/listado-usuarios.php");
 ?>
