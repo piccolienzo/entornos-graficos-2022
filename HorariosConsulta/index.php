@@ -16,11 +16,42 @@
 <main class="container">
 
 <section class="">
-    <?php 
+    <?php
+        $links = [];
+        array_push(
+            $links,
+            array("text" => "Mapa del sitio", "href" => "./views/pages/mapa-sitio.php")
+        );
 
-    if(isset($_SESSION["usuario"])){  
-        echo 'Bienvenido '.$_SESSION["usuario"]["nombre"];  
-    }
+        if(isset($_SESSION["usuario"])) {  
+            echo '
+                <h1>
+                    Bienvenido '.$_SESSION["usuario"]["nombre"]
+                .'</h1>';  
+        }
+        else {
+            echo '
+                <h1>
+                    Bienvenido al sitio web de consultas de la Universidad Tecnológica Nacional
+                </h1>
+                <h2>
+                    Facultad Regional Rosario
+                </h2>';
+
+            array_push(
+                $links,
+                array("text" => "Ingrese con su cuenta", "href" => "./views/pages/login.php")
+            );
+        }
+
+        echo '
+            <img src="./static/images/UTN-Rosario.jpg" alt="Imagen ilustrativa de la universidad">
+            <ul>';
+
+        foreach($links as $item) {
+            echo('<li><a href="'.$item["href"].'">'.$item["text"].'</a></li>');
+        }
+        echo '<ul>';
     ?>
 </section>
 
