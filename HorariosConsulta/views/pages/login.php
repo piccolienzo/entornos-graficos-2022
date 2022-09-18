@@ -24,19 +24,6 @@
 
 
         <main class="container">
-            <section class="error-message">
-                <?php   
-                    if( isset($_GET['error']) ) {
-                        $errorType = $_GET['error'];
-                        if( $errorType == 'noUserFound') {
-                            echo( "<p class='error-message'> El legajo ingresado no corresponde con ningún usuario </p>");
-                        }
-                        if( $errorType == 'wrongPassword') {
-                            echo( "<p class='error-message'> Contraseña incorrecta </p>");
-                        }
-                    }
-                ?>
-            </section>
 
             <section class="login">
             <h1>Ingreso</h1>
@@ -49,7 +36,7 @@
             </form>
             
 
-            <p>¿Olvidaste tu contraseña?<a href="forgot-password.php" target="_blank" rel="noopener noreferrer">Click acá</a></p>
+            <p>¿Olvidaste tu contraseña?<a href="recuperar-clave.php" rel="noopener noreferrer">Click acá</a></p>
             </section>
 
         </main>
@@ -58,4 +45,16 @@
             require('../components/footer.php')
         ?>
     </body>
+
+    <?php   
+        if( isset($_GET['error']) ) {
+            $errorType = $_GET['error'];
+            if( $errorType == 'noUserFound') {
+                echo( "<script type='text/javascript'> alert('El legajo ingresado no corresponde con ningún usuario') </script>");
+            }
+            if( $errorType == 'wrongPassword') {
+                echo( "<script type='text/javascript'> alert('Contraseña incorrecta') </script>");
+            }
+        }
+    ?>
 </html>

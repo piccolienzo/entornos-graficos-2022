@@ -20,45 +20,62 @@
     <h1>Listado de Consultas</h1>
 <section class="card">
 
-<table>
-    <thead>
-        <tr>
-            <th>Profesor</th>
-            <th>Materia</th>
-            <th>&nbsp</th>
-        </tr>
-    </thead>
-    <?php
+<?php
         if(isset($_SESSION["resultados_consulta"])){
+
             $result = $_SESSION["resultados_consulta"];
-            foreach($result as $x => $a){ 
-                $modalidad = $a['esVirtual']?'Virtual':'Presencial';
-                echo "
-                <tbody class='tb'>
-                    <tr>
-                        <td>{$a["profNombre"]}</td>
-                        <td>{$a["matNombre"]}</td>
-                        <td>
-                            <button class='btn btn-detalles' onclick='verDetalles({$a['id']})' >Ver detalles</button>
-                        </td>                       
-                    </tr> 
-                <tbody>  
-                <tbody class='ht' style='display:none;' id='r{$a['id']}'> 
-                    <tr>
-                        <td colspan='3'>
-                            <div>  Horarios disponibles </div>
-                            <div>  {$a['dia']} {$a['horaInicio']} a {$a['horaFin']} </div>
-                            <div> Email: {$a['email']} </div>
-                            <div>Modalidad: {$modalidad} </div>
-                            <div><button class='btn btn-violeta' onclick='agendarConsulta({$a['id']})'>Agendar Consulta</button></div>
-                        </td>
-                    </tr> 
-                </tbody>                                
-                    ";
+            if(count($result)) {
+                
+                echo ("
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Profesor</th>
+                            <th>Materia</th>
+                            <th>&nbsp</th>
+                        </tr>
+                    </thead>
+                ");
+            
+                foreach($result as $x => $a){
+                    $modalidad = $a['esVirtual']?'Virtual':'Presencial';
+                    echo "
+                    <tbody class='tb'>
+                        <tr>
+                            <td>{$a["profNombre"]}</td>
+                            <td>{$a["matNombre"]}</td>
+                            <td>
+                                <button class='btn btn-detalles' onclick='verDetalles({$a['id']})' >Ver detalles</button>
+                            </td>                       
+                        </tr> 
+                    <tbody>  
+                    <tbody class='ht' style='display:none;' id='r{$a['id']}'> 
+                        <tr>
+                            <td colspan='3'>
+                                <div>  Horarios disponibles </div>
+                                <div>  {$a['dia']} {$a['horaInicio']} a {$a['horaFin']} </div>
+                                <div> Email: {$a['email']} </div>
+                                <div>Modalidad: {$modalidad} </div>
+                                <div><button class='btn btn-violeta' onclick='agendarConsulta({$a['id']})'>Agendar Consulta</button></div>
+                            </td>
+                        </tr> 
+                    </tbody>                                
+                        ";
+                }
+    
+                echo("
+                    </table>
+                ");
+
             }
+            else {
+                echo("
+                    <p>No se han encontrado resultados</p>
+                ");
+            }
+
         }
-    ?>
-</table>
+?>
 
 </section>
 </main>

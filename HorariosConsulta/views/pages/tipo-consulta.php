@@ -20,15 +20,15 @@
     <form action="../../controllers/consultations/consultations.php" method="GET">
         <input type="hidden" id="thisurl" name="backurl">
         <label  for="materia" class="check"> &nbsp
-            <input type="radio" id="materia" name="searchtype" value="materias">
+            <input type="radio" id="materia" name="searchtype" value="materia">
             <span class="checkmark" id="chm"></span>
         </label>
         <label  for="profesor" class="check"> &nbsp
-            <input type="radio" id="profesor" name="searchtype" value="profesores">
+            <input type="radio" id="profesor" name="searchtype" value="profesor">
             <span class="checkmark" id="chp"></span>
         </label>
         
-        <input type="text" id="busqueda" name="search" class="input-white input-bordered" style="display:none;">
+        <input type="text" id="busqueda" name="search" class="input-white input-bordered" style="display:none;" required>
 
         <button type="submit" id="submit" class="btn btn-violeta" style="display:none;"> 
             Continuar<span class="icon-entrar"></span>
@@ -60,7 +60,9 @@
             document.querySelector("#next").style.display = "none";
 
             let bus = document.querySelector("input[name=searchtype]:checked").value;
-            document.querySelector("h2").innerHTML = "Escriba el nombre de " + bus + " a buscar"
+            bus = bus == 'materia' ? 'de la materia' : 'del profesor';
+
+            document.querySelector("h2").innerHTML = "Escriba el nombre " + bus + " a buscar"
             document.querySelector("#submit").style.display = "block";
             document.querySelector("#busqueda").style.display = "block";
 
