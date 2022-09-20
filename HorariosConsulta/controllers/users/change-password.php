@@ -6,7 +6,7 @@
         if(strlen($legajo) > 0) {
 
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                header("Location: ../../views/pages/login.php?newPasswordSent=false");;
+                header("Location: ../../views/pages/recuperar-clave.php?error=invalidEmail");
             }
             else {
                 include('../connection.inc');
@@ -15,7 +15,7 @@
                 $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
                 if(mysqli_num_rows($result) == 0) {
-                    echo 'error';
+                    header("Location: ../../views/pages/recuperar-clave.php?error=noUserFound");
                 }
                 else {
                     $correo = 'utn@frro.com';
@@ -33,17 +33,17 @@
                     
                     $mensaje = 'Su nueva contraseña es '.$nuevaClave;
                     mail($email, $correo, $mensaje);
-                    header("Location: ../../views/pages/login.php?newPasswordSent=true");
+                    header("Location: ../../views/pages/recuperar-clave.php?success=true");
                 }
 
             }
     
         }
         else {
-            header("Location: ../../views/pages/login.php?newPasswordSent=false");;
+            header("Location: ../../views/pages/recuperar-clave.php?error=noCode");
         }
     }
     else {
-        header("Location: ../../views/pages/login.php?newPasswordSent=false");;
+        header("Location: ../../views/pages/recuperar-clave.php?error=emptyFields");
     }
 ?>

@@ -8,6 +8,23 @@
         <link rel="stylesheet" href="styles/global.css" /> 
         <link rel="stylesheet" href="styles/login.css" /> 
         <title>Inicio de Sesión</title>
+        <?php   
+            if( isset($_GET['error']) ) {
+                $errorType = $_GET['error'];
+                $errorText;
+                
+                if( $errorType == 'noUserFound') $errorText = "El legajo ingresado no corresponde con ningún usuario";
+                else if( $errorType == 'wrongPassword') $errorText = "Contraseña incorrecta";
+
+                echo("
+                        <script type='text/javascript'>
+                            window.onload = function() {
+                                alert('".$errorText."')
+                            };
+                        </script>
+                ");
+            }
+        ?>
     </head>
 
     <body>
@@ -45,16 +62,4 @@
             require('../components/footer.php')
         ?>
     </body>
-
-    <?php   
-        if( isset($_GET['error']) ) {
-            $errorType = $_GET['error'];
-            if( $errorType == 'noUserFound') {
-                echo( "<script type='text/javascript'> alert('El legajo ingresado no corresponde con ningún usuario') </script>");
-            }
-            if( $errorType == 'wrongPassword') {
-                echo( "<script type='text/javascript'> alert('Contraseña incorrecta') </script>");
-            }
-        }
-    ?>
 </html>

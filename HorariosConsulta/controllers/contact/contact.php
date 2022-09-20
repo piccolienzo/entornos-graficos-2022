@@ -6,21 +6,21 @@
         if(strlen($asunto) > 0 && strlen($mensaje) > 0) {
 
             if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-                echo "error";
+                header("Location: ../../views/pages/contacto.php?error=invalidEmail");
             }
 
             $destinatario = "alejocuello.w@gmail.com"; //Acá iría el mail de la facultad que reciba las consultas
         
             mail($destinatario, $correo, $mensaje);
     
-            header("Location: ../../views/pages/contacto.php");
+            header("Location: ../../views/pages/contacto.php?success=true");
         }
         else {
-            echo 'error';
+            header("Location: ../../views/pages/contacto.php?error=emptyFields");
         }
     }
     else {
-        echo 'error';
+        header("Location: ../../views/pages/contacto.php?error=emptyFields");
     }
 
 ?>

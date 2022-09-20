@@ -8,6 +8,27 @@
         <link rel="stylesheet" href="styles/global.css" /> 
         <link rel="stylesheet" href="styles/login.css" /> 
         <title>Contacto</title>
+        <?php   
+            $alertText;
+            if( isset($_GET['error']) ) {
+                $errorType = $_GET['error'];
+                
+                if( $errorType == 'invalidEmail') $alertText = "Formato de correo electrónico inválido";
+                else if( $errorType == 'emptyFields') $alertText = "Complete todos los campos";
+            }
+            else {
+                if( isset($_GET['success']) ) {
+                    $alertText = "Consulta enviada con éxito";
+                }
+            }
+            echo("
+                <script type='text/javascript'>
+                    window.onload = function() {
+                        alert('".$alertText."')
+                    };
+                </script>
+            ");
+        ?>
     </head>
 
     <body>
@@ -22,7 +43,7 @@
             <h1>Contacto</h1>
             <form class="formulario" action="../../controllers/contact/contact.php" method="post">
                 <label for="correo"> Correo electrónico </label>
-                <input type="mail" class="input-white" id="correo" name="correo" required/>
+                <input type="email" class="input-white" id="correo" name="correo" required/>
                 <label for="asunto">Asunto</label>
                 <input type="text" class="input-white" id="asunto" name="asunto" required/>
                 <label for="mensaje">Mensaje</label>
