@@ -4,7 +4,7 @@
 
     extract($_GET);
     /* Parte1 */
-    $isSubject = ($searchtype == 'materias') ? 1 : 0;
+    $isSubject = ($searchtype == 'materia') ? 1 : 0;
 
     $query = "select m.nombre matNombre ,u.nombre profNombre, u.apellido, u.email, c.esVirtual,c.id,c.dia,c.horaInicio,c.horaFin,c.cupo 
     from materias m
@@ -19,6 +19,7 @@
 
     $query.= $extraWhere;
     $query.=  " order by horaInicio";
+
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
     $array = array();
