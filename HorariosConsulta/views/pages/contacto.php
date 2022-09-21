@@ -21,13 +21,15 @@
                     $alertText = "Consulta enviada con éxito";
                 }
             }
-            echo("
-                <script type='text/javascript'>
-                    window.onload = function() {
-                        alert('".$alertText."')
-                    };
-                </script>
-            ");
+            if( isset($alertText) ) {
+                echo("
+                    <script type='text/javascript'>
+                        window.onload = function() {
+                            alert('".$alertText."')
+                        };
+                    </script>
+                ");
+            }
         ?>
     </head>
 

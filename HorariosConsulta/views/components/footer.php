@@ -1,16 +1,25 @@
+<?php
+    if($_SERVER['SERVER_NAME'] == "localhost"){
+            $sv ="http://localhost/horariosconsulta";
+    }
+    else{
+        $sv = "https://horariosconsulta.000webhostapp.com";
+    }
+?>
+
 <footer class="footer">
     <div>
         <p class="footer-title">Universidad Tecnológica Nacional</p>
         <p class="footer-descripcion">Facultad Regional Rosario</p>
         
         <p class="footer-descripcion">
-            <a href="views/pages/mapa-sitio.php">Mapa del sitio</a>
+            <a href="<?php echo($sv) ?>/views/pages/mapa-sitio.php">Mapa del sitio</a>
         </p>
     </div>
 
     <div>
         <p class="footer-title">
-            <a href="../pages/contacto.php">Contacto</a>
+            <a href=<?php echo($sv) ?>"views/pages/contacto.php">Contacto</a>
         </p>
         <p class="footer-descripcion">
             ZEBALLOS 1341 - S2000BQA -ROSARIO

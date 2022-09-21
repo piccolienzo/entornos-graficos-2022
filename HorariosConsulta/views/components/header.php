@@ -20,23 +20,26 @@
                         if( $role == "administrador"){
                             echo "
                             <li>
-                                <a>ADMINISTRADOR</a>
+                                ADMINISTRADOR
                             </li>
                             <li>
                                  <a href='{$sv}/index.php'>Inicio</a>
                             </li>
                             <li>
-                                <a href='{$sv}'>Consultas</a>
+                                <a href='{$sv}/views/pages/listado-consultas.php'>Consultas</a>
                             </li>
                             <li>
-                                <a href='{$sv}/views/logout.php'>Logout</a>
+                                <a href='{$sv}/views/pages/listado-usuarios.php'>Usuarios</a>
+                            </li>
+                            <li>
+                                <a href='{$sv}/views/logout.php'>Cerrar sesión</a>
                             </li>
                         "; 
                         }
                         if( $role == 'alumno'){
                             echo "
                             <li>
-                            <a>ALUMNO</a>
+                                ALUMNO
                             </li>
                             <li>
                                 <a href='{$sv}/index.php'>Inicio</a>
@@ -48,14 +51,14 @@
                                 <a href='http://'>Mis Consultas</a>
                             </li>
                             <li>
-                            <a href='{$sv}/views/logout.php'>Logout</a>
+                            <a href='{$sv}/views/logout.php'>Cerrar sesión</a>
                             </li>
                         ";
                         }
                         if( $role == 'profesor'){
                             echo "
                             <li>
-                            <a>PROFESOR</a>
+                                PROFESOR
                             </li>
                             <li>
                             <a href='{$sv}/index.php'>Inicio</a>
@@ -64,7 +67,7 @@
                                 <a href='http://'>Consultas</a>
                             </li>
                             <li>
-                                <a href='{$sv}/views/logout.php'>Logout</a>
+                                <a href='{$sv}/views/logout.php'>Cerrar sesión</a>
                             </li>
                         ";
                         }                   
@@ -78,7 +81,7 @@
                                 <a href='{$sv}/views/pages/tipo-consulta.php'>Consultas</a>
                             </li>
                             <li>
-                            <a href='{$sv}/views/pages/login.php'>Login</a>
+                            <a href='{$sv}/views/pages/login.php'>Iniciar sesión</a>
                             </li>
                         ";
                     }

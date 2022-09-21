@@ -23,13 +23,15 @@
                     $alertText = "Se ha enviado una nueva contraseña a su email";
                 }
             }
-            echo("
-                <script type='text/javascript'>
-                    window.onload = function() {
-                        alert('".$alertText."')
-                    };
-                </script>
-            ");
+            if( isset($alertText) ) {
+                echo("
+                    <script type='text/javascript'>
+                        window.onload = function() {
+                            alert('".$alertText."')
+                        };
+                    </script>
+                ");
+            }
         ?>
     </head>
 
