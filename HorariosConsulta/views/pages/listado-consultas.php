@@ -38,6 +38,9 @@
         
             foreach($result as $x => $a){ 
                 $modalidad = $a['esVirtual']?'Virtual':'Presencial';
+                $agendarConsulta = isset($_SESSION['usuario'])
+                    ? "<div><button class='btn btn-violeta' onclick='agendarConsulta({$a['id']})'>Agendar Consulta</button></div>"
+                    : "";
                 echo "
                 <tbody class='tb'>
                     <tr>
@@ -55,7 +58,7 @@
                             <div>  {$a['dia']} {$a['horaInicio']} a {$a['horaFin']} </div>
                             <div> Email: {$a['email']} </div>
                             <div>Modalidad: {$modalidad} </div>
-                            <div><button class='btn btn-violeta' onclick='agendarConsulta({$a['id']})'>Agendar Consulta</button></div>
+                            {$agendarConsulta}
                         </td>
                     </tr> 
                 </tbody>                                
