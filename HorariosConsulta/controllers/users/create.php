@@ -1,10 +1,11 @@
 <?php
 
+    session_start();
     include('../connection.inc');
     extract($_POST);
 
     $query = "select * from usuarios inner join ".$rol." on usuarios.id = ".$rol.".idUsuario"
-        ." where legajo = ".$legajo." or email like '".$email."' or usuario like '".$usuario."'";
+        ." where legajo = '".$legajo."' or email like '".$email."' or usuario like '".$usuario."'";
 
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
@@ -31,10 +32,11 @@
         echo($query);
         $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
-        header("Location: ../../views/pages/listado-usuarios.php");
+        header("Location: ../../views/pages/listado-usuarios.php?success=new");
     }
     else {
-        echo("error: ya existe un usuario con ese legajo, email o nombre de usuario");
+        $_SESSION["formulario_usuario"] = $_POST;
+        header("Location: ../../views/pages/usuario.php?edit=0&error=repeatedData");
     }
 
 ?>

@@ -1,14 +1,11 @@
 <?php
 
-    //TO DO: Ver como pasar rol
-    $rol="alumnos";
-
     include('../connection.inc');
     extract($_POST);
     extract($_GET);
 
-    $query = "select * from usuarios inner join ".$rol." on usuarios.id = ".$rol.".idUsuario"
-        ." where (legajo = ".$legajo." or email like '".$email."' or usuario like '".$usuario."') and idUsuario !=". $id;
+    $query = "select * from usuarios"
+        ." where (legajo = ".$legajo." or email like '".$email."' or usuario like '".$usuario."') and id !=". $id;
 
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
@@ -24,9 +21,9 @@
 
         $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
-        header("Location: ../../views/pages/listado-usuarios.php");
+        header("Location: ../../views/pages/listado-usuarios.php?success=edit");
     }
     else {
-        echo("datos repetidos");
+        header("Location: ../../views/pages/usuario.php?edit=true&id=".$id."&error=repeatedData");
     }
 ?>

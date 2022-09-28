@@ -8,43 +8,61 @@
         <link rel="stylesheet" href="styles/global.css" /> 
         <link rel="stylesheet" href="styles/login.css" /> 
         <title>Usuario</title>
+        <?php   
+            if( isset($_GET['error']) ) {
+                $errorType = $_GET['error'];
+                $errorText;
+                
+                if( $errorType == 'repeatedData') $errorText = "Revise que los datos ingresados no correspondan con otro usuario";
+
+                echo("
+                        <script type='text/javascript'>
+                            window.onload = function() {
+                                alert('".$errorText."')
+                            };
+                        </script>
+                ");
+            }
+        ?>
     </head>
 
     <?php
         extract($_GET);
         if(isset($edit)){
-
-            include("../../controllers/connection.inc");
-            $query = "select * from usuarios where id = ".$id;
-            $result = mysqli_query($link, $query) or die(mysqli_error($link));
-
-            $usuario = mysqli_fetch_array($result);
-            $edit = true;
-        }
-        else {
-            $edit = false;
+            if($edit) {
+                include("../../controllers/connection.inc");
+                $query = "select * from usuarios where id = ".$id;
+                $result = mysqli_query($link, $query) or die(mysqli_error($link));
+    
+                $usuario = mysqli_fetch_array($result);
+            }
         }
     ?>
 
     <body>
 
         <?php
-            require('../components/header.php')
+            require('../components/header.php');
         ?>
 
         <main class="container">
             <section class="login">
                 <h1>Usuario</h1>
+
                 <form class="formulario" 
                     action="../../controllers/users/<?php
                             echo($edit ? ("edit.php?id=".$id) : "create.php");
                         ?>
                         "method="post">
+
                     <label for="nombre"> Nombre </label>
                     <input type="text" class="input-white" id="nombre" name="nombre" 
                         <?php
                             if(isset($usuario)) {
                                 echo("value=".$usuario["nombre"]);
+                            }
+                            else if( isset($_SESSION['formulario_usuario']) ) {
+                                echo("value=".$_SESSION['formulario_usuario']['nombre']);
                             }
                         ?>
                         required/>
@@ -54,6 +72,9 @@
                             if(isset($usuario)) {
                                 echo("value=".$usuario["apellido"]);
                             }
+                            else if( isset($_SESSION['formulario_usuario']) ) {
+                                echo("value=".$_SESSION['formulario_usuario']['apellido']);
+                            }
                         ?>
                         required/>
                     <label for="dni"> DNI </label>
@@ -61,6 +82,9 @@
                         <?php
                             if(isset($usuario)) {
                                 echo("value=".$usuario["dni"]);
+                            }
+                            else if( isset($_SESSION['formulario_usuario']) ) {
+                                echo("value=".$_SESSION['formulario_usuario']['dni']);
                             }
                         ?>
                         required/>
@@ -70,6 +94,9 @@
                             if(isset($usuario)) {
                                 echo("value=".$usuario["usuario"]);
                             }
+                            else if( isset($_SESSION['formulario_usuario']) ) {
+                                echo("value=".$_SESSION['formulario_usuario']['usuario']);
+                            }
                         ?>
                         required/>
                     <label for="email"> Email </label>
@@ -78,6 +105,9 @@
                             if(isset($usuario)) {
                                 echo("value=".$usuario["email"]);
                             }
+                            else if( isset($_SESSION['formulario_usuario']) ) {
+                                echo("value=".$_SESSION['formulario_usuario']['email']);
+                            }
                         ?>
                         required/>
                     <label for="legajo"> Legajo </label>
@@ -85,6 +115,9 @@
                         <?php
                             if(isset($usuario)) {
                                 echo("value=".$usuario["legajo"]);
+                            }
+                            else if( isset($_SESSION['formulario_usuario']) ) {
+                                echo("value=".$_SESSION['formulario_usuario']['legajo']);
                             }
                         ?>
                         required/>

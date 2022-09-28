@@ -26,7 +26,7 @@
                                  <a href='{$sv}/index.php'>Inicio</a>
                             </li>
                             <li>
-                                <a href='{$sv}/views/pages/listado-consultas.php'>Consultas</a>
+                                <a href='{$sv}/views/pages/listado-consultas-admin.php'>Consultas</a>
                             </li>
                             <li>
                                 <a href='{$sv}/views/pages/listado-usuarios.php'>Usuarios</a>
