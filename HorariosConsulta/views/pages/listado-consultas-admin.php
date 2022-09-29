@@ -46,84 +46,84 @@
         }
     ?>
 
-    <?php
-        extract($_GET);
-
-        include("../../controllers/connection.inc");
-        
-        $query = "select m.nombre matNombre ,u.nombre profNombre, u.apellido, u.email, c.esVirtual,c.id,c.dia,c.horaInicio,c.horaFin,c.cupo , c.id, c.cancelado
-            from materias m
-            inner join profesores_materias pm on m.id = pm.idMateria
-            inner join profesores p on p.idUsuario = pm.idProfesor
-            inner join usuarios u on u.id = p.idUsuario
-            inner join consultas c on c.idProfesorMateria = pm.id ";
-
-        $query.=  " order by horaInicio";
-
-        $result = mysqli_query($link, $query) or die(mysqli_error($link));
-
-        $array = array();
-        while($row = mysqli_fetch_array($result)){
-            array_push($array, $row);
-        }
-
-        mysqli_close($link);
-    ?>
-
     <body>
 
     <?php
-        require('../components/header.php')
+        require('../components/header.php');
     ?>
 
         <main class="container">
             <h1>Listado de Consultas</h1>
             <section class="card">
 
-            <?php
-                if(count($array)) {   
-                    echo ("
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Profesor</th>
-                                <th>Materia</th>
-                                <th>Día</th>
-                                <th>Hora Inicio</th>
-                                <th>Hora Fin</th>
-                            </tr>
-                        </thead>
-                    ");
+            <form class="formulario" action="../../controllers/consultations/consultations.php" method="GET">
+
+                <button class='btn btn-violeta'>Imprimir</button>
+                <button class='btn btn-violeta'>Nueva consulta</button>
+                <input type="text" id="nombre" name="search"/>
+                <button class='btn btn-violeta' type="submit">Buscar</button>
+
+                <label> Filtrar por </label>
+                <label for="materia" class="check"> Profesor </label>
+                <input type="radio" id="materia" name="searchtype" value="profesor" checked>
+                <label for="profesor" class="check"> Materia </label>
+                <input type="radio" id="profesor" name="searchtype" value="materia">
                 
-                    foreach($array as $x => $a){ 
-                        $cancelAction = $a['cancelado'] ? 'Habilitar' : 'Suspender';
-                        $modalidad = $a['esVirtual'] ? 'Virtual' : 'Presencial';
-                        echo "
-                            <tbody class='tb'>
-                                <tr>
-                                    <td>{$a["profNombre"]}</td>
-                                    <td>{$a["matNombre"]}</td>
-                                    <td>{$a["dia"]}</td>
-                                    <td>{$a["horaInicio"]}</td>
-                                    <td>{$a["horaFin"]}</td>
-                                    <td>
-                                        <button class='btn btn-detalles' onclick='suspender({$a['id']},{$a['cancelado']})' >{$cancelAction}</button>
-                                    </td>
-                                </tr> 
-                            </tbody>
-                        ";
+                <input type="radio" id="profesor" name="admin" value="true" checked style="display: none">
+
+                <label for="fecha"> Fecha </label>
+                <input type="date" id="fecha" name="date">
+
+            </form>
+
+            <?php
+                if(isset($_SESSION["resultados_consulta"])){
+                    $result = $_SESSION["resultados_consulta"];
+                    if(count($result)) {   
+                            echo ("
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Profesor</th>
+                                        <th>Materia</th>
+                                        <th>Día</th>
+                                        <th>Hora Inicio</th>
+                                        <th>Hora Fin</th>
+                                    </tr>
+                                </thead>
+                            ");
+                        
+                            foreach($result as $x => $a){ 
+                                $cancelAction = $a['cancelado'] ? 'Habilitar' : 'Suspender';
+                                $modalidad = $a['esVirtual'] ? 'Virtual' : 'Presencial';
+                                echo "
+                                    <tbody class='tb'>
+                                        <tr>
+                                            <td>{$a["profNombre"]}</td>
+                                            <td>{$a["matNombre"]}</td>
+                                            <td>{$a["dia"]}</td>
+                                            <td>{$a["horaInicio"]}</td>
+                                            <td>{$a["horaFin"]}</td>
+                                            <td>
+                                                <button class='btn btn-detalles' onclick='suspender({$a['id']},{$a['cancelado']})' >{$cancelAction}</button>
+                                            </td>
+                                        </tr> 
+                                    </tbody>
+                                ";
+                            }
+
+                            echo("
+                                </table>
+                            ");
+
+                        }
+                        else {
+                            echo("
+                                <p>No se encontraron resultados</p>
+                            ");
                     }
-
-                    echo("
-                        </table>
-                    ");
-
                 }
-                else {
-                    echo("
-                        <p>No se encontraron resultados</p>
-                    ");
-                }
+
             ?>
 
             </section>
