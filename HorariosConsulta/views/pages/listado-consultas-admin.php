@@ -7,44 +7,8 @@
         <link rel="stylesheet" href="font/fonts.css" /> 
         <link rel="stylesheet" href="styles/global.css" /> 
         <link rel="stylesheet" href="styles/listado-consultas.css" /> 
-        <title>Usuarios</title>
-        <?php   
-            $alertText;
-            if( isset($_GET['success']) ) {
-                $errorType = $_GET['success'];
-                if($errorType == 'edit')  $alertText = "Usuario editado con éxito";
-                if($errorType == 'disabled')  $alertText = "Usuario deshabilitado con éxito";
-                if($errorType == 'enabled')  $alertText = "Usuario habilitado con éxito";
-            }
-            if( isset($alertText) ) {
-                echo("
-                    <script type='text/javascript'>
-                        window.onload = function() {
-                            alert('".$alertText."')
-                        };
-                    </script>
-                ");
-            }
-        ?>
+        <title>Consultas</title>
     </head>
-
-    <?php
-        $errorText;
-        
-        if( isset($_GET['success']) ) {
-            $errorText = "Modificado exitosamente";
-        }
-
-        if( isset($errorText) ) {
-            echo("
-                    <script type='text/javascript'>
-                        window.onload = function() {
-                            alert('".$errorText."')
-                        };
-                    </script>
-            ");
-        }
-    ?>
 
     <body>
 
@@ -81,21 +45,19 @@
                     $result = $_SESSION["resultados_consulta"];
                     if(count($result)) {   
                             echo ("
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Profesor</th>
-                                        <th>Materia</th>
-                                        <th>Día</th>
-                                        <th>Hora Inicio</th>
-                                        <th>Hora Fin</th>
-                                    </tr>
-                                </thead>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Profesor</th>
+                                            <th>Materia</th>
+                                            <th>Día</th>
+                                            <th>Hora Inicio</th>
+                                            <th>Hora Fin</th>
+                                        </tr>
+                                    </thead>
                             ");
                         
                             foreach($result as $x => $a){ 
-                                $cancelAction = $a['cancelado'] ? 'Habilitar' : 'Suspender';
-                                $modalidad = $a['esVirtual'] ? 'Virtual' : 'Presencial';
                                 echo "
                                     <tbody class='tb'>
                                         <tr>
@@ -105,7 +67,7 @@
                                             <td>{$a["horaInicio"]}</td>
                                             <td>{$a["horaFin"]}</td>
                                             <td>
-                                                <button class='btn btn-detalles' onclick='suspender({$a['id']},{$a['cancelado']})' >{$cancelAction}</button>
+                                                <button class='btn btn-detalles' onclick='verDetalles({$a['id']})' >Ver detalle</button>
                                             </td>
                                         </tr> 
                                     </tbody>
@@ -122,6 +84,9 @@
                                 <p>No se encontraron resultados</p>
                             ");
                     }
+                }
+                else {
+                    header("Location: ../../controllers/consultations/consultations.php?admin=true");
                 }
 
             ?>
@@ -145,25 +110,12 @@
             function back(){
                 window.location.href = atob(backurl);
             }
-
-            function verDetalles(id){
-                let element = document.querySelector("#r"+id);
-                let init = element.style.display;
-                if(element.style.display === "none"){
-                    element.style.display = "table-row-group";
-                }
-                else{
-                    element.style.display = "none"
-                } 
+            
+            function verDetalles(id) {
+                window.location.href = "../../controllers/consultations/consultation.php?id=" + id;
             }
 
-            function suspender(id, cancelado) {
-                window.location.href = "../../controllers/consultations/suspend.php?id=" + id + "&cancelado=" + cancelado;
-            }
-
-            function agendarConsulta(id){
-                window.location.href = "agendar-consulta.php?id="+btoa(id)+"&backurl="+btoa(window.location.href);
-            }
+            
         </script>
     </body>
 </html>

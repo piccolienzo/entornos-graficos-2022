@@ -17,7 +17,7 @@
         ? "where m.nombre like '%".$search."%'"
         : "where (u.nombre like '%".$search."%' or u.apellido like '%".$search."%')";
 
-    if(isset($date)) {
+    if(isset($date) && $date != '') {
         include('../getDayLabel.inc');   
         $extraWhere .= " and c.dia = '".$dayLabel."'";
     }

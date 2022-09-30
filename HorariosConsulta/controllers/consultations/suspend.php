@@ -17,5 +17,6 @@
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
     mysqli_close($link);
-    header("Location: ../../views/pages/listado-consultas-admin.php?success=true");
+
+    header("Location: consultation.php?id=".$id."&success=true");
 ?>
