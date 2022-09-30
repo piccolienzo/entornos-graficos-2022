@@ -23,7 +23,7 @@
             <form class="formulario" action="../../controllers/consultations/consultations.php" method="GET">
 
                 <button class='btn btn-violeta'>Imprimir</button>
-                <button class='btn btn-violeta'>Nueva consulta</button>
+                <button type='button' class='btn btn-violeta' onclick="nuevaConsulta()">Nueva consulta</button>
                 <input type="text" id="nombre" name="search"/>
                 <button class='btn btn-violeta' type="submit">Buscar</button>
 
@@ -115,6 +115,10 @@
                 window.location.href = "../../controllers/consultations/consultation.php?id=" + id;
             }
 
+            function nuevaConsulta() {
+                console.log('entraa')
+                window.location.href = "../../controllers/teachers/teachers.php?nextPage=listado-profesores.php";
+            }
             
         </script>
     </body>
