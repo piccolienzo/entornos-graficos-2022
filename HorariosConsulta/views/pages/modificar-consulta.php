@@ -11,7 +11,8 @@
     <body>
 
         <?php
-            require('../components/header.php')
+            require('../components/header.php');
+            extract($_POST);
         ?>
 
         <main class="container">
@@ -21,29 +22,38 @@
             <h1>Modificar Consulta</h1>
             <h2>Seleccione modalidad y lugar</h2>
             <section class="card">
-                <?php
-                    //Acá se obtiene la consulta que se haya seleccionado del listado
-                    $consulta = array(
-                        'materia' => "fisica",
-                        'fecha' => '13 de abril',
-                        'esVirtual' => 1
-                    );
-                    $esVirtual = $consulta["esVirtual"] ?  "Virtual" : "Presencial";
-                    echo("<p>".$consulta["materia"].", ".$consulta["fecha"].", ".$esVirtual."</p>");
-                ?>
-
                 <div id="modificar">
-                    <form class="formulario" action="reprogramar-consulta.php" method="post">
+                    <form class="formulario" action="../../controllers/consultations/create.php" method="post">
+                    <?php
+                        if(isset($idProfesorMateria)) {
+                            echo("
+                                    <input type='hidden' name='idProfesorMateria' value={$idProfesorMateria}/>
+                                ");
+                        }
+                        if(isset($hora)) {
+                            echo("
+                                    <input type='hidden' name='hora' value={$hora}/>
+                                ");
+                        }
+                        if(isset($dia)) {
+                            echo("
+                                    <input type='hidden' name='dia' value={$dia}/>
+                                ");
+                        }
+                    ?>
                         <label class="subtitulo">Modalidad</label>
                         <br>
                         <div class="contenedor-botones">
-                            <button class="btn">Virtual</button>
-                            <button class="btn">Presencial</button>
+                            <input type="radio" name="esVirtual" value="1" class="btn" required>Virtual</button>
+                            <input type="radio" name="esVirtual" value="0" class="btn" required>Presencial</button>
                         </div>
                         <br>
                         <label class="subtitulo">Lugar</label>
                         <br>
-                        <input type="text" class="input text-area" name="lugar" width="auto"/>
+                        <input type="text" class="input text-area" name="lugar" width="auto" required/>
+                        <label class="subtitulo">Cupo</label>
+                        <br>
+                        <input type="number" required class="input text-area" name="cupo" width="auto" required/>
                         <div class="contenedor-botones-derecha">
                             <button type="submit" class="btn btn-violeta"> Confirmar <span class="icon-entrar"></span> </button>
                         </div>

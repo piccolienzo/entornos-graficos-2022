@@ -12,28 +12,41 @@
 <body>
 
     <?php
-        require('../components/header.php')
+        require('../components/header.php');
+        extract($_POST);
     ?>
 
     <main class="container">
         <div class="contenedor-volver">
             <button class="btn btn-violeta show"><span class="icon-volver"></span>Volver</button>
         </div>
-        <form class="formulario" action="reprogramar-consulta-2.php" method="post">    
+        <form class="formulario" action="reprogramar-consulta-2.php" method="post">  
+        <?php
+                if(isset($idProfesorMateria)) {
+                    echo("
+                            <input type='hidden' name='idProfesorMateria' value={$idProfesorMateria}/>
+                        ");
+                }
+                if(isset($dia)) {
+                    echo("
+                            <input type='hidden' name='dia' value={$dia}/>
+                        ");
+                }
+            ?>  
             <h2>Seleccione día</h2>
             <div class="contenedores-botones">
-                <button class="btn" onclick="seleccionarOpcion('LUNES')"> Lunes </button>
-                <button class="btn" onclick="seleccionarOpcion('MARTES')"> Martes </button>
-                <button class="btn" onclick="seleccionarOpcion('MIERCOLES')">Miércoles </button>
+                <input type="radio" name="dia" required class="btn" value="LUNES"> Lunes </button>
+                <input type="radio" name="dia" required class="btn" value="MARTES"> Martes </button>
+                <input type="radio" name="dia" required class="btn" value="MIERCOLES">Miércoles </button>
             </div>
             <div class="contenedores-botones">
-                <button class="btn" onclick="seleccionarOpcion('JUEVES')"> Jueves </button>
-                <button class="btn" onclick="seleccionarOpcion('VIERNES')"> Viernes </button>
-                <button class="btn" onclick="seleccionarOpcion('SABADO')"> Sábado </button>
+                <input type="radio" name="dia" required class="btn" value="JUEVES"> Jueves </button>
+                <input type="radio" name="dia" required class="btn" value="VIERNES"> Viernes </button>
+                <input type="radio" name="dia" required class="btn" value="SABADO"> Sábado </button>
             </div>
             
             <div class="contenedor-botones-derecha">
-                <button type="submit" class="btn btn-violeta" onclick="confirmarHorario()"> Confirmar <span class="icon-entrar"></span> </button>
+                <button type="submit" class="btn btn-violeta"> Confirmar <span class="icon-entrar"></span> </button>
             </div>
         </form>
     </main>

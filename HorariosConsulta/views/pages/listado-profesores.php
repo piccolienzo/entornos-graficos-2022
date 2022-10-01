@@ -42,6 +42,11 @@
 <main class="container">
     <h1><?php echo($actionLabel) ?> Consulta</h1>
     <section class="card">
+        <form class='formulario' action='../../controllers/teachers/teachers.php' method='GET'>
+            <input type='hidden' name='nextPage' value='listado-profesores.php'/>
+            <input type='text' name='textSearch'/>
+            <button type='submit' name=''>Buscar</button>
+        </form>
         <?php
              if(isset($_SESSION["resultados_profesores"])){
                 $result = $_SESSION["resultados_profesores"];
@@ -64,7 +69,7 @@
                                         <td>{$a["nombre"]} {$a["apellido"]}</td>
                                         <td>{$a["usuario"]}</td>
                                         <td>
-                                            <input type='checkbox' name='id' value='{$a["id"]}' required>
+                                            <input type='radio' name='id' value='{$a["id"]}' required>
                                         </td>
                                     </tr> 
                                 </tbody>

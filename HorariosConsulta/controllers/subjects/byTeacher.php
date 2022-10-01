@@ -19,5 +19,5 @@
 
     mysqli_close($link);
 
-    header("Location: ../../views/pages/".$nextPage);
+    header("Location: ../../views/pages/".$nextPage."?teacherId=".$id);
 ?>

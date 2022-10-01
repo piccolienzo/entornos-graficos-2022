@@ -116,7 +116,6 @@
             }
 
             function nuevaConsulta() {
-                console.log('entraa')
                 window.location.href = "../../controllers/teachers/teachers.php?nextPage=listado-profesores.php";
             }
             

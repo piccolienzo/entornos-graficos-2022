@@ -47,19 +47,18 @@
                 $result = $_SESSION["resultados_materias"];
                 if(count($result)) {
                         echo("
-                            <form action='dia.php' method='GET'>
+                            <form action='reprogramar-consulta.php' method='POST'>
                         ");
                         foreach($result as $x => $a){ 
                             echo "
-                                <label for='{$a["nombre"]}' class='check'> &nbsp
-                                    <input type='radio' name='materia' value='materia'>
-                                    <span class='checkmark' id='chm'></span>
+                                <label> {$a["nombre"]}
+                                    <input type='radio' name='idProfesorMateria' value='{$a["id"]}'>
                                 </label>
                             ";
                         }
 
                         echo('
-                                <button type="submit">
+                                <button type="submit"> Continuar </button>
                             </form>
                         ');
 
@@ -88,11 +87,7 @@
     })();
 
     function back(){
-        window.location.href = "listado-consultas-admin.php";
-    }
-    
-    function back(){
-        window.location.href = "listado-materias.php";
+        window.location.href = "listado-profesores.php";
     }
 </script>
 </body>
