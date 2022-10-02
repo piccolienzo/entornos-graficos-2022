@@ -77,6 +77,9 @@
         }
 
     }
+    else {
+        header("Location: ../../controllers/consultations/consultations.php");
+    }
 ?>
 
 </section>

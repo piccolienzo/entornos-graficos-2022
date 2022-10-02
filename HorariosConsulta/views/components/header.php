@@ -26,7 +26,7 @@
                                  <a href='{$sv}/index.php'>Inicio</a>
                             </li>
                             <li>
-                                <a href='{$sv}/views/pages/listado-consultas-admin.php'>Consultas</a>
+                                <a href='{$sv}/controllers/consultations/consultations.php?admin=true'>Consultas</a>
                             </li>
                             <li>
                                 <a href='{$sv}/views/pages/listado-usuarios.php'>Usuarios</a>
@@ -48,7 +48,7 @@
                                 <a href='{$sv}/views/pages/tipo-consulta.php'>Consultas</a>
                             </li>
                             <li>
-                                <a href='http://'>Mis Consultas</a>
+                                <a href='{$sv}/views/pages/listado-consultas.php'>Mis Consultas</a>
                             </li>
                             <li>
                             <a href='{$sv}/views/logout.php'>Cerrar sesión</a>
@@ -64,7 +64,7 @@
                             <a href='{$sv}/index.php'>Inicio</a>
                             </li>
                             <li>
-                                <a href='http://'>Consultas</a>
+                                <a href='{$sv}/controllers/consultations/consultations.php'>Consultas</a>
                             </li>
                             <li>
                                 <a href='{$sv}/views/logout.php'>Cerrar sesión</a>

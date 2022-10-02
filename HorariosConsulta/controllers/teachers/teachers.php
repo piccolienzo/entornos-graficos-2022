@@ -16,5 +16,7 @@
 
     mysqli_close($link);
 
-    header("Location: ../../views/pages/".$nextPage);
+    $idParam = isset($id) ? "?id=".$id : "";
+
+    header("Location: ../../views/pages/".$nextPage.$idParam);
 ?>

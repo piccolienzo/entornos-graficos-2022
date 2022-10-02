@@ -14,41 +14,56 @@
     <?php
         require('../components/header.php');
         extract($_POST);
+        $actionLabel = isset($id) ? "Modificar" : "Crear";
     ?>
 
     <main class="container">
-        <div class="contenedor-volver">
-            <button class="btn btn-violeta show"><span class="icon-volver"></span>Volver</button>
-        </div>
-        <form class="formulario" action="modificar-consulta.php" method="POST">
+        <form class="formulario" id="formulario" action="modificar-consulta.php" method="POST">
             <?php
                 if(isset($idProfesorMateria)) {
-                    echo("
-                            <input type='hidden' name='idProfesorMateria' value={$idProfesorMateria}/>
-                        ");
+                    echo("<input type='hidden' name='idProfesorMateria' value='{$idProfesorMateria}'/>");
+                    $_SESSION["formulario_consulta"]["idProfesorMateria"] = $idProfesorMateria;
+
                 }
+                else if(isset($_SESSION["formulario_consulta"]["idProfesorMateria"])) {
+                    echo("<input type='hidden' name='idProfesorMateria' value='{$_SESSION["formulario_consulta"]["idProfesorMateria"]}'/>");
+                }
+
                 if(isset($dia)) {
-                    echo("
-                            <input type='hidden' name='dia' value={$dia}/>
-                        ");
+                    echo("<input type='hidden' name='dia' value='{$dia}'/>");
+                    $_SESSION["formulario_consulta"]["dia"] = $dia;
+
+                }
+                else if(isset($_SESSION["formulario_consulta"]["dia"])) {
+                    echo("<input type='hidden' name='dia' value='{$_SESSION["formulario_consulta"]["dia"]}'/>");
+                }
+
+                if(isset($id)) {
+                    echo("<input type='hidden' name='id' value='{$id}'/>");
+                    $_SESSION["formulario_consulta"]["id"] = $id;
+
+                }
+                else if(isset($_SESSION["formulario_consulta"]["dia"])) {
+                    echo("<input type='hidden' name='id' value='{$_SESSION["formulario_consulta"]["dia"]}'/>");
                 }
             ?>              
+            <h1><?php echo($actionLabel); ?> Consulta</h1>
             <h2>Seleccione turno y horario</h2>
                 <div class="contenedor-botones">
-                    <input type="radio" name="turno" class="btn" onclick="seleccionarOpcion('manana')"> Mañana </button>
+                    <input type="radio" name="turno" class="btn" onclick="seleccionarOpcion('manana')" checked> Mañana </button>
                     <input type="radio" name="turno" class="btn" onclick="seleccionarOpcion('tarde')"> Tarde </button>
                     <input type="radio" name="turno" class="btn" onclick="seleccionarOpcion('noche')"> Noche </button>
                 </div>
 
                 <div class="contenedor-botones-vertical" id="manana">
                     <div>    
-                        <input type="radio" name="hora" required class="btn ancho" value="7:15-8:00"> 7:15 - 8:00 </button>
+                        <input type="radio" name="hora" required class="btn ancho" value="07:15-08:00"> 7:15 - 8:00 </button>
                     </div>
                     <div>
-                        <input type="radio" name="hora" required class="btn ancho" value="8:00-8:45"> 8:00 - 8:45 </button>
+                        <input type="radio" name="hora" required class="btn ancho" value="08:00-08:45"> 8:00 - 8:45 </button>
                     </div>
                     <div>
-                        <input type="radio" name="hora" required class="btn ancho" value="8:45-9:30"> 8:45 - 9:30 </button>
+                        <input type="radio" name="hora" required class="btn ancho" value="08:45-09:30"> 8:45 - 9:30 </button>
                     </div>
                     <div>
                         <input type="radio" name="hora" required class="btn ancho" value="10:15-11:00"> 10:15 - 11:00 </button>
@@ -106,12 +121,19 @@
     ?>
 
     <script>
+        document.getElementById("manana").style.display = "inline";
         document.getElementById("tarde").style.display = "none";
         document.getElementById("noche").style.display = "none";
 
         function seleccionarOpcion(opcion){
+            var ele = document.getElementsByName('hora');
+              
+            for(i = 0; i < ele.length; i++) {
+                ele[i].checked = false;
+            }
+
             if(opcion == 'manana') {
-                document.getElementById("manana").style.visibility = "inline";
+                document.getElementById("manana").style.display = "inline";
                 document.getElementById("tarde").style.display = "none";
                 document.getElementById("noche").style.display = "none";
             }
@@ -127,9 +149,13 @@
             }
         }
 
-        function seleccionarHorario(horaDesde, horaHasta){
-            console.log(horaDesde);
-            console.log(horaHasta);
+        (function() {
+            document.querySelector("#volver").style.display = "block";
+            document.querySelector("#volver").addEventListener("click", back);
+        })();
+
+        function back(){
+            window.location.href = "reprogramar-consulta.php";
         }
     </script>
 </body>

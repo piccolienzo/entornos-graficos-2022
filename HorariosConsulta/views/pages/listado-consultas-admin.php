@@ -68,6 +68,7 @@
                                             <td>{$a["horaFin"]}</td>
                                             <td>
                                                 <button class='btn btn-detalles' onclick='verDetalles({$a['id']})' >Ver detalle</button>
+                                                <button class='btn btn-detalles' onclick='editar({$a['id']})' >Editar</button>
                                             </td>
                                         </tr> 
                                     </tbody>
@@ -113,6 +114,10 @@
             
             function verDetalles(id) {
                 window.location.href = "../../controllers/consultations/consultation.php?id=" + id;
+            }
+
+            function editar(id) {
+                window.location.href = "../../controllers/teachers/teachers.php?nextPage=listado-profesores.php&id=" + id;
             }
 
             function nuevaConsulta() {

@@ -34,9 +34,7 @@
 <?php
     require('../components/header.php');
     extract($_GET);
-    if(!isset($actionLabel)) {
-        $actionLabel = "Crear";
-    }
+    $actionLabel = isset($id) ? "Modificar" : "Crear";
 ?>
 
 <main class="container">
@@ -51,8 +49,14 @@
              if(isset($_SESSION["resultados_profesores"])){
                 $result = $_SESSION["resultados_profesores"];
                 if(count($result)) {   
+                    echo("<form class='formulario' action='../../controllers/subjects/byTeacher.php' method='GET'>");
+                    if(isset($id)) {
+                        echo("
+                            <input type='hidden' name='id' value='{$id}'/>
+                        ");
+                    }
                         echo ("
-                            <form class='formulario' action='../../controllers/subjects/byTeacher.php' method='GET'>
+                            
                                 <table>
                                     <thead>
                                         <tr>
@@ -69,7 +73,7 @@
                                         <td>{$a["nombre"]} {$a["apellido"]}</td>
                                         <td>{$a["usuario"]}</td>
                                         <td>
-                                            <input type='radio' name='id' value='{$a["id"]}' required>
+                                            <input type='radio' name='teacherId' value='{$a["id"]}' required>
                                         </td>
                                     </tr> 
                                 </tbody>
@@ -109,10 +113,6 @@
 
     function back(){
         window.location.href = "listado-consultas-admin.php";
-    }
-    
-    function back(){
-        window.location.href = "listado-materias.php";
     }
 </script>
 </body>

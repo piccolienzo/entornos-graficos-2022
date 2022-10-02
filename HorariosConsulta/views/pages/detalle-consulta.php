@@ -55,7 +55,7 @@
                                 <p>Profesor: ".$a["profNombre"]."</p>
                                 
                                 <button onclick='suspender({$a['id']},{$a['cancelado']})'>{$cancelAction}</button>
-                                <button onclick='suspender({$a['id']})'>Modificar</button>
+                                <button onclick='modificar({$a['id']})'>Modificar</button>
                             ");
                         }
                     }
@@ -72,8 +72,8 @@
                 window.location.href = "../../controllers/consultations/suspend.php?id=" + id + "&cancelado=" + cancelado;
             }
 
-            function modificar(id, cancelado) {
-                window.location.href = "../../controllers/consultations/suspend.php?id=" + id + "&cancelado=" + cancelado;
+            function modificar(id) {
+                window.location.href = "../../controllers/teachers/teachers.php?nextPage=listado-profesores.php?id=".id;
             }
         </script>
 

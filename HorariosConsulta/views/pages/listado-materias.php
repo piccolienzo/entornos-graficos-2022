@@ -34,9 +34,7 @@
 <?php
     require('../components/header.php');
     extract($_GET);
-    if(!isset($actionLabel)) {
-        $actionLabel = "Crear";
-    }
+    $actionLabel = isset($id) ? "Modificar" : "Crear";
 ?>
 
 <main class="container">
@@ -47,12 +45,18 @@
                 $result = $_SESSION["resultados_materias"];
                 if(count($result)) {
                         echo("
+                            <h2>Seleccione Materia para el Profesor</h2>
                             <form action='reprogramar-consulta.php' method='POST'>
                         ");
+                        if(isset($id)) {
+                            echo("
+                                <input type='hidden' name='id' value='{$id}'/>
+                            ");
+                        }
                         foreach($result as $x => $a){ 
                             echo "
                                 <label> {$a["nombre"]}
-                                    <input type='radio' name='idProfesorMateria' value='{$a["id"]}'>
+                                    <input type='radio' name='idProfesorMateria' value='{$a["id"]}' required>
                                 </label>
                             ";
                         }

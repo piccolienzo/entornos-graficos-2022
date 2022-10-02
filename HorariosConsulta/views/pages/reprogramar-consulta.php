@@ -14,25 +14,29 @@
     <?php
         require('../components/header.php');
         extract($_POST);
+        $actionLabel = isset($id) ? "Modificar" : "Crear";
     ?>
 
     <main class="container">
-        <div class="contenedor-volver">
-            <button class="btn btn-violeta show"><span class="icon-volver"></span>Volver</button>
-        </div>
+
         <form class="formulario" action="reprogramar-consulta-2.php" method="post">  
         <?php
                 if(isset($idProfesorMateria)) {
-                    echo("
-                            <input type='hidden' name='idProfesorMateria' value={$idProfesorMateria}/>
-                        ");
+                    echo("<input type='hidden' name='idProfesorMateria' value='{$idProfesorMateria}'/>");
+                    $_SESSION["formulario_consulta"]["idProfesorMateria"] = $idProfesorMateria;
                 }
-                if(isset($dia)) {
-                    echo("
-                            <input type='hidden' name='dia' value={$dia}/>
-                        ");
+                else if(isset($_SESSION["formulario_consulta"]["idProfesorMateria"])) {
+                    echo("<input type='hidden' name='idProfesorMateria' value='{$_SESSION["formulario_consulta"]["idProfesorMateria"]}'/>");
+                }
+                if(isset($id)) {
+                    echo("<input type='hidden' name='id' value='{$id}'/>");
+                    $_SESSION["formulario_consulta"]["id"] = $id;
+                }
+                else if(isset($_SESSION["formulario_consulta"]["id"])) {
+                    echo("<input type='hidden' name='id' value='{$_SESSION["formulario_consulta"]["id"]}'/>");
                 }
             ?>  
+            <h1><?php echo($actionLabel); ?> Consulta</h1>
             <h2>Seleccione día</h2>
             <div class="contenedores-botones">
                 <input type="radio" name="dia" required class="btn" value="LUNES"> Lunes </button>
@@ -55,9 +59,24 @@
         require('../components/footer.php')
     ?>
 
-    <script>
-        document.getElementById("tarde").style.display = "none";
-        document.getElementById("noche").style.display = "none";
-    </script>
+<script>
+    (function() {
+        document.querySelector("#volver").style.display = "block";
+        document.querySelector("#volver").addEventListener("click", back);
+    })();
+
+    function back(){
+        window.location.href = "listado-materias.php";
+    }
+
+    (function() {
+        document.querySelector("#volver").style.display = "block";
+        document.querySelector("#volver").addEventListener("click", back);
+    })();
+
+    function back(){
+        window.location.href = "listado-materias.php";
+    }
+</script>
 </body>
 </html>

@@ -7,7 +7,7 @@
         select * from profesores_materias
         inner join materias on materias.id = profesores_materias.idMateria
     ";
-    $query .= " where idProfesor = ".$id;
+    $query .= " where idProfesor = ".$teacherId;
 
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
@@ -19,5 +19,7 @@
 
     mysqli_close($link);
 
-    header("Location: ../../views/pages/".$nextPage."?teacherId=".$id);
+    $idParam = isset($id) ? "?id=".$id : "";
+
+    header("Location: ../../views/pages/".$nextPage.$idParam);
 ?>
