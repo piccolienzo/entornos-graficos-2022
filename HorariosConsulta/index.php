@@ -34,10 +34,7 @@
         );
 
         if(isset($_SESSION["usuario"])) {  
-            echo '
-                <h1>
-                    Bienvenido '.$_SESSION["usuario"]["nombre"]
-                .'</h1>';  
+            echo '<h1>Bienvenido</h1>';  
         }
         else {
             echo '

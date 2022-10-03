@@ -64,7 +64,7 @@
                             <a href='{$sv}/index.php'>Inicio</a>
                             </li>
                             <li>
-                                <a href='{$sv}/controllers/consultations/consultations.php'>Consultas</a>
+                                <a href='{$sv}/controllers/consultations/consultations.php?teacher=true'>Consultas</a>
                             </li>
                             <li>
                                 <a href='{$sv}/views/logout.php'>Cerrar sesión</a>

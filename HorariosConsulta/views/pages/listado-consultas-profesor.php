@@ -14,16 +14,10 @@
 
 <?php
     require('../components/header.php');
-
-    $isStudent = false;
-
-    if(isset($_SESSION['role'])) {
-        $isStudent = $_SESSION['role'] == 'alumno' ? true : false;
-    }
 ?>
 
 <main class="container">
-    <h1>Listado de consultas</h1>
+    <h1>Mis consultas</h1>
 <section class="card">
 
 <?php
@@ -35,18 +29,18 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Profesor</th>
-                        <th>Materia</th>
-                        <th>&nbsp</th>
+                        <th>Próxima consulta</th>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <th>Listado de consultas</th>
                     </tr>
                 </thead>
             ");
         
             foreach($result as $x => $a){ 
                 $modalidad = $a['esVirtual']?'Virtual':'Presencial';
-                $agendarConsulta = $isStudent;
-                    ? "<div><button class='btn btn-violeta' onclick='agendarConsulta({$a['id']})'>Agendar Consulta</button></div>"
-                    : "";
                 echo "
                 <tbody class='tb'>
                     <tr>
@@ -64,7 +58,6 @@
                             <div>  {$a['dia']} {$a['horaInicio']} a {$a['horaFin']} </div>
                             <div> Email: {$a['email']} </div>
                             <div>Modalidad: {$modalidad} </div>
-                            {$agendarConsulta}
                         </td>
                     </tr> 
                 </tbody>                                
@@ -84,7 +77,7 @@
 
     }
     else {
-        header("Location: ../../controllers/consultations/consultations.php");
+        header("Location: ../../controllers/consultations/consultations.php?teacher=true");
     }
 ?>
 
@@ -105,7 +98,7 @@
     })();
 
     function back(){
-        window.location.href = atob(backurl);
+        window.location.href = "../../index.php";
     }
 
     function verDetalles(id){

@@ -47,6 +47,9 @@
     if(isset($admin)) {
         header("Location: ../../views/pages/listado-consultas-admin.php");
     }
+    else if(isset($teacher)) {
+        header("Location: ../../views/pages/listado-consultas-profesor.php");
+    }
     else {
         header("Location: ../../views/pages/listado-consultas.php?backurl=".$backurl);
     }
