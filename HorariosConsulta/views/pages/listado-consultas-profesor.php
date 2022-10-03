@@ -24,7 +24,7 @@
     if(isset($_SESSION["resultados_consulta"])){
         $result = $_SESSION["resultados_consulta"];
         if(count($result)) {
-            
+            include('../../controllers/getNextDay.inc');
             echo ("
             <table>
                 <thead>
@@ -44,8 +44,7 @@
                 echo "
                 <tbody class='tb'>
                     <tr>
-                        <td>{$a["profNombre"]}</td>
-                        <td>{$a["matNombre"]}</td>
+                        <td>{$a["profNombre"]}, {$a["matNombre"]}, ".getNextDay($a['dia']).", {$modalidad}</td>
                         <td>
                             <button class='btn btn-detalles' onclick='verDetalles({$a['id']})' >Ver detalles</button>
                         </td>                       
