@@ -47,6 +47,12 @@
             12 => "Diciembre"
         );
 
-        return ($dateNumberDay." de ".$months[$dateNumberMonth]);
+        return (
+            array(
+                "label" => ($dateNumberDay." de ".$months[$dateNumberMonth]),
+                "dateNumberDay" => $dateNumberDay,
+                "dateNumberMonth" => $dateNumberMonth
+            )
+        );
     }
 ?>

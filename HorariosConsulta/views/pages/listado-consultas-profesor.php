@@ -25,42 +25,56 @@
         $result = $_SESSION["resultados_consulta"];
         if(count($result)) {
             include('../../controllers/getNextDay.inc');
+            include('../../controllers/sortByDate.inc');
+            usort($result, 'sortByDate');
+
+            $firstConsultation = array_shift($result);
+            $modalidad = $firstConsultation['esVirtual']?'Virtual':'Presencial';
+
             echo ("
-            <table>
-                <thead>
-                    <tr>
-                        <th>Próxima consulta</th>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <th>Listado de consultas</th>
-                    </tr>
-                </thead>
+                <label for='listado' class='check'> Listado </label>
+                <input type='radio' id='listado' name='searchtype' value='listado' checked>
+                <label for='calendario' class='check'> Calendario </label>
+                <input type='radio' id='calendario' name='searchtype' value='calendario'>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Próxima consulta</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class='tb'>
+                        <tr>
+                            <td>{$firstConsultation["profNombre"]}, {$firstConsultation["matNombre"]}, ".getNextDay($firstConsultation['dia'])['label'].", {$modalidad}</td>
+                            <td>
+                                <button class='btn btn-detalles' onclick='verDetalles({$firstConsultation['id']})' >Ver detalles</button>
+                            </td>                       
+                        </tr> 
+                    <tbody>
             ");
         
-            foreach($result as $x => $a){ 
-                $modalidad = $a['esVirtual']?'Virtual':'Presencial';
-                echo "
-                <tbody class='tb'>
-                    <tr>
-                        <td>{$a["profNombre"]}, {$a["matNombre"]}, ".getNextDay($a['dia']).", {$modalidad}</td>
-                        <td>
-                            <button class='btn btn-detalles' onclick='verDetalles({$a['id']})' >Ver detalles</button>
-                        </td>                       
-                    </tr> 
-                <tbody>  
-                <tbody class='ht' style='display:none;' id='r{$a['id']}'> 
-                    <tr>
-                        <td colspan='3'>
-                            <div>  Horarios disponibles </div>
-                            <div>  {$a['dia']} {$a['horaInicio']} a {$a['horaFin']} </div>
-                            <div> Email: {$a['email']} </div>
-                            <div>Modalidad: {$modalidad} </div>
-                        </td>
-                    </tr> 
-                </tbody>                                
+            if(count($result)) {
+                echo ("
+                    <thead>
+                        <tr>
+                            <th>Listado de consultas</th>
+                        </tr>
+                    </thead>
+                ");
+                foreach($result as $x => $a){ 
+
+                    $modalidad = $a['esVirtual']?'Virtual':'Presencial';
+                    echo "
+                        <tbody class='tb'>
+                            <tr>
+                                <td>{$a["profNombre"]}, {$a["matNombre"]}, ".getNextDay($a['dia'])['label'].", {$modalidad}</td>
+                                <td>
+                                    <button class='btn btn-detalles' onclick='verDetalles({$a['id']})' >Ver detalles</button>
+                                </td>                       
+                            </tr> 
+                        <tbody>        
                     ";
+                }
             }
 
             echo("

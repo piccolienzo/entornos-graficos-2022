@@ -28,10 +28,10 @@
                 <button class='btn btn-violeta' type="submit">Buscar</button>
 
                 <label> Filtrar por </label>
-                <label for="materia" class="check"> Profesor </label>
-                <input type="radio" id="materia" name="searchtype" value="profesor" checked>
-                <label for="profesor" class="check"> Materia </label>
-                <input type="radio" id="profesor" name="searchtype" value="materia">
+                <label for="profesor" class="check"> Profesor </label>
+                <input type="radio" id="profesor" name="searchtype" value="profesor" checked>
+                <label for="materia" class="check"> Materia </label>
+                <input type="radio" id="materia" name="searchtype" value="materia">
                 
                 <input type="radio" id="profesor" name="admin" value="true" checked style="display: none">
 
@@ -44,28 +44,18 @@
                 if(isset($_SESSION["resultados_consulta"])){
                     $result = $_SESSION["resultados_consulta"];
                     if(count($result)) {   
+                            include('../../controllers/getNextDay.inc');
+                            
                             echo ("
                                 <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Profesor</th>
-                                            <th>Materia</th>
-                                            <th>Día</th>
-                                            <th>Hora Inicio</th>
-                                            <th>Hora Fin</th>
-                                        </tr>
-                                    </thead>
                             ");
                         
                             foreach($result as $x => $a){ 
+                                $modalidad = $a['esVirtual']?'Virtual':'Presencial';
                                 echo "
                                     <tbody class='tb'>
                                         <tr>
-                                            <td>{$a["profNombre"]}</td>
-                                            <td>{$a["matNombre"]}</td>
-                                            <td>{$a["dia"]}</td>
-                                            <td>{$a["horaInicio"]}</td>
-                                            <td>{$a["horaFin"]}</td>
+                                            <td>{$a["matNombre"]}, {$a["profNombre"]}, {$a["dia"]}, {$modalidad}, Próxima: ".getNextDay($a['dia'])['label']."</td>
                                             <td>
                                                 <button class='btn btn-detalles' onclick='verDetalles({$a['id']})' >Ver detalle</button>
                                             </td>
