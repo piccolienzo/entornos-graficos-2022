@@ -45,6 +45,8 @@
                     $result = $_SESSION["resultados_consulta"];
                     if(count($result)) {   
                             include('../../controllers/getNextDay.inc');
+                            include('../../controllers/sortByDate.inc');
+                            usort($result, 'sortByDate');
                             
                             echo ("
                                 <table>

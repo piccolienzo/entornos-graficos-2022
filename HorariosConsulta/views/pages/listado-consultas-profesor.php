@@ -115,19 +115,7 @@
     }
 
     function verDetalles(id){
-        let element = document.querySelector("#r"+id);
-        let init = element.style.display;
-        if(element.style.display === "none"){
-            element.style.display = "table-row-group";
-        }
-        else{
-            element.style.display = "none"
-        }
-         
-    }
-
-    function agendarConsulta(id){
-        window.location.href = "agendar-consulta.php?id="+btoa(id)+"&backurl="+btoa(window.location.href);
+        window.location.href = "../../controllers/consultations/consultation.php?id=" + id;
     }
 </script>
 </body>
