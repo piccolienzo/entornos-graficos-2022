@@ -13,7 +13,13 @@
     if(isset($horaInicioEspecial)) $query .= ", horaInicioEspecial = ".$horaInicioEspecial;
     if(isset($horaFinEspecial)) $query .= ", horaFinEspecial = ".$horaFinEspecial;
 
+    if($cancelado) {
+        $query .= ",motivoSuspension = null
+            , comentarioSuspension = null";
+    }
+
     $query .= " where id =".$id;
+
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
     mysqli_close($link);

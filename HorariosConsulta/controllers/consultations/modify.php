@@ -14,6 +14,10 @@
     if(isset($horaFin)) $query .= ", horaFin = '".$horaFin."'";
     if(isset($dia)) $query .= ", dia = '".$dia."'";
     if(isset($lugar)) $query .= ", lugar = '".$lugar."'";
+    
+    if(isset($motivoSuspension)) $query .= "motivoSuspension = '".$motivoSuspension."'";
+    if(isset($comentarioSuspension)) $query .= ", comentarioSuspension = '".$comentarioSuspension."'
+        ,cancelado = 1";
 
     $query .= " where id =".$id;
 

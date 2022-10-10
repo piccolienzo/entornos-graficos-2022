@@ -31,7 +31,11 @@
     <body>
 
         <?php
-            require('../components/header.php')
+            require('../components/header.php');
+            $role = '';
+            if( isset( $_SESSION['role']) ) {
+                $role = $_SESSION['role'];
+            }
         ?>
 
         <main class="container">
@@ -41,10 +45,10 @@
             
             <?php
                 if(isset($_SESSION["resultado_consulta"])){
-                    $result = $_SESSION["resultado_consulta"];
-                    if(count($result)) {                        
-                        foreach($result as $x => $a){
-                            $cancelAction = $a['cancelado'] ? 'Habilitar' : 'Suspender';
+                    $consultations = $_SESSION["resultado_consulta"];
+                    if(count($consultations)) {                
+                        foreach($consultations as $x => $a){
+                            $cancelAction = $a['cancelado'] ? 'Habilitar Consulta' : 'Suspender Consulta';
                             $modalidad = $a["esVirtual"] ? "Virtual" : "Presencial";
                             echo("
                                 <p>Día: ".$a["dia"]."</p>
@@ -54,9 +58,50 @@
                                 <p>Lugar: ".$a["lugar"]."</p>
                                 <p>Profesor: ".$a["profNombre"]."</p>
                                 
-                                <button onclick='suspender({$a['id']},{$a['cancelado']})'>{$cancelAction}</button>
-                                <button onclick='editar({$a['id']})'>Modificar</button>
-                            ");
+                                ");
+                            if( $role == 'administrador' ) {
+                                echo("
+                                    <button onclick='suspender({$a['id']},{$a['cancelado']})'>{$cancelAction}</button>
+                                    <button onclick='editar({$a['id']})'>Modificar</button>
+                                ");
+                            }
+                            else if( $role == 'profesor' ) {
+                                echo("
+                                    <button onclick='suspenderComoProfesor({$a['id']},{$a['cancelado']})'>{$cancelAction}</button>
+                                ");
+
+                                $typeSearch = 'consultas';
+                                $id = $a['id'];
+                                require('../../controllers/inscriptionsConsultations/inscriptions.php');
+                                if(count($array)) { 
+                                    echo("
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Listado de alumnos</th>
+                                                </tr>
+                                            </thead>
+                                    ");
+
+                                    foreach($array as $x => $a){ 
+                                        echo("
+                                                <tr>
+                                                    <td>{$a["nombre"]} {$a["apellido"]}</td>
+                                                    <td>{$a["email"]}</td>
+                                                </tr> 
+                                        ");
+                                    }
+
+                                    echo("
+                                        </table>
+                                    ");
+                                }
+                                else {
+                                    echo("
+                                       <p>No hay inscriptos en tu cosulta</p>
+                                    ");
+                                }
+                            }
                         }
                     }
                     else {
@@ -70,6 +115,15 @@
         <script>
             function suspender(id, cancelado) {
                 window.location.href = "../../controllers/consultations/suspend.php?id=" + id + "&cancelado=" + cancelado;
+            }
+            
+            function suspenderComoProfesor(id, cancelado) {
+                if(!cancelado) {
+                    window.location.href = "suspender-consulta.php?id=" + id;
+                }
+                else {
+                    suspender(id, cancelado)
+                }
             }
 
             function editar(id) {
