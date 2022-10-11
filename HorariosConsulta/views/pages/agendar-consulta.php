@@ -63,7 +63,6 @@
 ?>
 
 <script>
-    let backurl = "";
     $( function() {
         Date.prototype.addDays = function(days) {
             var date = new Date(this.valueOf());
@@ -83,17 +82,9 @@
                 return [true, "puedeHabilitar"]
             }
             }
-        }); 
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        backurl = urlParams.get('backurl');
-        document.querySelector("#volver").addEventListener("click", back);
-        document.querySelector("#volver").style.display = "block";
+        });
     });
 
-    function back(){
-        window.location.href = atob(backurl);
-    }
     $.datepicker.regional['es'] = {
         closeText: 'Cerrar',
         prevText: '< Ant',

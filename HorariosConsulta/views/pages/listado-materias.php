@@ -79,20 +79,10 @@
         ?>       
     </section>
 </main>
+
 <?php
     require('../components/footer.php')
 ?>
 
-<script>
-
-    (function() {
-        document.querySelector("#volver").style.display = "block";
-        document.querySelector("#volver").addEventListener("click", back);
-    })();
-
-    function back(){
-        window.location.href = "listado-profesores.php";
-    }
-</script>
 </body>
 </html>

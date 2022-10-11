@@ -19,7 +19,7 @@
 
     <div>
         <p class="footer-title">
-            <a href=<?php echo($sv) ?>"views/pages/contacto.php">Contacto</a>
+            <a href="<?php echo($sv) ?>/views/pages/contacto.php">Contacto</a>
         </p>
         <p class="footer-descripcion">
             ZEBALLOS 1341 - S2000BQA -ROSARIO

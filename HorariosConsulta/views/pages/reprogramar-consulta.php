@@ -14,6 +14,7 @@
     <?php
         require('../components/header.php');
         extract($_POST);
+        extract($_GET);
         $actionLabel = isset($id) ? "Modificar" : "Crear";
     ?>
 
@@ -38,16 +39,27 @@
             ?>  
             <h1><?php echo($actionLabel); ?> Consulta</h1>
             <h2>Seleccione día</h2>
-            <div class="contenedores-botones">
-                <input type="radio" name="dia" required class="btn" value="LUNES"> Lunes </button>
-                <input type="radio" name="dia" required class="btn" value="MARTES"> Martes </button>
-                <input type="radio" name="dia" required class="btn" value="MIERCOLES">Miércoles </button>
-            </div>
-            <div class="contenedores-botones">
-                <input type="radio" name="dia" required class="btn" value="JUEVES"> Jueves </button>
-                <input type="radio" name="dia" required class="btn" value="VIERNES"> Viernes </button>
-                <input type="radio" name="dia" required class="btn" value="SABADO"> Sábado </button>
-            </div>
+            
+            <?php
+                $fieldName = 'dia';
+                if(isset($_SESSION['role'])) {
+                    if($_SESSION['role'] == 'profesor') {
+                        $fieldName = 'fechaEspecial';
+                    }
+                }
+                echo("
+                    <div class='contenedores-botones'>
+                        <input type='radio' name='".$fieldName."' required class='btn' value='LUNES'> Lunes </button>
+                        <input type='radio' name='".$fieldName."' required class='btn' value='MARTES'> Martes </button>
+                        <input type='radio' name='".$fieldName."' required class='btn' value='MIERCOLES'>Miércoles </button>
+                    </div>
+                    <div class='contenedores-botones'>
+                        <input type='radio' name='".$fieldName."' required class='btn' value='JUEVES'> Jueves </button>
+                        <input type='radio' name='".$fieldName."' required class='btn' value='VIERNES'> Viernes </button>
+                        <input type='radio' name='".$fieldName."' required class='btn' value='SABADO'> Sábado </button>
+                    </div>
+                ");
+            ?>
             
             <div class="contenedor-botones-derecha">
                 <button type="submit" class="btn btn-violeta"> Confirmar <span class="icon-entrar"></span> </button>
@@ -59,24 +71,5 @@
         require('../components/footer.php')
     ?>
 
-<script>
-    (function() {
-        document.querySelector("#volver").style.display = "block";
-        document.querySelector("#volver").addEventListener("click", back);
-    })();
-
-    function back(){
-        window.location.href = "listado-materias.php";
-    }
-
-    (function() {
-        document.querySelector("#volver").style.display = "block";
-        document.querySelector("#volver").addEventListener("click", back);
-    })();
-
-    function back(){
-        window.location.href = "listado-materias.php";
-    }
-</script>
 </body>
 </html>

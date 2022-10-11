@@ -90,25 +90,15 @@
         ?>
 
         <script>
-            let backurl = "";
-            (function() {
-                document.querySelector("#volver").style.display = "block";
-                document.querySelector("#volver").addEventListener("click", back);      
-                const queryString = window.location.search;
-                const urlParams = new URLSearchParams(queryString);
-                backurl = urlParams.get('backurl');
-            })();
-
-            function back(){
-                window.location.href = atob(backurl);
-            }
             
+            backurl = btoa(window.location.href);
+
             function verDetalles(id) {
-                window.location.href = "../../controllers/consultations/consultation.php?id=" + id;
+                window.location.href = "../../controllers/consultations/consultation.php?id=" + id + "&backurl=" + backurl;
             }
 
             function nuevaConsulta() {
-                window.location.href = "../../controllers/teachers/teachers.php?nextPage=listado-profesores.php";
+                window.location.href = "../../controllers/teachers/teachers.php?nextPage=listado-profesores.php?backurl=" + backurl;
             }
             
         </script>

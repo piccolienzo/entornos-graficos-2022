@@ -48,7 +48,7 @@
             }
 
             function editar(id) {
-                window.location.href = "reprogramar-consulta.php?id=" + id;
+                window.location.href = "reagendar-consulta.php?id=" + id;
             }
         </script>
 

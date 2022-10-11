@@ -44,7 +44,7 @@
         
             foreach($result as $x => $a){ 
                 $modalidad = $a['esVirtual']?'Virtual':'Presencial';
-                $agendarConsulta = $isStudent;
+                $agendarConsulta = $isStudent
                     ? "<div><button class='btn btn-violeta' onclick='agendarConsulta({$a['id']})'>Agendar Consulta</button></div>"
                     : "";
                 echo "
@@ -95,18 +95,6 @@
 ?>
 
 <script>
-    let backurl = "";
-    (function() {
-        document.querySelector("#volver").style.display = "block";
-        document.querySelector("#volver").addEventListener("click", back);      
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        backurl = urlParams.get('backurl');
-    })();
-
-    function back(){
-        window.location.href = atob(backurl);
-    }
 
     function verDetalles(id){
         let element = document.querySelector("#r"+id);
@@ -121,7 +109,7 @@
     }
 
     function agendarConsulta(id){
-        window.location.href = "agendar-consulta.php?id="+btoa(id)+"&backurl="+btoa(window.location.href);
+        window.location.href = "agendar-consulta.php?id=" + btoa(id)+"&backurl=" + btoa(window.location.href);
     }
 </script>
 </body>

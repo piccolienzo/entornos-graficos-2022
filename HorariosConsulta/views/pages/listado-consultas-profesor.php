@@ -45,7 +45,7 @@
 
                     <tbody class='tb'>
                         <tr>
-                            <td>{$firstConsultation["profNombre"]}, {$firstConsultation["matNombre"]}, ".getNextDay($firstConsultation['dia'])['label'].", {$modalidad}</td>
+                            <td>{$firstConsultation["matNombre"]}, ".getNextDay($firstConsultation['dia'])['label'].", {$modalidad}</td>
                             <td>
                                 <button class='btn btn-detalles' onclick='verDetalles({$firstConsultation['id']})' >Ver detalles</button>
                             </td>                       
@@ -101,22 +101,11 @@
 ?>
 
 <script>
-    let backurl = "";
-    (function() {
-        document.querySelector("#volver").style.display = "block";
-        document.querySelector("#volver").addEventListener("click", back);      
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        backurl = urlParams.get('backurl');
-    })();
-
-    function back(){
-        window.location.href = "../../index.php";
-    }
 
     function verDetalles(id){
         window.location.href = "../../controllers/consultations/consultation.php?id=" + id;
     }
+
 </script>
 </body>
 </html>

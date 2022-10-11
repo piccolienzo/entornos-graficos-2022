@@ -39,7 +39,7 @@
         else {
             echo '
                 <h1>
-                    Bienvenido al sitio web de consultas de la Universidad Tecnológica Nacional
+                    Bienvenido al sitio web de consultas de la UTN
                 </h1>
                 <h2>
                     Facultad Regional Rosario

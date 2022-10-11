@@ -22,8 +22,8 @@
 
     mysqli_close($link);
 
-    $success = isset($success) ? "?success=true" : "";
+    $success = isset($success) ? "&success=true" : "";
 
-    header("Location: ../../views/pages/detalle-consulta.php".$success);
+    header("Location: ../../views/pages/detalle-consulta.php?backurl=".$backurl.$success);
 
 ?>

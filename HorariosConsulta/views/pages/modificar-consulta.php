@@ -55,6 +55,12 @@
                         else if(isset($_SESSION["formulario_consulta"]["id"])) {
                             echo("<input type='hidden' name='id' value='{$_SESSION["formulario_consulta"]["id"]}'/>");
                         }
+
+                        if(isset($fechaEspecial)) {
+                            echo($fechaEspecial);
+                            echo("<input type='hidden' name='fechaEspecial' value='{$fechaEspecial}'/>");
+                            $_SESSION["formulario_consulta"]["fechaEspecial"] = $fechaEspecial;
+                        }
                     ?>
                         <label class="subtitulo">Modalidad</label>
                         <br>
@@ -82,14 +88,12 @@
         ?>
 
         <script>
+            
             (function() {
                 document.querySelector("#volver").style.display = "block";
                 document.querySelector("#volver").addEventListener("click", back);
             })();
 
-            function back(){
-                window.location.href = "reprogramar-consulta-2.php";
-            }
         </script>
     </body>
 </html>

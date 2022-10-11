@@ -113,23 +113,10 @@
 
     </section>
 </main>
+
 <?php
     require('../components/footer.php')
 ?>
 
-<script>
-    let backurl = "";
-    (function() {
-        document.querySelector("#volver").style.display = "block";
-        document.querySelector("#volver").addEventListener("click", back);      
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        backurl = urlParams.get('backurl');
-    })();
-
-    function back(){
-        window.location.href = atob(backurl);
-    }
-</script>
 </body>
 </html>

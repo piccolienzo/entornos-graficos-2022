@@ -20,6 +20,12 @@
     <main class="container">
         <form class="formulario" id="formulario" action="modificar-consulta.php" method="POST">
             <?php
+
+                if(isset($fechaEspecial)) {
+                    echo("<input type='hidden' name='fechaEspecial' value='{$fechaEspecial}'/>");
+                    $_SESSION["formulario_consulta"]["fechaEspecial"] = $fechaEspecial;
+                }
+
                 if(isset($idProfesorMateria)) {
                     echo("<input type='hidden' name='idProfesorMateria' value='{$idProfesorMateria}'/>");
                     $_SESSION["formulario_consulta"]["idProfesorMateria"] = $idProfesorMateria;
@@ -46,6 +52,7 @@
                 else if(isset($_SESSION["formulario_consulta"]["dia"])) {
                     echo("<input type='hidden' name='id' value='{$_SESSION["formulario_consulta"]["dia"]}'/>");
                 }
+
             ?>              
             <h1><?php echo($actionLabel); ?> Consulta</h1>
             <h2>Seleccione turno y horario</h2>
@@ -121,6 +128,7 @@
     ?>
 
     <script>
+        
         document.getElementById("manana").style.display = "inline";
         document.getElementById("tarde").style.display = "none";
         document.getElementById("noche").style.display = "none";
@@ -149,14 +157,6 @@
             }
         }
 
-        (function() {
-            document.querySelector("#volver").style.display = "block";
-            document.querySelector("#volver").addEventListener("click", back);
-        })();
-
-        function back(){
-            window.location.href = "reprogramar-consulta.php";
-        }
     </script>
 </body>
 </html>

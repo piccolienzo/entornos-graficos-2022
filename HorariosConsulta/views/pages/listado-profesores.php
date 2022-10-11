@@ -104,16 +104,5 @@
     require('../components/footer.php')
 ?>
 
-<script>
-
-    (function() {
-        document.querySelector("#volver").style.display = "block";
-        document.querySelector("#volver").addEventListener("click", back);
-    })();
-
-    function back(){
-        window.location.href = "listado-consultas-admin.php";
-    }
-</script>
 </body>
 </html>

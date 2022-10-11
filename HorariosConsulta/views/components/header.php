@@ -89,7 +89,27 @@
             </ul>
          
     </nav>
+
+    <script>
+        let backurl = "";
+
+        (function() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            backurl = urlParams.get('backurl');
+            if(backurl) {
+                document.querySelector("#volver").style.display = "block";
+                document.querySelector("#volver").addEventListener("click", back);      
+            }
+        })();
+
+        function back(){
+            window.location.href = atob(backurl);
+        }
+    </script>
+
 </header>
+
 <style>   
     /*#region Estilos */   
 .btn#volver span.icon-volver {

@@ -21,8 +21,7 @@
                 if( $role == "alumno"){
                     array_push(
                         $links,
-                        array("text" => "Buscador de consultas", "href" => "listado-consultas.php"),
-                        array("text" => "Listado de consultas", "href" => "listado-consultas.php"),
+                        array("text" => "Buscador de consultas", "href" => "tipo-consulta.php"),
                         array("text" => "Mis inscripciones a consultas", "href" => "listado-consultas.php")
                     );
                 }
@@ -35,7 +34,7 @@
                 else if( $role == "administrador"){
                     array_push(
                         $links,
-                        array("text" => "Listado de consultas", "href" => "listado-consultas.php"),
+                        array("text" => "Listado de consultas", "href" => "listado-consultas-admin.php"),
                         array("text" => "Listado de usuarios", "href" => "listado-usuarios.php")
                     );
                 }
@@ -43,7 +42,7 @@
             else {
                 array_push(
                     $links,
-                    array("text" => "Buscador de consultas", "href" => "listado-consultas.php"),
+                    array("text" => "Buscador de consultas", "href" => "tipo-consulta.php"),
                     array("text" => "Listado de consultas", "href" => "listado-consultas.php")
                 );
             }
