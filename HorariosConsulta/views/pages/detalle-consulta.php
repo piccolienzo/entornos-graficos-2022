@@ -113,13 +113,16 @@
         </main>
 
         <script>
+
+            const currentUrl = btoa(window.location.href);
+
             function suspender(id, cancelado) {
-                window.location.href = "../../controllers/consultations/suspend.php?id=" + id + "&cancelado=" + cancelado;
+                window.location.href = "../../controllers/consultations/suspend.php?id=" + id + "&cancelado=" + cancelado + "&backurl=" + backurl;
             }
             
             function suspenderComoProfesor(id, cancelado) {
                 if(!cancelado) {
-                    window.location.href = "suspender-consulta.php?id=" + id;
+                    window.location.href = "suspender-consulta.php?id=" + id + "&backurl=" + currentUrl;
                 }
                 else {
                     suspender(id, cancelado)
@@ -127,8 +130,9 @@
             }
 
             function editar(id) {
-                window.location.href = "../../controllers/teachers/teachers.php?nextPage=listado-profesores.php&id=" + id;
+                window.location.href = "../../controllers/teachers/teachers.php?nextPage=listado-profesores.php&id=" + id + "&backurl=" + currentUrl;
             }
+
         </script>
 
         <?php

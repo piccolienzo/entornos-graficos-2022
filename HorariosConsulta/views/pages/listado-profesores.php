@@ -42,14 +42,25 @@
     <section class="card">
         <form class='formulario' action='../../controllers/teachers/teachers.php' method='GET'>
             <input type='hidden' name='nextPage' value='listado-profesores.php'/>
+            <input type='hidden' id='backurl' name='backurl'>
             <input type='text' name='textSearch'/>
+            <?php
+                if(isset($id)) {
+                    echo("
+                        <input type='hidden' name='id' value='{$id}'/>
+                    ");
+                }
+            ?>
             <button type='submit' name=''>Buscar</button>
         </form>
         <?php
              if(isset($_SESSION["resultados_profesores"])){
                 $result = $_SESSION["resultados_profesores"];
                 if(count($result)) {   
-                    echo("<form class='formulario' action='../../controllers/subjects/byTeacher.php' method='GET'>");
+                    echo("
+                        <form class='formulario' action='../../controllers/subjects/byTeacher.php' method='GET'>
+                            <input type='hidden' id='thisurl' name='backurl'>
+                    ");
                     if(isset($id)) {
                         echo("
                             <input type='hidden' name='id' value='{$id}'/>
@@ -103,6 +114,13 @@
 <?php
     require('../components/footer.php')
 ?>
-
+<script>
+    (function() {
+        document.querySelector("#backurl").value = backurl;
+        if(document.querySelector("#thisurl")) {
+            document.querySelector("#thisurl").value = btoa(window.location.href);
+        }
+    })();
+</script>
 </body>
 </html>

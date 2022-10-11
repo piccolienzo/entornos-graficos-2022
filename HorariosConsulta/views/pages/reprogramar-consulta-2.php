@@ -19,6 +19,7 @@
 
     <main class="container">
         <form class="formulario" id="formulario" action="modificar-consulta.php" method="POST">
+            <input type='hidden' id='thisurl' name='backurl'>
             <?php
 
                 if(isset($fechaEspecial)) {
@@ -127,6 +128,18 @@
         require('../components/footer.php')
     ?>
 
+    <?php
+        if(isset($backurl)) {
+            echo("
+                <script>
+                    backurl = '".$backurl."';
+                    document.querySelector('#volver').style.display = 'block';
+                    document.querySelector('#volver').addEventListener('click', back);      
+                </script>
+            ");
+        }
+    ?>
+
     <script>
         
         document.getElementById("manana").style.display = "inline";
@@ -157,6 +170,12 @@
             }
         }
 
+    </script>
+
+    <script>
+        (function() {
+            document.querySelector("#thisurl").value = btoa(window.location.href);
+        })();
     </script>
 </body>
 </html>

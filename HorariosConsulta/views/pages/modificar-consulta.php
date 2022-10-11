@@ -86,14 +86,5 @@
         <?php
             require('../components/footer.php')
         ?>
-
-        <script>
-            
-            (function() {
-                document.querySelector("#volver").style.display = "block";
-                document.querySelector("#volver").addEventListener("click", back);
-            })();
-
-        </script>
     </body>
 </html>

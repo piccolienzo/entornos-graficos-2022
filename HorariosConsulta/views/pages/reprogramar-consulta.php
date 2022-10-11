@@ -20,7 +20,8 @@
 
     <main class="container">
 
-        <form class="formulario" action="reprogramar-consulta-2.php" method="post">  
+        <form class="formulario" action="reprogramar-consulta-2.php" method="post">
+            <input type='hidden' id='thisurl' name='backurl'>
         <?php
                 if(isset($idProfesorMateria)) {
                     echo("<input type='hidden' name='idProfesorMateria' value='{$idProfesorMateria}'/>");
@@ -71,5 +72,22 @@
         require('../components/footer.php')
     ?>
 
+    <?php
+        if(isset($backurl)) {
+            echo("
+                <script>
+                    backurl = '".$backurl."';
+                    document.querySelector('#volver').style.display = 'block';
+                    document.querySelector('#volver').addEventListener('click', back);      
+                </script>
+            ");
+        }
+    ?>
+
+    <script>
+        (function() {
+            document.querySelector("#thisurl").value = btoa(window.location.href);
+        })();
+    </script>
 </body>
 </html>

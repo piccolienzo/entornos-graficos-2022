@@ -18,5 +18,11 @@
 
     $idParam = isset($id) ? "?id=".$id : "";
 
-    header("Location: ../../views/pages/".$nextPage.$idParam);
+    $backurlParam = isset($backurl)
+        ?  isset($id)
+            ? "&backurl=".$backurl
+            : "?backurl=".$backurl
+        :   "";
+
+    header("Location: ../../views/pages/".$nextPage.$idParam.$backurlParam);
 ?>

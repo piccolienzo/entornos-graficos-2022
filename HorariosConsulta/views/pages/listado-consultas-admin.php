@@ -91,14 +91,14 @@
 
         <script>
             
-            backurl = btoa(window.location.href);
+            const currentUrl = btoa(window.location.href);
 
             function verDetalles(id) {
-                window.location.href = "../../controllers/consultations/consultation.php?id=" + id + "&backurl=" + backurl;
+                window.location.href = "../../controllers/consultations/consultation.php?id=" + id + "&backurl=" + currentUrl;
             }
 
             function nuevaConsulta() {
-                window.location.href = "../../controllers/teachers/teachers.php?nextPage=listado-profesores.php?backurl=" + backurl;
+                window.location.href = "../../controllers/teachers/teachers.php?nextPage=listado-profesores.php?backurl=" + currentUrl;
             }
             
         </script>

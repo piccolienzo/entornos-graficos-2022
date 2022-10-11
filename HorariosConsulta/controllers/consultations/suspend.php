@@ -24,5 +24,5 @@
 
     mysqli_close($link);
 
-    header("Location: consultation.php?id=".$id."&success=true");
+    header("Location: consultation.php?id=".$id."&success=true&backurl=".$backurl);
 ?>

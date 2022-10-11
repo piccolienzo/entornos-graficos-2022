@@ -47,6 +47,7 @@
                         echo("
                             <h2>Seleccione Materia para el Profesor</h2>
                             <form action='reprogramar-consulta.php' method='POST'>
+                                <input type='hidden' id='thisurl' name='backurl'>
                         ");
                         if(isset($id)) {
                             echo("
@@ -83,6 +84,12 @@
 <?php
     require('../components/footer.php')
 ?>
+
+<script>
+    (function() {
+        document.querySelector("#thisurl").value = btoa(window.location.href);
+    })();
+</script>
 
 </body>
 </html>
