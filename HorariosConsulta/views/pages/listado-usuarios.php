@@ -46,6 +46,8 @@
     }
 
     mysqli_close($link);
+
+    $_SESSION['formulario_usuario'] = null;
 ?>
 
 <body>
@@ -96,7 +98,7 @@
                                 <td>{$user["nombre"]}</td>
                                 <td>{$user["email"]}</td>
                                 <td>
-                                    <a href='usuario.php?edit=1&id=".$user["id"]."'>Editar</a>
+                                    <a href='' id='linkedit'>Editar</a>
                                     <a href='../../controllers/users/disable.php?id=".$user["id"]."&habilitado=".$user["habilitado"]."'>".$enabledLabel.".</a>
                                 </td>
                             </tr> 
@@ -116,6 +118,16 @@
 
 <?php
     require('../components/footer.php')
+?>
+
+<?php
+    echo("
+        <script>
+            (function() {
+                document.querySelector('#linkedit').href = 'usuario.php?edit=1&id=".$user["id"]."&backurl='+btoa(window.location.href);
+            })();
+        </script>
+    ");
 ?>
 
 </body>

@@ -5,7 +5,7 @@
     extract($_GET);
 
     $query = "select * from usuarios"
-        ." where (legajo = ".$legajo." or email like '".$email."' or usuario like '".$usuario."') and id !=". $id;
+        ." where (legajo = ".$legajo." or email like '".$email."') and id !=". $id;
 
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
@@ -15,8 +15,9 @@
             ."nombre = '".$nombre."',"
             ."apellido = '".$apellido."',"
             ."dni = '".$dni."',"
-            ."email = '".$email."'"
-            ."where id = '".$id
+            ."email = '".$email."',"
+            ."legajo = '".$legajo."'"
+            ." where id = '".$id
             ."'";
 
         $result = mysqli_query($link, $query) or die(mysqli_error($link));

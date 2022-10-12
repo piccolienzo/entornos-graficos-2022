@@ -9,7 +9,6 @@
             $horaFinEspecial = substr($hora, 6, 5);
         }
         else {
-            echo($_SESSION['role']);
             $horaInicio = substr($hora, 0, 5);
             $horaFin = substr($hora, 6, 5);
         }

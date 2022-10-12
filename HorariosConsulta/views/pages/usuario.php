@@ -88,17 +88,6 @@
                             }
                         ?>
                         required/>
-                    <label for="usuario"> Usuario </label>
-                    <input type="text" class="input-white" id="usuario" name="usuario" 
-                        <?php
-                            if(isset($usuario)) {
-                                echo("value=".$usuario["usuario"]);
-                            }
-                            else if( isset($_SESSION['formulario_usuario']) ) {
-                                echo("value=".$_SESSION['formulario_usuario']['usuario']);
-                            }
-                        ?>
-                        required/>
                     <label for="email"> Email </label>
                     <input type="email" class="input-white" id="email" name="email" 
                         <?php

@@ -69,7 +69,7 @@
                             <input type="radio" name="esVirtual" value="0" class="btn" required>Presencial</button>
                         </div>
                         <br>
-                        <label class="subtitulo">Lugar</label>
+                        <label class="subtitulo">Lugar o Link de consulta</label>
                         <br>
                         <input type="text" class="input text-area" name="lugar" width="auto" required/>
                         <label class="subtitulo">Cupo</label>
@@ -85,6 +85,18 @@
 
         <?php
             require('../components/footer.php')
+        ?>
+
+        <?php
+            if(isset($backurl)) {
+                echo("
+                    <script>
+                        backurl = '".$backurl."';
+                        document.querySelector('#volver').style.display = 'block';
+                        document.querySelector('#volver').addEventListener('click', back);      
+                    </script>
+                ");
+            }
         ?>
     </body>
 </html>
