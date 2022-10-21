@@ -284,7 +284,18 @@ body {
 	background: var(--violeta);
 	color: white;
 }
-
+.btn-print {
+	background: transparent;
+	color: white;
+}
+.btn-print {
+	background: transparent;
+	color: white;
+	border:none
+}
+.btn-print:hover{
+	transform: scale(1.05,1.05);
+}
 input[type="text"],
 input[type="password"] {
 	width: 256px;
@@ -299,6 +310,28 @@ input[type="password"] {
 .input-bordered {
 	border: 1px solid var(--violeta);
 }
+
+/*#region Iconos*/
+span.check-icon{    
+	width: 100px;
+	height: 100px;
+	background: url("icon/check.svg") no-repeat ;
+	display: inline-block;
+
+}
+span.cross-icon{
+	width: 100px;
+	height: 100px;
+	background: url("icon/cross.svg") no-repeat;
+	display: inline-block;
+}  
+span.print{
+	width: 25px;
+	height: 25px;
+	background: url("icon/print.svg") no-repeat;
+	display: inline-block;
+}  
+/*#endregion*/
 
 @media (max-width: 720px) {
 	.container .card {
