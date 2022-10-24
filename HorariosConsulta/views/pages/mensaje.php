@@ -39,7 +39,34 @@
                         <label>Materia: </label><label id="materia">{}</label><br>
                         <label>Modalidad: </label><label id="modalidad">{}</label><br>
                         <label>Lugar: </label><label id="lugar">{}</label>
+
+                        <style>
+                            .ticket{
+                                display: flex;
+                                flex-direction: column;
+                                align-items:center;
+                                text-align:center;
+                                padding: 0 5% 5% 5%;
+                            }
+                            .btn-print{
+                                align-self:flex-end;
+                                margin: 20px 20px 0 0;
+                            }
+                            .datosConsulta{
+                                text-align:left;
+                            }
+                            @media (max-width: 720px) {
+                                .ticket{
+                                display: flex;
+                                flex-direction: column;
+                                align-items:center;
+                                text-align:center;
+                                padding: 0 0 5% 0;
+                                }
+                            }
+                        </style>
                     </div>
+                     
                  </section>
             <?php                 
             }             
@@ -91,29 +118,5 @@
         });
         
     </script>
-    <style>
-        .ticket{
-            display: flex;
-            flex-direction: column;
-            align-items:center;
-            text-align:center;
-            padding: 0 5% 5% 5%;
-        }
-        .btn-print{
-            align-self:flex-end;
-            margin: 20px 20px 0 0;
-        }
-        .datosConsulta{
-            text-align:left;
-        }
-        @media (max-width: 720px) {
-	        .ticket{
-            display: flex;
-            flex-direction: column;
-            align-items:center;
-            text-align:center;
-            padding: 0 0 5% 0;
-            }
-        }
-    </style>
+     
 </html>

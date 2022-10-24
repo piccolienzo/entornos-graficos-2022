@@ -48,7 +48,7 @@
                                 <a href='{$sv}/views/pages/tipo-consulta.php'>Consultas</a>
                             </li>
                             <li>
-                                <a href='{$sv}/views/pages/listado-consultas.php'>Mis Consultas</a>
+                                <a href='{$sv}/views/pages/mis-consultas.php'>Mis Consultas</a>
                             </li>
                             <li>
                             <a href='{$sv}/views/logout.php'>Cerrar sesión</a>

@@ -1,5 +1,6 @@
 <?php
     include('../connection.inc');
+    require ('../../core/mailer.php');
     extract($_POST);
 
     $query = "
@@ -31,8 +32,8 @@
             while($row = mysqli_fetch_array($result)){
                 array_push($array, $row);
             }
-            $result  = base64_encode(json_encode($array[0]));
-            echo $result;
+            $result  = base64_encode(json_encode($array[0]));          
+            sendEmail("enzopic@gmail.com", "Enzo", "Inscripcion exitosa",1);
             header("Location: ../../views/pages/mensaje.php?success=1&result=".$result);     
         }   
         catch(Exception $e){

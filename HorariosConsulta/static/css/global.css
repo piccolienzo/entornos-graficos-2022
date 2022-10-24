@@ -284,6 +284,10 @@ body {
 	background: var(--violeta);
 	color: white;
 }
+.btn-rojo {
+	background: rgb(250, 109, 109);
+	color: white;
+}
 .btn-print {
 	background: transparent;
 	color: white;
