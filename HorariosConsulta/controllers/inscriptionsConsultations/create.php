@@ -2,7 +2,7 @@
     include('../connection.inc');
     require ('../../core/mailer.php');
     extract($_POST);
-
+    session_start();
     $query = "
         select * from inscripciones_consultas
         where idAlumno = ".$idAlumno. " and idConsulta = ".$idConsulta;
@@ -14,7 +14,7 @@
         $consultation = mysqli_fetch_array($result);; 
         header("Location: ../../views/pages/mensaje.php?success=0"); 
     }
-    else {
+   else {
         try {
             $fechaHora = $fechaConsulta." ".$hora;
             $query = "insert into inscripciones_consultas (idAlumno, idConsulta, fechaHora)";
@@ -32,8 +32,11 @@
             while($row = mysqli_fetch_array($result)){
                 array_push($array, $row);
             }
-            $result  = base64_encode(json_encode($array[0]));          
-            sendEmail("enzopic@gmail.com", "Enzo", "Inscripcion exitosa",1);
+            $result  = base64_encode(json_encode($array[0]));
+            $mailBody = "Inscripcion exitosa a consulta #".$array[0]["id"].". Fecha: ".$array[0]["fechaHora"].". Lugar: ".$array[0]["lugar"];      
+            $mailAddress = $_SESSION["usuario"]["email"];
+            $nombreApellido = $_SESSION["usuario"]["nombre"]." ".$_SESSION["usuario"]["apellido"]; 
+            sendEmail($mailAddress, $nombreApellido, $mailBody,1);
             header("Location: ../../views/pages/mensaje.php?success=1&result=".$result);     
         }   
         catch(Exception $e){

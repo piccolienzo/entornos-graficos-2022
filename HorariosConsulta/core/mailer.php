@@ -20,7 +20,7 @@ use PHPMailer\PHPMailer\Exception;
         $mail->SMTPSecure="tls";
         $mail->SMTPAuth=true;
         $mail -> Username = "horariosconsultaeg@gmail.com";
-        $mail -> Password = "jt1}!=uybRx1)Y5y";
+        $mail -> Password = "nthxhfwfatqemujv";
         $mail -> setFrom("horariosconsultaeg@gmail.com","Horarios Consulta");
         $mail -> addAddress($toMail, $toName);
         $mail -> Subject = $subject;

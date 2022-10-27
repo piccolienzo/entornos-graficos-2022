@@ -16,7 +16,7 @@
         $fila = mysqli_fetch_array($result);
 
         if(isset($password) && $fila["clave"] == ($password)) {
-            $_SESSION["usuario"] = $fila;
+            $_SESSION["usuario"] = $fila;            
             include('roles.php');
             header("Location: ../../index.php");
         }
