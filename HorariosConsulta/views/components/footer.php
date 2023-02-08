@@ -47,7 +47,7 @@
     }
 
     .footer div{
-        width: 15%;
+        width: 20%;
         margin:0 15px 0 15px;
         color: var(--violeta);
     }

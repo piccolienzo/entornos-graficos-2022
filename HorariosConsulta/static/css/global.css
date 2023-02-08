@@ -314,6 +314,14 @@ input[type="password"] {
 .input-bordered {
 	border: 1px solid var(--violeta);
 }
+.title {
+	text-align: center;
+}
+.img-index {
+	height: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 /*#region Iconos*/
 span.check-icon{    
