@@ -3,12 +3,14 @@
     require ('../../core/mailer.php');
     extract($_POST);
     session_start();
+
+    $fechaHora = $fechaConsulta." ".$hora;
+
     $query = "
         select * from inscripciones_consultas
-        where idAlumno = ".$idAlumno. " and idConsulta = ".$idConsulta;
-
+        where idAlumno = ".$idAlumno. " and idConsulta = ".$idConsulta." and fechaHora = '".$fechaHora."'";
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
-     
+
     if(mysqli_num_rows($result) > 0) {
         echo("Ya estás inscripto en esta consulta");
         $consultation = mysqli_fetch_array($result);; 
@@ -16,9 +18,8 @@
     }
    else {
         try {
-            $fechaHora = $fechaConsulta." ".$hora;
             $query = "insert into inscripciones_consultas (idAlumno, idConsulta, fechaHora)";
-            $query .= " values (".$idAlumno.", ".$idConsulta.","."STR_TO_DATE('{$fechaHora}', '%d/%m/%Y %H:%i:%s')".");";
+            $query .= " values (".$idAlumno.", ".$idConsulta.",'".$fechaHora."');";
             $result = mysqli_query($link, $query) or die(mysqli_error($link));
             $query = "
             select ic.id ,ic.fechaHora, u.nombre, u.apellido, m.nombre as nombreMateria,c.esVirtual, c.horaInicio, c.horaFin,c.lugar from inscripciones_consultas ic 

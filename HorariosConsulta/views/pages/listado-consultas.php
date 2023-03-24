@@ -45,7 +45,11 @@
             foreach($result as $x => $a){ 
                 $modalidad = $a['esVirtual']?'Virtual':'Presencial';
                 $agendarConsulta = $isStudent
-                    ? "<div><button class='btn btn-violeta' onclick='agendarConsulta({$a['id']})'>Agendar Consulta</button></div>"
+                    ? "
+                        <div style='margin: 7px; text-align: right'>
+                            <button class='btn btn-violeta' onclick='agendarConsulta({$a['id']})'>Agendar</button>
+                        </div>
+                    "
                     : "";
                 echo "
                 <tbody class='tb'>

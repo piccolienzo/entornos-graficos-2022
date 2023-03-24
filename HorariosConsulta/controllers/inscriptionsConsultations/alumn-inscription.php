@@ -14,7 +14,8 @@ function getConsultasAlumno(){
         inner join profesores p on p.idUsuario = pm.idProfesor
         inner join usuarios u on u.id = p.idUsuario
         inner join consultas c on c.idProfesorMateria = pm.id 
-        inner join inscripciones_consultas ic on ic.idConsulta = c.id where ic.idAlumno =".$idUsuario;
+        inner join inscripciones_consultas ic on ic.idConsulta = c.id 
+        where ic.idAlumno =".$idUsuario." and fechaHora >= curdate()";
     
         $result = mysqli_query($link, $query) or die(mysqli_error($link));
     
