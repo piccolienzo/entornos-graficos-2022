@@ -15,6 +15,23 @@
 <?php
     require('../components/header.php');
     require("../../controllers/inscriptionsConsultations/alumn-inscription.php");
+
+    $alertText;
+    if( isset($_GET['success']) ) {
+        $alertText = "Consulta cancelada exitosamente";
+    }
+    else if( isset($_GET['error']) ) {
+        $alertText = "No puede cancelar una consulta que se realizará hoy o mañana";
+    }
+    if( isset($alertText) ) {
+        echo("
+            <script type='text/javascript'>
+                window.onload = function() {
+                    alert('".$alertText."')
+                };
+            </script>
+        ");
+    }
 ?>
 
 <main class="container">
@@ -32,7 +49,7 @@
             }
             
         }else{
-            echo "usuario no logeado";
+            echo "Usuario no logueado";
         }
         if(count($result)) {
             
@@ -50,7 +67,13 @@
             foreach($result as $x => $a){ 
                 $modalidad = $a['esVirtual']?'Virtual':'Presencial';
                 $cancelarConsulta = $isStudent
-                    ? "<div><button class='btn btn-rojo' onclick='cancelarConsulta({$a['id']})'>Cancelar Consulta</button></div>"
+                    ? "
+                        <div style='margin: 7px; text-align: right'>
+                            <form class='formulario' action='../../controllers/inscriptionsConsultations/delete.php?idConsulta={$a['id']}' method='post'>
+                                <button class='btn btn-rojo'>Cancelar</button>
+                            </form>
+                        </div>
+                    "
                     : "";
                 echo "
                 <tbody class='tb'>
@@ -65,9 +88,9 @@
                 <tbody class='ht' style='display:none;' id='r{$a['id']}'> 
                     <tr>
                         <td colspan='3'>
-                            <div>  {$a['dia']} {$a['horaInicio']} a {$a['horaFin']} </div>
-                            <div> Email: {$a['email']} </div>
-                            <div>Modalidad: {$modalidad} </div>
+                            <div style='margin: 7px'>  <b>Horarios disponibles:</b> {$a['dia']} ".substr($a['horaInicio'],0,-3)." a ".substr($a['horaFin'],0,-3)."</div>
+                            <div style='margin: 7px'> <b>Email:</b> {$a['email']} </div>
+                            <div style='margin: 7px'> <b>Modalidad:</b> {$modalidad} </div>
                             {$cancelarConsulta}
                         </td>
                     </tr> 
@@ -110,10 +133,6 @@
             element.style.display = "none"
         }
          
-    }
-
-    function cancelarConsulta(id){
-        //window.location.href = "agendar-consulta.php?id=" + btoa(id)+"&backurl=" + btoa(window.location.href);
     }
 </script>
 </body>

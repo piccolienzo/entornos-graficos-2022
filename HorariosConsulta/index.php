@@ -33,18 +33,15 @@
             array("text" => "Mapa del sitio", "href" => "./views/pages/mapa-sitio.php")
         );
 
-        if(isset($_SESSION["usuario"])) {  
-            echo '<h1>Bienvenido</h1>';  
-        }
-        else {
-            echo '
-                <h1 class="title">
-                    Bienvenido al sitio web de consultas de la UTN
-                </h1>
-                <h2 class="title">
-                    Facultad Regional Rosario
-                </h2>';
+        echo '
+            <h1 class="title">
+                Bienvenido al sitio web de consultas de la UTN
+            </h1>
+            <h2 class="title">
+                Facultad Regional Rosario
+            </h2>';
 
+        if(!isset($_SESSION["usuario"])) {
             array_push(
                 $links,
                 array("text" => "Ingrese con su cuenta", "href" => "./views/pages/login.php")

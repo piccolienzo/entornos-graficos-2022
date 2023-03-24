@@ -3,13 +3,13 @@
     extract($_GET);
 
     $query = "
-        select * from consultas
+        select * from inscripciones_consultas
         where id = ".$idConsulta;
 
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
     $consultation = mysqli_fetch_array($result);
 
-    $datetime1 = date_create($consultation["fecha"]);
+    $datetime1 = date_create($consultation["fechaHora"]);
     $datetime2 = date_create(date("Y-m-d h:m"));
 
     $interval = date_diff($datetime1, $datetime2);
@@ -18,15 +18,15 @@
     if($differenceDays > 1) {
         $query = "
             delete from inscripciones_consultas
-            where idAlumno = ".$idAlumno." and idConsulta = ".$idConsulta;
+            where id = ".$consultation["id"];
 
         $result = mysqli_query($link, $query) or die(mysqli_error($link));
-
-        echo "Inscripción borrada exitosamente";
+        mysqli_close($link);
+        header("Location: ../../views/pages/mis-consultas.php?success=true"); 
     }
     else {
-        echo "No puede cancelar una inscripción a una consulta que se dará en menos de 24 horas";
+        mysqli_close($link);
+        header("Location: ../../views/pages/mis-consultas.php?error=true");
     }
     
-    mysqli_close($link);
 ?>

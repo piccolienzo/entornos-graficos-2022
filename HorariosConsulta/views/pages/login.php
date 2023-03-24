@@ -46,14 +46,14 @@
             <h1>Ingreso</h1>
             <form class="formulario" action="../../controllers/users/login.php" method="post">
                 <label for="legajo"> Legajo </label>
-                <input type="text" class="input-white" id="legajo" name="legajo" />
+                <input required type="text" class="input-white" id="legajo" name="legajo" />
                 <label for="password">Contraseña</label>
-                <input type="password" class="input-white" id="password" name="password" />
+                <input required type="password" class="input-white" id="password" name="password" />
                 <button type="submit" class="btn btn-violeta"> Entrar <span class="icon-entrar"></span> </button>
             </form>
             
 
-            <p>¿Olvidaste tu contraseña?<a href="recuperar-clave.php" rel="noopener noreferrer">Click acá</a></p>
+            <p>¿Olvidaste tu contraseña? <a href="recuperar-clave.php" rel="noopener noreferrer">Click acá</a></p>
             </section>
 
         </main>
