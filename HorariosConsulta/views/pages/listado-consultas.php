@@ -60,10 +60,9 @@
                 <tbody class='ht' style='display:none;' id='r{$a['id']}'> 
                     <tr>
                         <td colspan='3'>
-                            <div>  Horarios disponibles </div>
-                            <div>  {$a['dia']} {$a['horaInicio']} a {$a['horaFin']} </div>
-                            <div> Email: {$a['email']} </div>
-                            <div>Modalidad: {$modalidad} </div>
+                            <div style='margin: 7px'>  <b>Horarios disponibles:</b> {$a['dia']} ".substr($a['horaInicio'],0,-3)." a ".substr($a['horaFin'],0,-3)."</div>
+                            <div style='margin: 7px'> <b>Email:</b> {$a['email']} </div>
+                            <div style='margin: 7px'> <b>Modalidad:</b> {$modalidad} </div>
                             {$agendarConsulta}
                         </td>
                     </tr> 

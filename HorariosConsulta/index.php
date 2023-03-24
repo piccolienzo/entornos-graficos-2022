@@ -58,7 +58,7 @@
         foreach($links as $item) {
             echo('<li><a href="'.$item["href"].'">'.$item["text"].'</a></li>');
         }
-        echo '<ul>';
+        echo '</ul>';
     ?>
 </section>
 

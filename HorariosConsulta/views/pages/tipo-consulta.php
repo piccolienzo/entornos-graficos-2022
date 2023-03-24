@@ -16,7 +16,7 @@
 <main class="container">
     <h1>Tipo de Consulta</h1>
 <section class="card">
-    <h2>¿Cómo desea realizar su consulta?</h2>
+    <h2>¿Cómo desea buscar su consulta?</h2>
     <form action="../../controllers/consultations/consultations.php" method="GET">
         <input type="hidden" id="thisurl" name="backurl">
         <label  for="materia" class="check"> &nbsp
@@ -79,7 +79,7 @@
         });
         document.querySelector("#next").style.display = "block";
 
-        document.querySelector("h2").innerHTML = "¿Cómo desea realizar su consulta?"
+        document.querySelector("h2").innerHTML = "¿Cómo desea buscar su consulta?"
         document.querySelector("#submit").style.display = "none";
         document.querySelector("#busqueda").style.display = "none";
 
