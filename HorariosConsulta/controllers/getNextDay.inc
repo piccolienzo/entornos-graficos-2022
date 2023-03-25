@@ -47,6 +47,8 @@
             12 => "Diciembre"
         );
 
+        $dateNumberMonth = str_replace("0","",$dateNumberMonth);
+
         return (
             array(
                 "label" => ($dateNumberDay." de ".$months[$dateNumberMonth]),

@@ -21,23 +21,32 @@
             <section class="card">
 
             <form class="formulario" action="../../controllers/consultations/consultations.php" method="GET">
+                <div>
+                    <button class='btn btn-violeta'>Imprimir</button>
+                    <button type='button' class='btn btn-violeta' onclick="nuevaConsulta()">Crear</button>
+                    <input type="text" id="nombre" name="search"/>
+                    <button class='btn btn-violeta' type="submit">Buscar</button>
+                </div>
 
-                <button class='btn btn-violeta'>Imprimir</button>
-                <button type='button' class='btn btn-violeta' onclick="nuevaConsulta()">Nueva consulta</button>
-                <input type="text" id="nombre" name="search"/>
-                <button class='btn btn-violeta' type="submit">Buscar</button>
-
-                <label> Filtrar por </label>
-                <label for="profesor" class="check"> Profesor </label>
-                <input type="radio" id="profesor" name="searchtype" value="profesor" checked>
-                <label for="materia" class="check"> Materia </label>
-                <input type="radio" id="materia" name="searchtype" value="materia">
-                
-                <input type="radio" id="profesor" name="admin" value="true" checked style="display: none">
-
-                <label for="fecha"> Fecha </label>
-                <input type="date" id="fecha" name="date">
-
+                <div>
+                    <div> Filtrar por
+                        <label for="profesor" class="check">
+                            <input type="radio" id="profesor" name="searchtype" value="profesor" checked>
+                            Profesor
+                        </label>
+                        <label for="materia" class="check">
+                            <input type="radio" id="materia" name="searchtype" value="materia">
+                            Materia
+                        </label>
+                    </div>
+                    
+                    <div>
+                        <input type="radio" id="profesor" name="admin" value="true" checked style="display: none">
+    
+                        <label for="fecha"> Fecha </label>
+                        <input type="date" id="fecha" name="date">
+                    </div>
+                </div>
             </form>
 
             <?php
