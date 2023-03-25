@@ -63,18 +63,15 @@
                         }
                     ?>
                         <label class="subtitulo">Modalidad</label>
-                        <br>
                         <div class="contenedor-botones">
                             <input type="radio" name="esVirtual" value="1" class="btn" required>Virtual</button>
                             <input type="radio" name="esVirtual" value="0" class="btn" required>Presencial</button>
                         </div>
-                        <br>
                         <label class="subtitulo">Lugar o Link de consulta</label>
-                        <br>
                         <input type="text" class="input text-area" name="lugar" width="auto" required/>
-                        <label class="subtitulo">Cupo</label>
                         <br>
-                        <input type="number" required class="input text-area" name="cupo" width="auto" required min="1"/>
+                        <label class="subtitulo">Cupo</label>
+                        <input type="number" required name="cupo" width="auto" required min="1"/>
                         <div class="contenedor-botones-derecha">
                             <button type="submit" class="btn btn-violeta"> Confirmar <span class="icon-entrar"></span> </button>
                         </div>

@@ -30,8 +30,11 @@
             $extraWhere = "where u.id = ".$_SESSION["usuario"]["id"];
             $query.= $extraWhere;
         }
+        else if( $_SESSION['role'] == "alumno") {
+            $extraWhere = "where c.cancelado = 0";
+            $query.= $extraWhere;
+        }
     }
-
     $query.=  " order by horaInicio";
 
     $result = mysqli_query($link, $query) or die(mysqli_error($link));

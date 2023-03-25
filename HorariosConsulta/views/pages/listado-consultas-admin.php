@@ -20,32 +20,28 @@
             <h1>Listado de Consultas</h1>
             <section class="card">
 
-            <form class="formulario" action="../../controllers/consultations/consultations.php" method="GET">
-                <div>
-                    <button class='btn btn-violeta'>Imprimir</button>
-                    <button type='button' class='btn btn-violeta' onclick="nuevaConsulta()">Crear</button>
+            <form action="../../controllers/consultations/consultations.php" method="GET">
+                <div style="padding: 8px" class="formulario">
+                    <button class='btn btn-violeta'><span class="icon-imprimir"></span></button>
+                    <button type='button' class='btn btn-violeta auto' onclick="nuevaConsulta()">Nueva consulta</button>
                     <input type="text" id="nombre" name="search"/>
                     <button class='btn btn-violeta' type="submit">Buscar</button>
                 </div>
 
-                <div>
-                    <div> Filtrar por
-                        <label for="profesor" class="check">
-                            <input type="radio" id="profesor" name="searchtype" value="profesor" checked>
-                            Profesor
-                        </label>
-                        <label for="materia" class="check">
-                            <input type="radio" id="materia" name="searchtype" value="materia">
-                            Materia
-                        </label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" id="profesor" name="admin" value="true" checked style="display: none">
-    
-                        <label for="fecha"> Fecha </label>
-                        <input type="date" id="fecha" name="date">
-                    </div>
+                <div style="padding: 4px">
+                        Agrupar por
+                    <label for="profesor" class="check">
+                        <input type="radio" id="profesor" name="searchtype" value="profesor" checked>
+                        Profesor
+                    </label>
+                    <label for="materia" class="check">
+                        <input type="radio" id="materia" name="searchtype" value="materia">
+                        Materia
+                    </label>
+                    <input type="radio" id="profesor" name="admin" value="true" checked style="display: none">
+
+                    <label for="fecha"> Fecha </label>
+                    <input type="date" id="fecha" name="date">
                 </div>
             </form>
 

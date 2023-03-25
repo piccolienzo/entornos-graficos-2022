@@ -15,6 +15,7 @@
                 
                 if( $errorType == 'noUserFound') $errorText = "El legajo ingresado no corresponde con ningún usuario";
                 else if( $errorType == 'wrongPassword') $errorText = "Contraseña incorrecta";
+                else if( $errorType == 'disabled') $errorText = "Usuario deshabilitado";
 
                 echo("
                         <script type='text/javascript'>
