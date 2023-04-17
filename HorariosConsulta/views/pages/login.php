@@ -46,9 +46,9 @@
             <section class="login">
             <h1>Ingreso</h1>
             <form class="formulario" action="../../controllers/users/login.php" method="post">
-                <label for="legajo"> Legajo </label>
+                <label for="legajo"> Legajo *</label>
                 <input required type="text" class="input-white" id="legajo" name="legajo" />
-                <label for="password">Contraseña</label>
+                <label for="password">Contraseña *</label>
                 <input required type="password" class="input-white" id="password" name="password" />
                 <button type="submit" class="btn btn-violeta"> Entrar <span class="icon-entrar"></span> </button>
             </form>

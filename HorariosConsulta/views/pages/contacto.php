@@ -44,11 +44,11 @@
             <section class="login">
             <h1>Contacto</h1>
             <form class="formulario" action="../../controllers/contact/contact.php" method="post">
-                <label for="correo"> Correo electrónico </label>
+                <label for="correo"> Correo electrónico *</label>
                 <input type="email" class="input-white" id="correo" name="correo" required/>
-                <label for="asunto">Asunto</label>
+                <label for="asunto">Asunto *</label>
                 <input type="text" class="input-white" id="asunto" name="asunto" required/>
-                <label for="mensaje">Mensaje</label>
+                <label for="mensaje">Mensaje *</label>
                 <input type="text" class="input-white" id="mensaje" name="mensaje" required/>
                 <button type="submit" class="btn btn-violeta"> Enviar <span class="icon-entrar"></span> </button>
             </form>

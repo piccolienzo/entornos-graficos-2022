@@ -54,9 +54,9 @@
                 <h1>Recuperar contraseña</h1>
                 <h2>Ingrese su correo electrónico</h2>
                 <form class="formulario" action="../../controllers/users/change-password.php" method="post">
-                    <label for="legajo">Legajo</label>
+                    <label for="legajo">Legajo *</label>
                     <input type="text" class="input-white" id="legajo" name="legajo" required />
-                    <label for="email">Correo electrónico</label>
+                    <label for="email">Correo electrónico *</label>
                     <input type="email" class="input-white" id="email" name="email" required />
                     <button type="submit" class="btn btn-violeta"> Recuperar <span class="icon-entrar"></span> </button>
                 </form>

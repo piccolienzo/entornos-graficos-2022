@@ -28,7 +28,7 @@
 <section class="card">
     
     <form action="../../controllers/inscriptionsConsultations/create.php" method="POST">
-    <h2>Seleccione una Fecha</h2>
+    <h2>Seleccione una Fecha *</h2>
 <?php 
     $consultas = $_SESSION["resultados_consulta"];
     $id = base64_decode($_GET["id"]);

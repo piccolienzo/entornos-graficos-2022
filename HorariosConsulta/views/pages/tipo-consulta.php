@@ -16,7 +16,7 @@
 <main class="container">
     <h1>Tipo de Consulta</h1>
 <section class="card">
-    <h2>¿Cómo desea buscar su consulta?</h2>
+    <h2>¿Cómo desea buscar su consulta? *</h2>
     <form action="../../controllers/consultations/consultations.php" method="GET">
         <input type="hidden" id="thisurl" name="backurl">
         <label  for="materia" class="check"> &nbsp

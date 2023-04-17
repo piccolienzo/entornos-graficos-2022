@@ -55,7 +55,7 @@
                         ?>
                         "method="post">
 
-                    <label for="nombre"> Nombre </label>
+                    <label for="nombre"> Nombre *</label>
                     <input type="text" class="input-white" id="nombre" name="nombre" 
                         <?php
                             if(isset($usuario)) {
@@ -66,7 +66,7 @@
                             }
                         ?>
                         required/>
-                    <label for="apellido"> Apellido </label>
+                    <label for="apellido"> Apellido *</label>
                     <input type="text" class="input-white" id="apellido" name="apellido" 
                         <?php
                             if(isset($usuario)) {
@@ -77,7 +77,7 @@
                             }
                         ?>
                         required/>
-                    <label for="dni"> DNI </label>
+                    <label for="dni"> DNI *</label>
                     <input type="number" class="input-white" id="dni" name="dni" 
                         <?php
                             if(isset($usuario)) {
@@ -88,7 +88,7 @@
                             }
                         ?>
                         required/>
-                    <label for="email"> Email </label>
+                    <label for="email"> Email *</label>
                     <input type="email" class="input-white" id="email" name="email" 
                         <?php
                             if(isset($usuario)) {
@@ -99,7 +99,7 @@
                             }
                         ?>
                         required/>
-                    <label for="legajo"> Legajo </label>
+                    <label for="legajo"> Legajo *</label>
                     <input type="text" class="input-white" id="legajo" name="legajo" 
                         <?php
                             if(isset($usuario)) {
@@ -113,7 +113,7 @@
                     <?php
                         if(!$edit) {
                             echo("
-                                <label for='rol'> Rol </label>
+                                <label for='rol'> Rol *</label>
                                 <select class='input-white' id='rol' name='rol' required>
                                     <option value='alumnos'>Alumno</option>
                                     <option value='profesores'>Profesor</option>

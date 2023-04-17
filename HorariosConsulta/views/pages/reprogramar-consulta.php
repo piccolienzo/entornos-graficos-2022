@@ -39,7 +39,7 @@
                 }
             ?>  
             <h1><?php echo($actionLabel); ?> Consulta</h1>
-            <h2>Seleccione día</h2>
+            <h2>Seleccione un día *</h2>
             
             <?php
                 $fieldName = 'dia';

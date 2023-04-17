@@ -35,7 +35,7 @@
                             $_SESSION["formulario_consulta"]["id"] = $id;
                         }
                     ?>
-                    <label class="subtitulo">Motivo de suspensión</label>
+                    <label class="subtitulo">Motivo de suspensión *</label>
                     <br>
                     <select class="input" name="motivoSuspension" required>
                         <option value="Enfermedad">Enfermedad</option>
@@ -44,7 +44,7 @@
                         <option value="Otro">Otro</option>
                     </select>
                     <br>
-                    <label class="subtitulo">Comentarios</label>
+                    <label class="subtitulo">Comentarios *</label>
                     <br>
                     <input type="text" class="input text-area" name="comentarioSuspension" required/>
                     <div class="contenedor-botones-derecha">
