@@ -22,15 +22,17 @@
 
             <form action="../../controllers/consultations/consultations.php" method="GET">
                 <div style="padding: 8px" class="formulario">
-                    <button class='btn btn-violeta'><span class="icon-imprimir"></span></button>
-                    <button type='button' class='btn btn-violeta auto' onclick="nuevaConsulta()">Nueva consulta</button>
-                    <input type="text" id="nombre" name="search"/>
+                    <button type="button" id="btnPrint" class="btn-print" title="Imprimir comprobante" onclick="imprimir()">
+                        <span class="print"></span>
+                    </button>
+                    <button type='button' class='btn btn-violeta btn-largo' onclick="nuevaConsulta()">Nueva consulta</button>
+                    <input type="text" id="nombre" name="search" placeholder="Buscar por profesor" style="margin-left: 20px"/>
                     <button class='btn btn-violeta' type="submit">Buscar</button>
                 </div>
 
                 <div style="padding: 4px">
-                        Agrupar por
-                    <label for="profesor" class="check">
+                    <b> Agrupar por </b>
+                    <label for="profesor" class="check" style="margin-left: 10px">
                         <input type="radio" id="profesor" name="searchtype" value="profesor" checked>
                         Profesor
                     </label>
@@ -40,7 +42,7 @@
                     </label>
                     <input type="radio" id="profesor" name="admin" value="true" checked style="display: none">
 
-                    <label for="fecha"> Fecha </label>
+                    <label for="fecha" style="margin-left: 20px"> Fecha </label>
                     <input type="date" id="fecha" name="date">
                 </div>
             </form>
@@ -64,7 +66,7 @@
                                         <tr>
                                             <td>{$a["matNombre"]}, {$a["profNombre"]}, {$a["dia"]}, {$modalidad}, Próxima: ".getNextDay($a['dia'])['label']."</td>
                                             <td>
-                                                <button class='btn btn-detalles' onclick='verDetalles({$a['id']})' >Ver detalle</button>
+                                                <button class='btn-listado' onclick='verDetalles({$a['id']})' >Ver detalle</button>
                                             </td>
                                         </tr> 
                                     </tbody>

@@ -40,79 +40,100 @@
 
         <main class="container">
 
-            <button>Imprimir</button>
             <h1>Detalle Consultas</h1>
             
-            <?php
-                if(isset($_SESSION["resultado_consulta"])){
-                    $consultations = $_SESSION["resultado_consulta"];
-                    if(count($consultations)) {                
-                        foreach($consultations as $x => $a){
-                            $cancelAction = $a['cancelado'] ? 'Habilitar Consulta' : 'Suspender Consulta';
-                            $modalidad = $a["esVirtual"] ? "Virtual" : "Presencial";
-                            echo("
-                                <p>Día: ".$a["dia"]."</p>
-                                <p>Hora: ".substr($a["horaInicio"], 0, -3)." - ".substr($a["horaFin"], 0, -3)."</p>
-                                <p>Materia: ".$a["matNombre"]."</p>
-                                <p>Modalidad: ".$modalidad."</p>
-                                <p>Lugar: ".$a["lugar"]."</p>
-                                <p>Profesor: ".$a["profNombre"]."</p>
-                                
-                                ");
-                            if( $role == 'administrador' ) {
+            <section class="card">
+                <div class="contenedor-imprimir">
+                    <button type="button" id="btnPrint" class="btn-print" title="Imprimir comprobante" onclick="imprimir()">
+                        <span class="print"></span>
+                    </button>
+                </div>
+                <?php
+                    if(isset($_SESSION["resultado_consulta"])){
+                        $consultations = $_SESSION["resultado_consulta"];
+                        if(count($consultations)) {                
+                            foreach($consultations as $x => $a){
+                                $cancelAction = $a['cancelado'] ? 'Habilitar' : 'Suspender';
+                                $modalidad = $a["esVirtual"] ? "Virtual" : "Presencial";
                                 echo("
-                                    <button onclick='suspender({$a['id']},{$a['cancelado']})'>{$cancelAction}</button>
-                                    <button onclick='editar({$a['id']})'>Modificar</button>
-                                ");
-                            }
-                            else if( $role == 'profesor' ) {
-                                echo("
-                                    <button onclick='suspenderComoProfesor({$a['id']},{$a['cancelado']})'>{$cancelAction}</button>
-                                ");
-
-                                $typeSearch = 'consultas';
-                                $id = $a['id'];
-                                require('../../controllers/inscriptionsConsultations/inscriptions.php');
-                                if(count($array)) { 
-                                    echo("
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>Listado de alumnos</th>
-                                                </tr>
-                                            </thead>
+                                    <div id='datosAImprimir' class='detalle-consulta'>
+                                        <p><b>Día: ".$a["dia"]."</b></p>
+                                        <p><b>Hora: ".substr($a["horaInicio"], 0, -3)." - ".substr($a["horaFin"], 0, -3)."</b></p>
+                                        <p><b>Materia: ".$a["matNombre"]."</b></p>
+                                        <p><b>Modalidad: ".$modalidad."</b></p>
+                                        <p><b>Lugar: ".$a["lugar"]."</b></p>
+                                        <p><b>Profesor: ".$a["profNombre"]." ".$a["profApellido"]."</b></p>
+                                    </div>
+                                    
                                     ");
-
-                                    foreach($array as $x => $a){ 
-                                        echo("
-                                                <tr>
-                                                    <td>{$a["nombre"]} {$a["apellido"]}</td>
-                                                    <td>{$a["email"]}</td>
-                                                </tr> 
-                                        ");
-                                    }
-
+                                if( $role == 'administrador' ) {
                                     echo("
-                                        </table>
+                                        <div class='contenedor-centro'>
+                                            <button class='btn btn-rojo' onclick='suspender({$a['id']},{$a['cancelado']})'>{$cancelAction}</button>
+                                            <button class='btn btn-azul' onclick='editar({$a['id']})'>Modificar</button>
+                                        </div>
                                     ");
                                 }
-                                else {
+                                else if( $role == 'profesor' ) {
                                     echo("
-                                       <p>No hay inscriptos en tu cosulta</p>
+                                        <button onclick='suspenderComoProfesor({$a['id']},{$a['cancelado']})'>{$cancelAction}</button>
                                     ");
+
+                                    $typeSearch = 'consultas';
+                                    $id = $a['id'];
+                                    require('../../controllers/inscriptionsConsultations/inscriptions.php');
+                                    if(count($array)) { 
+                                        echo("
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Listado de alumnos</th>
+                                                    </tr>
+                                                </thead>
+                                        ");
+
+                                        foreach($array as $x => $a){ 
+                                            echo("
+                                                    <tr>
+                                                        <td>{$a["nombre"]} {$a["apellido"]}</td>
+                                                        <td>{$a["email"]}</td>
+                                                    </tr> 
+                                            ");
+                                        }
+
+                                        echo("
+                                            </table>
+                                        ");
+                                    }
+                                    else {
+                                        echo("
+                                        <p>No hay inscriptos en tu cosulta</p>
+                                        ");
+                                    }
                                 }
                             }
                         }
+                        else {
+                            echo( "<p>Hubo un error al obtener el detalle de la consulta</p>");
+                        }
                     }
-                    else {
-                        echo( "<p>Hubo un error al obtener el detalle de la consulta</p>");
-                    }
-                }
-            ?>
+                ?>
+            </section>
 
         </main>
 
         <script>
+
+            function imprimir() {
+                let divContents = document.getElementById("datosAImprimir").innerHTML;
+                let printWindow = window.open('', '_blank', 'fullscreen="yes"');
+                printWindow.document.write('<html><head><title>Comprobante</title>');
+                printWindow.document.write('</head><body > <h1>Comprobante de inscripcion a consulta</h1>');
+                printWindow.document.write(divContents);
+                printWindow.document.write('</body></html>');
+                printWindow.document.close();
+                printWindow.print();
+            };
 
             const currentUrl = btoa(window.location.href);
 

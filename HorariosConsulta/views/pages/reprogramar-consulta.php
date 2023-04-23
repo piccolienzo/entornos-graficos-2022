@@ -39,7 +39,8 @@
                 }
             ?>  
             <h1><?php echo($actionLabel); ?> Consulta</h1>
-            <h2>Seleccione un día *</h2>
+            <h2 class="contador-pasos">(Paso 3 de 5)</h2>
+            <h3>Seleccione un día *</h3>
             
             <?php
                 $fieldName = 'dia';

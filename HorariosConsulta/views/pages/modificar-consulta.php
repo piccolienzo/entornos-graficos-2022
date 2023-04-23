@@ -19,7 +19,8 @@
 
         <main class="container">
             <h1><?php echo($actionLabel); ?> Consulta</h1>
-            <h2>Seleccione modalidad y lugar</h2>
+            <h2 class="contador-pasos">(Paso 5 de 5)</h2>
+            <h3>Seleccione modalidad y lugar</h3>
             <section class="card">
                 <div id="modificar">
                     <form class="formulario" action="<?php echo($actionUrl); ?>" method="post">

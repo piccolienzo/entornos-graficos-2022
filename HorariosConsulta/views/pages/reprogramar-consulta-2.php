@@ -56,7 +56,8 @@
 
             ?>              
             <h1><?php echo($actionLabel); ?> Consulta</h1>
-            <h2>Seleccione turno y horario *</h2>
+            <h2 class="contador-pasos">(Paso 4 de 5)</h2>
+            <h3>Seleccione turno y horario *</h3>
                 <div class="contenedor-botones">
                     <input type="radio" name="turno" class="btn" onclick="seleccionarOpcion('manana')" checked> Mañana </button>
                     <input type="radio" name="turno" class="btn" onclick="seleccionarOpcion('tarde')"> Tarde </button>

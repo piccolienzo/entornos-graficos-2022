@@ -289,6 +289,10 @@ body {
 	background: rgb(250, 109, 109);
 	color: white;
 }
+.btn-azul {
+	background: rgb(109, 109, 250);
+	color: white;
+}
 .btn-print {
 	background: transparent;
 	color: white;
@@ -306,9 +310,10 @@ body {
 }
 .btn-listado {
 	height: 35px;
-	width: 107px;
+	width: 90px;
 	font-size: 16px;
 	font-weight: 500;
+	font-size: 14px;
 	line-height: 24px;
 	letter-spacing: 0em;
 	text-align: center;
@@ -321,6 +326,12 @@ body {
 input[type="text"],
 input[type="password"] {
 	width: 256px;
+	height: 28px;
+	border-radius: 4px;
+}
+
+input[type="date"] {
+	width: 150px;
 	height: 28px;
 	border-radius: 4px;
 }
@@ -358,6 +369,26 @@ th {
 	padding: 20px 15px 20px 15px
 }
 
+.detalle-consulta {
+	font-size: 23px;
+	padding: 20px;
+}
+
+.contenedor-imprimir {
+	padding: 30px 30px 0px 0px;
+	text-align: right;
+}
+
+.contenedor-centro {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.contador-pasos {
+	margin: 0px 0px 10px 0px;
+	font-size: 14px;
+}
+
 /*#region Iconos*/
 span.check-icon{    
 	width: 100px;
@@ -377,7 +408,7 @@ span.print{
 	height: 25px;
 	background: url("icon/print.svg") no-repeat;
 	display: inline-block;
-}  
+}
 /*#endregion*/
 
 @media (max-width: 720px) {
