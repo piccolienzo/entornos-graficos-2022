@@ -258,9 +258,10 @@ body {
 
 .container .card {
 	background-color: white;
-	width: 50%;
+	width: 60%;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
 	border-radius: 14px;
+	margin-bottom: 20px;
 }
 
 .container .error-message {
@@ -300,6 +301,23 @@ body {
 .btn-print:hover{
 	transform: scale(1.05,1.05);
 }
+.btn-largo {
+	width: 160px;
+}
+.btn-listado {
+	height: 35px;
+	width: 107px;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 24px;
+	letter-spacing: 0em;
+	text-align: center;
+	padding: 4px 8px;
+	border-radius: 30px;
+	border: none;
+	margin: 2px;
+}
+
 input[type="text"],
 input[type="password"] {
 	width: 256px;
@@ -311,16 +329,33 @@ input[type="password"] {
 	background: #ffffff;
 	border: none;
 }
+
 .input-bordered {
 	border: 1px solid var(--violeta);
 }
+
+.select {
+	width: 128px;
+	height: 32px;
+	border-radius: 4px;
+}
+
+.filters {
+	padding: 10px
+}
+
 .title {
 	text-align: center;
 }
+
 .img-index {
 	height: 60%;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+th {
+	padding: 20px 15px 20px 15px
 }
 
 /*#region Iconos*/

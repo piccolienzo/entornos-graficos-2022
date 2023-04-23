@@ -28,7 +28,7 @@
             <span class="checkmark" id="chp"></span>
         </label>
         
-        <input type="text" id="busqueda" name="search" class="input-white input-bordered" style="display:none;" required>
+        <input type="text" id="busqueda" name="search" class="input-white input-bordered select" style="display:none;" required>
 
         <button type="submit" id="submit" class="btn btn-violeta" style="display:none;"> 
             Continuar<span class="icon-entrar"></span>
