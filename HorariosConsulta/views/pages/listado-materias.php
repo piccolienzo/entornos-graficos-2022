@@ -39,13 +39,14 @@
 
 <main class="container">
     <h1><?php echo($actionLabel) ?> Consulta</h1>
+    <h2 class="contador-pasos">(Paso 2 de 5)</h2>
+    <h3>Seleccione Materia para el Profesor</h3>
     <section class="card">
         <?php
              if(isset($_SESSION["resultados_materias"])){
                 $result = $_SESSION["resultados_materias"];
                 if(count($result)) {
                         echo("
-                            <h2>Seleccione Materia para el Profesor</h2>
                             <form action='reprogramar-consulta.php' method='POST'>
                                 <input type='hidden' id='thisurl' name='backurl'>
                         ");
@@ -56,21 +57,22 @@
                         }
                         foreach($result as $x => $a){ 
                             echo "
-                                <label> {$a["nombre"]}
-                                    <input type='radio' name='idProfesorMateria' value='{$a["id"]}' required>
+                                <label class='label-check'>
+                                    <input type='radio' name='searchtype' value='".$a["id"]."'>
+                                    ".$a["nombre"]."
                                 </label>
                             ";
                         }
 
                         echo('
-                                <button type="submit"> Continuar </button>
+                                <button type="submit" class="btn btn-violeta" style="text-align: center"> Continuar </button>
                             </form>
                         ');
 
                     }
                     else {
                         echo("
-                            <p>No se encontraron resultados</p>
+                            <p style='text-align: center'>No se encontraron resultados</p>
                         ");
                     }
             }

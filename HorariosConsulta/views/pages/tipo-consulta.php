@@ -21,7 +21,7 @@
         <input type="hidden" id="thisurl" name="backurl">
         <label  for="materia" class="check"> &nbsp
             <input type="radio" id="materia" name="searchtype" value="materia">
-            <span class="checkmark" id="chm"></span>
+            <span class="checkmarkk" id="chm"></span>
         </label>
         <label  for="profesor" class="check"> &nbsp
             <input type="radio" id="profesor" name="searchtype" value="profesor">

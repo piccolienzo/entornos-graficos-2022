@@ -63,16 +63,20 @@
                             $_SESSION["formulario_consulta"]["fechaEspecial"] = $fechaEspecial;
                         }
                     ?>
-                        <label class="subtitulo">Modalidad</label>
+                        <h4 class="subtitulo">Modalidad *</h4>
                         <div class="contenedor-botones">
-                            <input type="radio" name="esVirtual" value="1" class="btn" required>Virtual *
-                            <input type="radio" name="esVirtual" value="0" class="btn" required>Presencial *
+                            <label class='label-check'>    
+                                <input type="radio" name="esVirtual" value="1" required>Virtual
+                            </label>
+                            <label class='label-check'>
+                                <input type="radio" name="esVirtual" value="0" required>Presencial
+                            </label>
                         </div>
-                        <label class="subtitulo">Lugar o Link de consulta *</label>
+                        <h4 class="subtitulo">Lugar o Link de consulta *</h4>
                         <input type="text" class="input text-area" name="lugar" width="auto" required/>
                         <br>
-                        <label class="subtitulo">Cupo *</label>
-                        <input type="number" required name="cupo" width="auto" min="1"/>
+                        <h4 class="subtitulo">Cupo *</h4>
+                        <input type="number" class="num-area" required name="cupo" width="auto" min="1"/>
                         <div class="contenedor-botones-derecha">
                             <button type="submit" class="btn btn-violeta"> Confirmar <span class="icon-entrar"></span> </button>
                         </div>

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/css/global.css" /> 
-    <link rel="stylesheet" href="../../static/css/suspender-consulta.css" /> 
+    <link rel="stylesheet" href="../../static/css/tipo-consulta.css" /> 
     <title>Reprogramar consulta</title>
 </head>
 
@@ -19,54 +19,61 @@
     ?>
 
     <main class="container">
-
-        <form class="formulario" action="reprogramar-consulta-2.php" method="post">
+        <h1><?php echo($actionLabel); ?> Consulta</h1>
+        <h2 class="contador-pasos">(Paso 3 de 5)</h2>
+        <h3>Seleccione un día *</h3>
+                
+        <section class="card">
+            <form class="formulario" action="reprogramar-consulta-2.php" method="post">
             <input type='hidden' id='thisurl' name='backurl'>
-        <?php
-                if(isset($idProfesorMateria)) {
-                    echo("<input type='hidden' name='idProfesorMateria' value='{$idProfesorMateria}'/>");
-                    $_SESSION["formulario_consulta"]["idProfesorMateria"] = $idProfesorMateria;
-                }
-                else if(isset($_SESSION["formulario_consulta"]["idProfesorMateria"])) {
-                    echo("<input type='hidden' name='idProfesorMateria' value='{$_SESSION["formulario_consulta"]["idProfesorMateria"]}'/>");
-                }
-                if(isset($id)) {
-                    echo("<input type='hidden' name='id' value='{$id}'/>");
-                    $_SESSION["formulario_consulta"]["id"] = $id;
-                }
-                else if(isset($_SESSION["formulario_consulta"]["id"])) {
-                    echo("<input type='hidden' name='id' value='{$_SESSION["formulario_consulta"]["id"]}'/>");
-                }
-            ?>  
-            <h1><?php echo($actionLabel); ?> Consulta</h1>
-            <h2 class="contador-pasos">(Paso 3 de 5)</h2>
-            <h3>Seleccione un día *</h3>
-            
             <?php
-                $fieldName = 'dia';
-                if(isset($_SESSION['role'])) {
-                    if($_SESSION['role'] == 'profesor') {
-                        $fieldName = 'fechaEspecial';
+                    if(isset($idProfesorMateria)) {
+                        echo("<input type='hidden' name='idProfesorMateria' value='{$idProfesorMateria}'/>");
+                        $_SESSION["formulario_consulta"]["idProfesorMateria"] = $idProfesorMateria;
                     }
-                }
-                echo("
-                    <div class='contenedores-botones'>
-                        <input type='radio' name='".$fieldName."' required class='btn' value='LUNES'> Lunes </button>
-                        <input type='radio' name='".$fieldName."' required class='btn' value='MARTES'> Martes </button>
-                        <input type='radio' name='".$fieldName."' required class='btn' value='MIERCOLES'>Miércoles </button>
-                    </div>
-                    <div class='contenedores-botones'>
-                        <input type='radio' name='".$fieldName."' required class='btn' value='JUEVES'> Jueves </button>
-                        <input type='radio' name='".$fieldName."' required class='btn' value='VIERNES'> Viernes </button>
-                        <input type='radio' name='".$fieldName."' required class='btn' value='SABADO'> Sábado </button>
-                    </div>
-                ");
-            ?>
-            
-            <div class="contenedor-botones-derecha">
+                    else if(isset($_SESSION["formulario_consulta"]["idProfesorMateria"])) {
+                        echo("<input type='hidden' name='idProfesorMateria' value='{$_SESSION["formulario_consulta"]["idProfesorMateria"]}'/>");
+                    }
+                    if(isset($id)) {
+                        echo("<input type='hidden' name='id' value='{$id}'/>");
+                        $_SESSION["formulario_consulta"]["id"] = $id;
+                    }
+                    else if(isset($_SESSION["formulario_consulta"]["id"])) {
+                        echo("<input type='hidden' name='id' value='{$_SESSION["formulario_consulta"]["id"]}'/>");
+                    }
+
+                    $fieldName = 'dia';
+                    if(isset($_SESSION['role'])) {
+                        if($_SESSION['role'] == 'profesor') {
+                            $fieldName = 'fechaEspecial';
+                        }
+                    }
+                    echo("
+                            <label class='label-check'>
+                                <input type='radio' name='".$fieldName."' required value='LUNES'> Lunes
+                            </label>
+                            <label class='label-check'>
+                                <input type='radio' name='".$fieldName."' required value='MARTES'> Martes
+                            </label>
+                            <label class='label-check'>
+                                <input type='radio' name='".$fieldName."' required value='MIERCOLES'>Miércoles
+                            </label>
+                            <label class='label-check'>
+                                <input type='radio' name='".$fieldName."' required value='JUEVES'> Jueves
+                            </label>
+                            <label class='label-check'>
+                                <input type='radio' name='".$fieldName."' required value='VIERNES'> Viernes
+                            </label>
+                            <label class='label-check'>
+                                <input type='radio' name='".$fieldName."' required value='SABADO'> Sábado
+                            </label>
+                    ");
+                ?>
+                
                 <button type="submit" class="btn btn-violeta"> Confirmar <span class="icon-entrar"></span> </button>
-            </div>
-        </form>
+                
+            </form>
+        </section>
     </main>
 
     <?php
