@@ -1,6 +1,6 @@
 <header class="header  collapsible-menu">
     <button id="volver" class="btn btn-violeta"><span class="icon-volver"></span>Volver</button>
-    <img class="utnlogo" src="img/utn-logo.svg" alt="logo utn">
+    <img class="utnlogo" src="img/utn-logo.svg" alt="Logo de la universidad">
     <input type="checkbox" id="menu">
     <label for="menu"></label>
     <nav class="menu menu-content">
@@ -20,23 +20,26 @@
                         if( $role == "administrador"){
                             echo "
                             <li>
-                                <a>ADMINISTRADOR</a>
+                                ADMINISTRADOR
                             </li>
                             <li>
                                  <a href='{$sv}/index.php'>Inicio</a>
                             </li>
                             <li>
-                                <a href='{$sv}'>Consultas</a>
+                                <a href='{$sv}/controllers/consultations/consultations.php?admin=true'>Consultas</a>
                             </li>
                             <li>
-                                <a href='{$sv}/views/logout.php'>Logout</a>
+                                <a href='{$sv}/views/pages/listado-usuarios.php'>Usuarios</a>
+                            </li>
+                            <li>
+                                <a href='{$sv}/views/logout.php'>Cerrar sesión</a>
                             </li>
                         "; 
                         }
                         if( $role == 'alumno'){
                             echo "
                             <li>
-                            <a>ALUMNO</a>
+                                ALUMNO
                             </li>
                             <li>
                                 <a href='{$sv}/index.php'>Inicio</a>
@@ -45,26 +48,26 @@
                                 <a href='{$sv}/views/pages/tipo-consulta.php'>Consultas</a>
                             </li>
                             <li>
-                                <a href='http://'>Mis Consultas</a>
+                                <a href='{$sv}/views/pages/mis-consultas.php'>Mis Consultas</a>
                             </li>
                             <li>
-                            <a href='{$sv}/views/logout.php'>Logout</a>
+                            <a href='{$sv}/views/logout.php'>Cerrar sesión</a>
                             </li>
                         ";
                         }
                         if( $role == 'profesor'){
                             echo "
                             <li>
-                            <a>PROFESOR</a>
+                                PROFESOR
                             </li>
                             <li>
                             <a href='{$sv}/index.php'>Inicio</a>
                             </li>
                             <li>
-                                <a href='http://'>Consultas</a>
+                                <a href='{$sv}/controllers/consultations/consultations.php?teacher=true'>Consultas</a>
                             </li>
                             <li>
-                                <a href='{$sv}/views/logout.php'>Logout</a>
+                                <a href='{$sv}/views/logout.php'>Cerrar sesión</a>
                             </li>
                         ";
                         }                   
@@ -78,7 +81,7 @@
                                 <a href='{$sv}/views/pages/tipo-consulta.php'>Consultas</a>
                             </li>
                             <li>
-                            <a href='{$sv}/views/pages/login.php'>Login</a>
+                            <a href='{$sv}/views/pages/login.php'>Iniciar sesión</a>
                             </li>
                         ";
                     }
@@ -86,7 +89,27 @@
             </ul>
          
     </nav>
+
+    <script>
+        let backurl = "";
+
+        (function() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            backurl = urlParams.get('backurl');
+            if(backurl) {
+                document.querySelector("#volver").style.display = "block";
+                document.querySelector("#volver").addEventListener("click", back);      
+            }
+        })();
+
+        function back(){
+            window.location.href = atob(backurl);
+        }
+    </script>
+
 </header>
+
 <style>   
     /*#region Estilos */   
 .btn#volver span.icon-volver {

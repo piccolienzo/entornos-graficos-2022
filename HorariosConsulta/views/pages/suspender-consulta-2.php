@@ -12,7 +12,10 @@
     <body>
 
         <?php
-            require('../components/header.php')
+            require('../components/header.php');
+            include('../../controllers/getNextDay.inc');
+            extract($_GET);
+            $consultation = $_SESSION["resultado_consulta"][0];
         ?>
 
         <main class="container">
@@ -21,8 +24,18 @@
             </div>
             <h1>Suspender Consulta</h1>
             <section class="card">
-                <form class="formulario" action="../../controllers/consultations/suspend.php" method="post">
-                    <label class="subtitulo">Motivo de suspensión</label>
+                <?php
+                    $esVirtual = $consultation["esVirtual"] ?  "Virtual" : "Presencial";
+                    echo("<p>".$consultation["matNombre"].", ".getNextDay($consultation['dia'])['label'].", ".$esVirtual."</p>");
+                ?>
+                <form class="formulario" action="../../controllers/consultations/modify.php" method="post">
+                    <?php
+                        if(isset($id)) {
+                            echo("<input type='hidden' name='id' value='{$id}'/>");
+                            $_SESSION["formulario_consulta"]["id"] = $id;
+                        }
+                    ?>
+                    <label class="subtitulo">Motivo de suspensión *</label>
                     <br>
                     <select class="input" name="motivoSuspension" required>
                         <option value="Enfermedad">Enfermedad</option>
@@ -31,7 +44,7 @@
                         <option value="Otro">Otro</option>
                     </select>
                     <br>
-                    <label class="subtitulo">Comentarios</label>
+                    <label class="subtitulo">Comentarios *</label>
                     <br>
                     <input type="text" class="input text-area" name="comentarioSuspension" required/>
                     <div class="contenedor-botones-derecha">

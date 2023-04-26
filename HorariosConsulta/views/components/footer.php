@@ -1,17 +1,34 @@
+<?php
+    if($_SERVER['SERVER_NAME'] == "localhost"){
+            $sv ="http://localhost/horariosconsulta";
+    }
+    else{
+        $sv = "https://horariosconsulta.000webhostapp.com";
+    }
+?>
+
 <footer class="footer">
     <div>
-        <p class="footer-title">Quienes somos</p>
-        <p class="footer-descripcion">texto de ejemplo</p>
-
-        <a href="http://">Mapa del sitio</a>
+        <p class="footer-title">Universidad Tecnológica Nacional</p>
+        <p class="footer-descripcion">Facultad Regional Rosario</p>
+        
+        <p class="footer-descripcion">
+            <a href="<?php echo($sv) ?>/views/pages/mapa-sitio.php">Mapa del sitio</a>
+        </p>
     </div>
 
     <div>
-        <p class="footer-title">Contacto</p>
+        <p class="footer-title">
+            <a href="<?php echo($sv) ?>/views/pages/contacto.php">Contacto</a>
+        </p>
         <p class="footer-descripcion">
-            Universidad Tecnológica Nacional
-            -ZEBALLOS 1341 - S2000BQA -ROSARIO
-            EMAIL: mail@mail.com TEL:0341 11 11 1111
+            ZEBALLOS 1341 - S2000BQA -ROSARIO
+        </p>
+        <p class="footer-descripcion">
+            EMAIL: contacto@frro.utn.edu.ar
+        </p>
+        <p class="footer-descripcion">
+            TEL: 0341 4481871
         </p>
     </div>
 </footer>
@@ -30,7 +47,7 @@
     }
 
     .footer div{
-        width: 15%;
+        width: 20%;
         margin:0 15px 0 15px;
         color: var(--violeta);
     }

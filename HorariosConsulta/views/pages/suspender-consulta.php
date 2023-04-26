@@ -12,7 +12,10 @@
     <body>
 
         <?php
-            require('../components/header.php')
+            require('../components/header.php');
+            include('../../controllers/getNextDay.inc');
+            extract($_GET);
+            $consultation = $_SESSION["resultado_consulta"][0];
         ?>
 
         <main class="container">
@@ -22,24 +25,32 @@
             <h1>Suspender Consulta</h1>
             <section class="card">
                 <?php
-                    //Acá se obtiene la consulta que se haya seleccionado del listado
-                    $consulta = array(
-                        'materia' => "fisica",
-                        'fecha' => '13 de abril',
-                        'esVirtual' => 1
-                    );
-                    $esVirtual = $consulta["esVirtual"] ?  "Virtual" : "Presencial";
-                    echo("<p>".$consulta["materia"].", ".$consulta["fecha"].", ".$esVirtual."</p>");
+                    $esVirtual = $consultation["esVirtual"] ?  "Virtual" : "Presencial";
+                    echo("<p>".$consultation["matNombre"].", ".getNextDay($consultation['dia'])['label'].", ".$esVirtual."</p>");
                 ?>
                 <form class="formulario" action="../../controllers/consultations/pre-suspend.php" method="post">
                     <h2>¿Desea reprogramar esta consulta para una fecha especial?</h2>
                     <div class="contenedor-botones">
-                        <input type="submit" class="btn btn-rojo" name="boton" value="No" id="boton-no"></button>
-                        <input type="submit" class="btn btn-verde" name="boton" value="Si" id="boton-si"></button>
+                        <?php
+                            echo("
+                                <input type='button' class='btn btn-rojo' name='boton' value='No' id='boton-no' onclick='suspender({$id})'></button>
+                                <input type='button' class='btn btn-verde' name='boton' value='Si' id='boton-si' onclick='editar({$id})'></button>
+                            ")
+                        ?>
                     </div>
                 </form>
             </section>
         </main>
+
+        <script>
+            function suspender(id) {
+                window.location.href = "suspender-consulta-2.php?id=" + id;
+            }
+
+            function editar(id) {
+                window.location.href = "reagendar-consulta.php?id=" + id;
+            }
+        </script>
 
         <?php
             require('../components/footer.php')
