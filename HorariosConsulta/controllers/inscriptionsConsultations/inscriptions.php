@@ -8,7 +8,7 @@
         select nombre, apellido, email from inscripciones_consultas ic
         inner join usuarios u on u.id = ic.idAlumno
     ";
-    $query .= " where ".$field." = ".$id;
+    $query .= " where fechaHora > NOW() AND fechaHora <= DATE_ADD(NOW(), INTERVAL 7 DAY) and ".$field." = ".$id;
 
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 

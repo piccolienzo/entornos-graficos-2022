@@ -114,7 +114,7 @@
                         if(!$edit) {
                             echo("
                                 <label for='rol'> Rol *</label>
-                                <select class='input-white' id='rol' name='rol' required>
+                                <select class='input-white' style='margin-bottom: 10px' id='rol' name='rol' required>
                                     <option value='alumnos'>Alumno</option>
                                     <option value='profesores'>Profesor</option>
                                     <option value='administradores'>Administrador</option>
@@ -123,7 +123,7 @@
                         }
                     ?>
                     
-                    <button type="submit" class="btn btn-violeta">
+                    <button type="submit" class="btn btn-violeta" style="margin-bottom: 10px">
                         <?php
                             echo($edit ? 'Editar' : 'Crear')
                         ?>

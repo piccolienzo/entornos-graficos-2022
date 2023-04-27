@@ -34,5 +34,5 @@
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
     mysqli_close($link);
-    header("Location: ../../views/pages/mensaje.php");
+    header("Location: ../../views/pages/listado-consultas-profesor.php?success=1");
 ?>

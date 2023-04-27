@@ -308,6 +308,9 @@ body {
 .btn-largo {
 	width: 280px;
 }
+.btn-largo-medio {
+	width: 220px;
+}
 .btn-listado {
 	height: 35px;
 	width: 90px;

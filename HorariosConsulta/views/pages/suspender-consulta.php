@@ -19,9 +19,6 @@
         ?>
 
         <main class="container">
-            <div class="contenedor-volver">
-                <button class="btn btn-violeta show"><span class="icon-volver"></span>Volver</button>
-            </div>
             <h1>Suspender Consulta</h1>
             <section class="card">
                 <?php
@@ -33,8 +30,8 @@
                     <div class="contenedor-botones">
                         <?php
                             echo("
-                                <input type='button' class='btn btn-rojo' name='boton' value='No' id='boton-no' onclick='suspender({$id})'></button>
-                                <input type='button' class='btn btn-verde' name='boton' value='Si' id='boton-si' onclick='editar({$id})'></button>
+                                <input type='button' class='btn btn-rojo' style='text-align: center; margin: 5px' name='boton' value='No' id='boton-no' onclick='suspender({$id})'></button>
+                                <input type='button' class='btn' style='text-align: center; margin: 5px' name='boton' value='Si' id='boton-si' onclick='editar({$id})'></button>
                             ")
                         ?>
                     </div>

@@ -25,13 +25,13 @@
                     <button type="button" id="btnPrint" class="btn-print" title="Imprimir comprobante" onclick="imprimir()">
                         <span class="print"></span>
                     </button>
-                    <button type='button' class='btn btn-violeta btn-largo' onclick="nuevaConsulta()">Nueva consulta</button>
+                    <button type='button' class='btn btn-violeta btn-largo-medio' style="text-align: center" onclick="nuevaConsulta()">Nueva consulta</button>
                     <input type="text" id="nombre" name="search" placeholder="Buscar por profesor" style="margin-left: 20px"/>
-                    <button class='btn btn-violeta' type="submit">Buscar</button>
+                    <button class='btn btn-violeta' type="submit" style="text-align: center">Buscar</button>
                 </div>
 
                 <div style="padding: 4px">
-                    <b> Agrupar por </b>
+                    <!-- <b> Agrupar por </b>
                     <label for="profesor" class="check" style="margin-left: 10px">
                         <input type="radio" id="profesor" name="searchtype" value="profesor" checked>
                         Profesor
@@ -40,9 +40,9 @@
                         <input type="radio" id="materia" name="searchtype" value="materia">
                         Materia
                     </label>
-                    <input type="radio" id="profesor" name="admin" value="true" checked style="display: none">
+                    <input type="radio" id="profesor" name="admin" value="true" checked style="display: none"> -->
 
-                    <label for="fecha" style="margin-left: 20px"> Fecha </label>
+                    <label for="fecha" style="margin-left: 20px"><b> Fecha </b></label>
                     <input type="date" id="fecha" name="date">
                 </div>
             </form>

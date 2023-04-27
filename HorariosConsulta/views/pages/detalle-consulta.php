@@ -70,15 +70,15 @@
                                 if( $role == 'administrador' ) {
                                     echo("
                                         <div class='contenedor-centro'>
-                                            <button class='btn btn-rojo' onclick='suspender({$a['id']},{$a['cancelado']})'>{$cancelAction}</button>
-                                            <button class='btn btn-azul' onclick='editar({$a['id']})'>Modificar</button>
+                                            <button class='btn btn-rojo' style='text-align: center' onclick='suspender({$a['id']},{$a['cancelado']})'>{$cancelAction}</button>
+                                            <button class='btn btn-azul' style='text-align: center' onclick='editar({$a['id']})'>Modificar</button>
                                         </div>
                                     ");
                                 }
                                 else if( $role == 'profesor' ) {
                                     echo("
                                         <div class='derecha'>
-                                            <button class='btn btn-rojo' onclick='suspenderComoProfesor({$a['id']},{$a['cancelado']})'>{$cancelAction}</button>
+                                            <button class='btn btn-rojo' style='text-align: center' onclick='suspenderComoProfesor({$a['id']},{$a['cancelado']})'>{$cancelAction}</button>
                                         </div>
                                     ");
 
@@ -112,7 +112,7 @@
                                     }
                                     else {
                                         echo("
-                                        <p>No hay inscriptos en tu cosulta</p>
+                                        <p><u>No hay inscriptos en tu próxima cosulta</u></p>
                                         ");
                                     }
                                 }
@@ -131,12 +131,12 @@
 
             function imprimir() {
                 let divContents = document.getElementById("datosAImprimir").innerHTML;
-                let divContents2 = document.getElementById("datosAImprimir2").innerHTML;
+                let divContents2 = document.getElementById("datosAImprimir2")?.innerHTML;
                 let printWindow = window.open('', '_blank', 'fullscreen="yes"');
-                printWindow.document.write('<html><head><title>Comprobante</title>');
-                printWindow.document.write('</head><body > <h1>Comprobante de inscripcion a consulta</h1>');
+                printWindow.document.write('<html><head><title>Consulta</title>');
+                printWindow.document.write('</head><body > <h1>Detalle de consulta</h1>');
                 printWindow.document.write(divContents);
-                printWindow.document.write(divContents2);
+                if(divContents2) printWindow.document.write(divContents2);
                 printWindow.document.write('</body></html>');
                 printWindow.document.close();
                 printWindow.print();

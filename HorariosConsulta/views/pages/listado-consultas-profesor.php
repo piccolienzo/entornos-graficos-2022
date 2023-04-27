@@ -14,6 +14,21 @@
             crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <title>Consultas</title>
+    <?php   
+        $alertText;
+        if( isset($_GET['success']) ) {
+            $alertText = "Consulta modificada con éxito";
+        }
+        if( isset($alertText) ) {
+            echo("
+                <script type='text/javascript'>
+                    window.onload = function() {
+                        alert('".$alertText."')
+                    };
+                </script>
+            ");
+        }
+    ?>
 </head>
 
 <body>
