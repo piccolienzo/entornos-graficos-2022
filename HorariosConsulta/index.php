@@ -44,12 +44,14 @@
         if(!isset($_SESSION["usuario"])) {
             array_push(
                 $links,
-                array("text" => "Ingrese con su cuenta", "href" => "./views/pages/login.php")
+                array("text" => "Iniciar sesión", "href" => "./views/pages/login.php")
             );
         }
 
         echo '
             <img src="./static/images/UTN-Rosario.jpg" alt="Imagen ilustrativa de la universidad" class="img-index">
+            
+            <h3>Secciones del sitio web</h3>
             <ul>';
 
         foreach($links as $item) {

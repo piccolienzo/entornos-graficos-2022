@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="font/fonts.css" /> 
         <link rel="stylesheet" href="styles/global.css" />
-        <link rel="stylesheet" href="styles/login.css" /> 
+        <link rel="stylesheet" href="styles/listado-consultas.css" />
         <title>Detalle de consulta</title>
     </head>
 
@@ -43,11 +43,12 @@
             <h1>Detalle Consultas</h1>
             
             <section class="card">
-                <div class="contenedor-imprimir">
+                <div class='derecha'>
                     <button type="button" id="btnPrint" class="btn-print" title="Imprimir comprobante" onclick="imprimir()">
-                        <span class="print"></span>
-                    </button>
+                    <span class="print"></span>
                 </div>
+                </button>
+
                 <?php
                     if(isset($_SESSION["resultado_consulta"])){
                         $consultations = $_SESSION["resultado_consulta"];
@@ -56,13 +57,13 @@
                                 $cancelAction = $a['cancelado'] ? 'Habilitar' : 'Suspender';
                                 $modalidad = $a["esVirtual"] ? "Virtual" : "Presencial";
                                 echo("
-                                    <div id='datosAImprimir' class='detalle-consulta'>
-                                        <p><b>Día: ".$a["dia"]."</b></p>
-                                        <p><b>Hora: ".substr($a["horaInicio"], 0, -3)." - ".substr($a["horaFin"], 0, -3)."</b></p>
-                                        <p><b>Materia: ".$a["matNombre"]."</b></p>
-                                        <p><b>Modalidad: ".$modalidad."</b></p>
-                                        <p><b>Lugar: ".$a["lugar"]."</b></p>
-                                        <p><b>Profesor: ".$a["profNombre"]." ".$a["profApellido"]."</b></p>
+                                    <div class='detalle-consulta' id='datosAImprimir'>
+                                        <p>Día:<b> ".$a["dia"]."</b></p>
+                                        <p>Hora:<b> ".substr($a["horaInicio"], 0, -3)." - ".substr($a["horaFin"], 0, -3)."</b></p>
+                                        <p>Materia:<b> ".$a["matNombre"]."</b></p>
+                                        <p>Modalidad:<b> ".$modalidad."</b></p>
+                                        <p>Lugar:<b> ".$a["lugar"]."</b></p>
+                                        <p>Profesor:<b> ".$a["profNombre"]." ".$a["profApellido"]."</b></p>
                                     </div>
                                     
                                     ");
@@ -76,7 +77,9 @@
                                 }
                                 else if( $role == 'profesor' ) {
                                     echo("
-                                        <button onclick='suspenderComoProfesor({$a['id']},{$a['cancelado']})'>{$cancelAction}</button>
+                                        <div class='derecha'>
+                                            <button class='btn btn-rojo' onclick='suspenderComoProfesor({$a['id']},{$a['cancelado']})'>{$cancelAction}</button>
+                                        </div>
                                     ");
 
                                     $typeSearch = 'consultas';
@@ -84,7 +87,7 @@
                                     require('../../controllers/inscriptionsConsultations/inscriptions.php');
                                     if(count($array)) { 
                                         echo("
-                                            <table>
+                                            <table id='datosAImprimir2'>
                                                 <thead>
                                                     <tr>
                                                         <th>Listado de alumnos</th>
@@ -94,10 +97,12 @@
 
                                         foreach($array as $x => $a){ 
                                             echo("
-                                                    <tr>
-                                                        <td>{$a["nombre"]} {$a["apellido"]}</td>
-                                                        <td>{$a["email"]}</td>
-                                                    </tr> 
+                                                    <tbody class='tb'>
+                                                        <tr>
+                                                            <td>{$a["nombre"]} {$a["apellido"]}</td>
+                                                            <td>{$a["email"]}</td>
+                                                        </tr> 
+                                                    </tbody>
                                             ");
                                         }
 
@@ -126,10 +131,12 @@
 
             function imprimir() {
                 let divContents = document.getElementById("datosAImprimir").innerHTML;
+                let divContents2 = document.getElementById("datosAImprimir2").innerHTML;
                 let printWindow = window.open('', '_blank', 'fullscreen="yes"');
                 printWindow.document.write('<html><head><title>Comprobante</title>');
                 printWindow.document.write('</head><body > <h1>Comprobante de inscripcion a consulta</h1>');
                 printWindow.document.write(divContents);
+                printWindow.document.write(divContents2);
                 printWindow.document.write('</body></html>');
                 printWindow.document.close();
                 printWindow.print();

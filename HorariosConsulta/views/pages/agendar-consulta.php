@@ -45,7 +45,7 @@
 
     }
     $modalidad = $consultas[$consulta]["esVirtual"]?"Virtual":"Presencial";
-    echo "<ul class='infoconsulta'>
+    echo "<ul>
         <li><b>Profesor: </b>{$consultas[$consulta]['profNombre']}</li>
         <li><b>Modalidad: </b> {$modalidad}</li>
         <li><b>Materia: </b>{$consultas[$consulta]['matNombre']}</li>
@@ -64,7 +64,7 @@
     <!-- Calendario -->
     <div id="d" ></div>
 
-    <input type="submit" class="btn btn-violeta" value="Confirmar" />
+    <input type="submit" class="btn btn-violeta" style="margin-top: 10px" value="Confirmar" />
    </form>
  
 </section>

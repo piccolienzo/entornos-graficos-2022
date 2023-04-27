@@ -47,7 +47,9 @@
                 $agendarConsulta = $isStudent
                     ? "
                         <div style='margin: 7px; text-align: right'>
-                            <button class='btn btn-violeta' onclick='agendarConsulta({$a['id']})'>Agendar</button>
+                            <button class='btn btn-violeta' style='width: 127px;' onclick='agendarConsulta({$a['id']})'>
+                                Agendar <span class='icon-entrar'></span>
+                            </button>
                         </div>
                     "
                     : "";
@@ -57,7 +59,7 @@
                         <td>{$a["profNombre"]}</td>
                         <td>{$a["matNombre"]}</td>
                         <td>
-                            <button class='btn btn-detalles' onclick='verDetalles({$a['id']})' >Ver detalles</button>
+                            <button class='btn btn-listado' onclick='verDetalles({$a['id']})' >Ver detalles</button>
                         </td>                       
                     </tr> 
                 <tbody>  

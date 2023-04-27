@@ -54,7 +54,7 @@
             </form>
             
 
-            <p>¿Olvidaste tu contraseña? <a href="recuperar-clave.php" rel="noopener noreferrer">Click acá</a></p>
+            <p>¿Olvidaste tu contraseña? <a href="recuperar-clave.php" rel="noopener noreferrer">Haz click aquí</a></p>
             </section>
 
         </main>

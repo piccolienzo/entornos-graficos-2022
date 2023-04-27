@@ -22,13 +22,14 @@
                     array_push(
                         $links,
                         array("text" => "Buscador de consultas", "href" => "tipo-consulta.php"),
+                        array("text" => "Listado de consultas", "href" => "listado-consultas.php"),
                         array("text" => "Mis inscripciones a consultas", "href" => "listado-consultas.php")
                     );
                 }
                 else if( $role == "profesor"){
                     array_push(
                         $links,
-                        array("text" => "Mis consultas", "href" => "listado-consultas.php")
+                        array("text" => "Mis consultas", "href" => "mis-consultas.php")
                     );
                 }
                 else if( $role == "administrador"){

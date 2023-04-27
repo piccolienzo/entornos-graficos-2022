@@ -41,7 +41,6 @@
 
         <main class="container">
 
-            <section class="login">
             <h1>Contacto</h1>
             <form class="formulario" action="../../controllers/contact/contact.php" method="post">
                 <label for="correo"> Correo electrónico *</label>

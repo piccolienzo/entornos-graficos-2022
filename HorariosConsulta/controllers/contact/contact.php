@@ -1,5 +1,6 @@
 <?php
     extract($_POST);
+    require ('../../core/mailer.php');
 
     if(isset($correo, $asunto, $mensaje)) {
         
@@ -11,8 +12,8 @@
 
             $destinatario = "alejocuello.w@gmail.com"; //Acá iría el mail de la facultad que reciba las consultas
         
-            mail($destinatario, $correo, $mensaje);
-    
+            sendEmail($destinatario, $nombreApellido, $mailBody, 1);
+
             header("Location: ../../views/pages/contacto.php?success=true");
         }
         else {

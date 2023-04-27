@@ -27,11 +27,11 @@
     }
     if(isset($_SESSION['role'])) {
         if( $_SESSION['role'] == "profesor") {
-            $extraWhere = "where u.id = ".$_SESSION["usuario"]["id"];
+            $extraWhere = " and u.id = ".$_SESSION["usuario"]["id"];
             $query.= $extraWhere;
         }
         else if( $_SESSION['role'] == "alumno") {
-            $extraWhere = "where c.cancelado = 0";
+            $extraWhere = " and c.cancelado = 0";
             $query.= $extraWhere;
         }
     }

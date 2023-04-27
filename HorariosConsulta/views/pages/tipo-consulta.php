@@ -20,11 +20,11 @@
     <form action="../../controllers/consultations/consultations.php" method="GET">
         <input type="hidden" id="thisurl" name="backurl">
         <label  for="materia" class="check"> &nbsp
-            <input type="radio" id="materia" name="searchtype" value="materia">
-            <span class="checkmarkk" id="chm"></span>
+            <input type="radio" id="materia" name="searchtype" value="materia" required>
+            <span class="checkmark" id="chm"></span>
         </label>
         <label  for="profesor" class="check"> &nbsp
-            <input type="radio" id="profesor" name="searchtype" value="profesor">
+            <input type="radio" id="profesor" name="searchtype" value="profesor" required>
             <span class="checkmark" id="chp"></span>
         </label>
         
@@ -69,7 +69,9 @@
             document.querySelector("#volver").addEventListener("click", back);
             document.querySelector("#volver").style.display = "block";
         }
-
+        else {
+            alert("Seleccione una opción para poder continuar");
+        }
         
     }
 
