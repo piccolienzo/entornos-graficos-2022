@@ -1,5 +1,6 @@
 <?php
     include('../connection.inc');
+    require ('../../core/mailer.php');
     extract($_POST);
     session_start();
 
@@ -32,6 +33,19 @@
     $query .= " where id =".$id;
 
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
+
+    if($comentarioSuspension || $horaInicioEspecial) {
+        $query = "select u.email, u.nombre, u.apellido from inscripciones_consultas ic inner join consultas c on c.id = ic.idConsulta inner join usuarios u on u.id = ic.idAlumno where c.id = ".$id;
+        $result = mysqli_query($link, $query) or die(mysqli_error($link));
+        $mailBody = $comentarioSuspension
+            ? "Se ha suspendido una consulta para la cual estabas inscripto. Ingrese al sitio web de consultas para obtener más información"
+            : "Se ha modificado una consulta para la cual estabas inscripto. Ingrese al sitio web de consultas para obtener más información";
+        foreach($result as $x => $user){
+            $mailAddress = $user["email"];
+            $nombreApellido = $user["nombre"]." ".$user["apellido"];
+            sendEmail($mailAddress, $nombreApellido, $mailBody,0);
+        }
+    }
 
     mysqli_close($link);
     header("Location: ../../views/pages/listado-consultas-profesor.php?success=1");

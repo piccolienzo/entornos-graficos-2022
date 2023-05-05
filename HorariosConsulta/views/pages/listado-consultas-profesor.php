@@ -39,7 +39,7 @@
 
 <main class="container">
     <h1>Mis consultas</h1>
-<section class="card">
+<section class="card" id="card">
 
 <?php
     if(isset($_SESSION["resultados_consulta"])){
@@ -49,9 +49,24 @@
             include('../../controllers/sortByDate.inc');
             usort($result, 'sortByDate');
 
+            $nrosDias = array();
+
+            function getNroDia($dia){
+                if($dia == "LUNES") return 1;
+                if($dia == "MARTES") return 2;
+                if($dia == "MIÉRCOLES") return 3;
+                if($dia == "JUEVES") return 4;
+                if($dia == "VIERNES") return 5;
+                if($dia == "SÁBADO") return 6;
+            }
+
+            foreach($result as $x => $a){ 
+                array_push($nrosDias, getNroDia($a["dia"]));
+            }
+
             $firstConsultation = array_shift($result);
             $modalidad = $firstConsultation['esVirtual']?'Virtual':'Presencial';
-            
+
             echo ("
                 <div>
                     <p> <b> Visualizar consultas: </b> </p>
@@ -86,6 +101,7 @@
                         </tr>
                     </thead>
                 ");
+
                 foreach($result as $x => $a){ 
 
                     $modalidad = $a['esVirtual']?'Virtual':'Presencial';
@@ -134,8 +150,9 @@
 
     radios.forEach(radio => {
     radio.addEventListener('change', (event) => {
-            document.getElementById("t").style.display = (event.target.value == 'calendario') ? "none" : "table";
-            document.getElementById("d").style.display = (event.target.value == 'calendario') ? "flex" : "none";
+        document.getElementById("t").style.display = (event.target.value == 'calendario') ? "none" : "table";
+        document.getElementById("d").style.display = (event.target.value == 'calendario') ? "flex" : "none";
+        document.getElementById("card").style.height = (event.target.value == 'calendario') ? "600px" : "auto";
     });
     });
 
@@ -146,17 +163,18 @@
                     return date;
                 }
                 var dateToday = new Date(); 
-                var diaHabilitado = $("#dia").val();
-                dateToday = dateToday.addDays(diaHabilitado - dateToday.getDay())
+
+                var diaHabilitado = <?php echo json_encode($nrosDias); ?>
+
                 $( "#d" ).datepicker({
                     minDate: dateToday,
                     beforeShowDay: function(day) {
                     var day = day.getDay();
-                    if ([1,2,3,4,5,6].includes(day)) {
-                        return [true, "puedeHabilitar"];
-                    } else {
-                        return [false,""];
-                    }
+                        if (!diaHabilitado.includes(day)) {
+                            return [false,""]
+                        } else {
+                            return [true, "puedeHabilitar"]
+                        }
                     }
                 });
             });
