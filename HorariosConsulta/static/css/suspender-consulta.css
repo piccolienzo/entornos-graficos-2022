@@ -54,3 +54,11 @@ p{
     align-content: center !important;
     align-items: center !important;
 }
+
+.btn.btn-violeta {
+	width: 140px;
+	height: 40px;
+	align-self: flex-end;
+	margin-right: 30px;
+    margin-bottom: 30px;
+}

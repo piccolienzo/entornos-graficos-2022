@@ -70,7 +70,7 @@
                     ");
                 ?>
                 
-                <button type="submit" class="btn btn-violeta"> Confirmar <span class="icon-entrar"></span> </button>
+                <button type="submit" class="btn btn-violeta"> Continuar <span class="icon-entrar"></span> </button>
                 
             </form>
         </section>

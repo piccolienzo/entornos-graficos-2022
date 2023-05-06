@@ -58,7 +58,6 @@
                         }
 
                         if(isset($fechaEspecial)) {
-                            echo($fechaEspecial);
                             echo("<input type='hidden' name='fechaEspecial' value='{$fechaEspecial}'/>");
                             $_SESSION["formulario_consulta"]["fechaEspecial"] = $fechaEspecial;
                         }

@@ -20,6 +20,7 @@
 
         <main class="container">
             <h1>Suspender Consulta</h1>
+            <h2 class="contador-pasos">(Paso 1)</h2>
             <section class="card">
                 <?php
                     $esVirtual = $consultation["esVirtual"] ?  "Virtual" : "Presencial";

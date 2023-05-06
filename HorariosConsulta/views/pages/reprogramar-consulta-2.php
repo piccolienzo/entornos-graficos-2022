@@ -19,7 +19,14 @@
 
     <main class="container">
         <h1><?php echo($actionLabel); ?> Consulta</h1>
-        <h2 class="contador-pasos">(Paso 4 de 5)</h2>
+        <?php
+            if(isset($fechaEspecial)) {
+                echo'<h2 class="contador-pasos">(Paso 4 de 5)</h2>';
+            }
+            else {
+                echo'<h2 class="contador-pasos">(Paso 3 de 4)</h2>';
+            }
+        ?>
         <h3>Seleccione turno y horario *</h3>
         <section class="card">
             <form class="formulario" id="formulario" action="modificar-consulta.php" method="POST">
@@ -54,8 +61,8 @@
                         $_SESSION["formulario_consulta"]["id"] = $id;
 
                     }
-                    else if(isset($_SESSION["formulario_consulta"]["dia"])) {
-                        echo("<input type='hidden' name='id' value='{$_SESSION["formulario_consulta"]["dia"]}'/>");
+                    else if(isset($_SESSION["formulario_consulta"]["id"])) {
+                        echo("<input type='hidden' name='id' value='{$_SESSION["formulario_consulta"]["id"]}'/>");
                     }
 
                 ?>              
@@ -126,7 +133,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-violeta"> Confirmar <span class="icon-entrar"></span> </button>
+                <button type="submit" class="btn btn-violeta" style="float: right"> Continuar <span class="icon-entrar"></span> </button>
             </form>
         </section>
     </main>

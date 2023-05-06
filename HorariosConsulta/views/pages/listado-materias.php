@@ -58,14 +58,14 @@
                         foreach($result as $x => $a){ 
                             echo "
                                 <label class='label-check'>
-                                    <input type='radio' name='searchtype' value='".$a["id"]."'>
+                                    <input type='radio' name='searchtype' value='".$a["id"]."' required>
                                     ".$a["nombre"]."
                                 </label>
                             ";
                         }
 
                         echo('
-                                <button type="submit" class="btn btn-violeta" style="text-align: center"> Continuar </button>
+                                <button type="submit" class="btn btn-violeta" style="text-align: center"> Continuar <span class="icon-entrar"> </button>
                             </form>
                         ');
 

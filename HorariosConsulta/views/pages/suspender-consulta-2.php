@@ -20,6 +20,7 @@
 
         <main class="container">
             <h1>Suspender Consulta</h1>
+            <h2 class="contador-pasos">(Paso 2 de 2)</h2>
             <section class="card">
                 <?php
                     $esVirtual = $consultation["esVirtual"] ?  "Virtual" : "Presencial";
@@ -45,7 +46,7 @@
                     <br>
                     <input type="text" class="input text-area" name="comentarioSuspension" style='margin: 15px;' required/>
                     <div class="contenedor-botones-derecha">
-                        <button type="submit" class="btn btn-violeta"> Confirmar </button>
+                        <button type="submit" class="btn btn-violeta"> Confirmar <span class="icon-entrar"></span></button>
                     </div>
                 </form>
             </section>
