@@ -21,10 +21,10 @@
         <h1><?php echo($actionLabel); ?> Consulta</h1>
         <?php
             if(isset($fechaEspecial)) {
-                echo'<h2 class="contador-pasos">(Paso 4 de 5)</h2>';
+                echo'<h2 class="contador-pasos">(Paso 3 de 4)</h2>';
             }
             else {
-                echo'<h2 class="contador-pasos">(Paso 3 de 4)</h2>';
+                echo'<h2 class="contador-pasos">(Paso 4 de 5)</h2>';
             }
         ?>
         <h3>Seleccione turno y horario *</h3>

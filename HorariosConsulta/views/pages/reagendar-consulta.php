@@ -34,8 +34,9 @@
                 <form action="reprogramar-consulta-2.php" method="POST">
                 <h3>Seleccione una Fecha *</h3>
                 <?php 
-                    $id = base64_decode($_GET["id"]);
+                    $id = $_GET["id"];
                     echo "<input type='hidden' name='id' value='{$id}'>";
+                    echo "<input type='hidden' name='fechaEspecial' id='fechaEspecial' value=''>";
 
                     function getNroDia($dia){
                         if($dia == "LUNES") return 1;

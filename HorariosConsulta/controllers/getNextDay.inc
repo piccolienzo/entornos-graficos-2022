@@ -24,11 +24,9 @@
             $label = "+".$i." days";
             $dayNumber = date('w', strtotime($todayDate. $label));
             $currentDayLabel = $weekdays[$dayNumber];
-            if($currentDayLabel == $dayLabel) {
                 $getDay = true;
                 $dateNumberDay = date('d', strtotime($todayDate. $label));
                 $dateNumberMonth = date('m', strtotime($todayDate. $label));
-            }
             $i++;
         }
 

@@ -42,12 +42,13 @@
                         echo("<input type='hidden' name='id' value='{$_SESSION["formulario_consulta"]["id"]}'/>");
                     }
 
-                    $fieldName = 'dia';
-                    if(isset($_SESSION['role'])) {
-                        if($_SESSION['role'] == 'profesor') {
-                            $fieldName = 'fechaEspecial';
-                        }
+                    if(isset($fechaEspecial)) {
+                        echo("<input type='hidden' name='fechaEspecial' value='{$fechaEspecial}'/>");
+                        $_SESSION["formulario_consulta"]["fechaEspecial"] = $fechaEspecial;
                     }
+
+                    $fieldName = 'dia';
+                    
                     echo("
                             <label class='label-check'>
                                 <input type='radio' name='".$fieldName."' required value='LUNES'> Lunes
