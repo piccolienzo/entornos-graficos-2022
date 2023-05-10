@@ -39,11 +39,12 @@
                     <label for="materia" class="check">
                         <input type="radio" id="materia" name="searchtype" value="materia">
                         Materia
-                    </label>
-                    <input type="radio" id="profesor" name="admin" value="true" checked style="display: none"> -->
+                    </label> -->
+                    <input type="radio" id="profesor" name="searchtype" value="profesor" checked style="display: none">
+                    <input type="radio" id="profesor" name="admin" value="true" checked style="display: none">
 
-                    <label for="fecha" style="margin-left: 20px"><b> Fecha </b></label>
-                    <input type="date" id="fecha" name="date">
+                    <!-- <label for="fecha" style="margin-left: 20px"><b> Fecha </b></label>
+                    <input type="date" id="fecha" name="date"> -->
                 </div>
             </form>
 
@@ -56,7 +57,7 @@
                             usort($result, 'sortByDate');
                             
                             echo ("
-                                <table>
+                                <table id='datosAImprimir'>
                             ");
                         
                             foreach($result as $x => $a){ 
@@ -107,6 +108,28 @@
             function nuevaConsulta() {
                 window.location.href = "../../controllers/teachers/teachers.php?nextPage=listado-profesores.php?backurl=" + currentUrl;
             }
+
+            function imprimir() {
+
+                var botones = document.getElementsByClassName('btn-listado');
+
+                for (var i = 0; i < botones.length; i++) {
+                    botones[i].style.display = 'none';
+                }
+
+                let divContents = document.getElementById("datosAImprimir").innerHTML;
+                let printWindow = window.open('', '_blank', 'fullscreen="yes"');
+                printWindow.document.write('<html><head><title>Usuarios</title>');
+                printWindow.document.write('</head><body > <h1>Listado de usuarios</h1>');
+                printWindow.document.write(divContents);
+                printWindow.document.write('</body></html>');
+                printWindow.document.close();
+                printWindow.print();
+
+                for (var i = 0; i < botones.length; i++) {
+                    botones[i].style.display = 'block';
+                }
+            };
             
         </script>
     </body>

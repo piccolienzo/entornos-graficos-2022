@@ -64,7 +64,13 @@
                                         <p>Modalidad:<b> ".$modalidad."</b></p>
                                         <p>Lugar:<b> ".$a["lugar"]."</b></p>
                                         <p>Profesor:<b> ".$a["profNombre"]." ".$a["profApellido"]."</b></p>
-                                    </div>
+                                ");
+                                    
+                                if(isset($a['fechaEspecial']) && $a['fechaEspecial'] > date("Y-m-d") ){
+                                    echo "<p style='margin: 7px'>  <b style='color:red'>Fecha especial:</b> {$a['fechaEspecial']}, de ".substr($a['horaInicioEspecial'],0,-3)." a ".substr($a['horaFinEspecial'],0,-3)."</p>";
+                                }
+                                        
+                                echo("</div>
                                     
                                     ");
                                 if( $role == 'administrador' ) {
@@ -76,11 +82,20 @@
                                     ");
                                 }
                                 else if( $role == 'profesor' ) {
-                                    echo("
-                                        <div class='derecha'>
-                                            <button class='btn btn-rojo' style='text-align: center' onclick='suspenderComoProfesor({$a['id']},{$a['cancelado']})'>{$cancelAction}</button>
-                                        </div>
-                                    ");
+                                    if ( isset($a['fechaEspecial']) ) {
+                                        echo("
+                                            <div class='derecha'>
+                                                <button class='btn btn-rojo' style='text-align: center' onclick='quitarSuspension({$a['id']})'>Habilitar</button>
+                                            </div>
+                                        ");
+                                    }
+                                    else {
+                                        echo("
+                                            <div class='derecha'>
+                                                <button class='btn btn-rojo' style='text-align: center' onclick='suspenderComoProfesor({$a['id']},{$a['cancelado']})'>{$cancelAction}</button>
+                                            </div>
+                                        ");
+                                    }
 
                                     $typeSearch = 'consultas';
                                     $id = $a['id'];
@@ -159,6 +174,10 @@
 
             function editar(id) {
                 window.location.href = "../../controllers/teachers/teachers.php?nextPage=listado-profesores.php&id=" + id + "&backurl=" + currentUrl;
+            }
+
+            function quitarSuspension(id) {
+                window.location.href = "../../controllers/consultations/cancel-suspend.php?id=" + id + "&backurl=" + backurl;
             }
 
         </script>

@@ -65,8 +65,14 @@
                 <tbody>  
                 <tbody class='ht' style='display:none;' id='r{$a['id']}'> 
                     <tr>
-                        <td colspan='3'>
-                            <div style='margin: 7px'>  <b>Horarios disponibles:</b> {$a['dia']} ".substr($a['horaInicio'],0,-3)." a ".substr($a['horaFin'],0,-3)."</div>
+                        <td colspan='3'>";
+                            if(isset($a['fechaEspecial']) && $a['fechaEspecial'] > date("Y-m-d") ){
+                                echo "<div style='margin: 7px'>  <b style='color:red'>Fecha especial:</b> {$a['fechaEspecial']}, de ".substr($a['horaInicioEspecial'],0,-3)." a ".substr($a['horaFinEspecial'],0,-3)."</div>";
+                            }
+                            else {
+                                echo "<div style='margin: 7px'>  <b>Horarios disponibles:</b> {$a['dia']} ".substr($a['horaInicio'],0,-3)." a ".substr($a['horaFin'],0,-3)."</div>";
+                            }
+                            echo "
                             <div style='margin: 7px'> <b>Email:</b> {$a['email']} </div>
                             <div style='margin: 7px'> <b>Modalidad:</b> {$modalidad} </div>
                             {$agendarConsulta}
