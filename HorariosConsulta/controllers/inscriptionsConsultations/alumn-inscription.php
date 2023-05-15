@@ -8,7 +8,7 @@ function getConsultasAlumno(){
 
         $idUsuario = $_SESSION['usuario']["id"];
         $query = "
-        select m.nombre matNombre ,u.nombre profNombre, u.apellido, u.email, u.id profId, c.esVirtual,c.id,c.dia,c.horaInicio,c.horaFin,c.cupo,c.cancelado,ic.id id, ic.fechaHora fechaHora,c.horaInicioEspecial,c.horaFinEspecial,c.fechaEspecial
+        select m.nombre matNombre ,u.nombre profNombre, u.apellido, u.email, u.id profId, c.esVirtual,c.id,c.dia,c.horaInicio,c.horaFin,c.cupo,c.cancelado,ic.id id, ic.fechaHora fechaHora,c.horaInicioEspecial,c.horaFinEspecial,c.fechaEspecial,c.motivoSuspension,c.comentarioSuspension
         from materias m
         inner join profesores_materias pm on m.id = pm.idMateria
         inner join profesores p on p.idUsuario = pm.idProfesor

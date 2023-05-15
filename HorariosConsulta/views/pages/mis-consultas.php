@@ -88,18 +88,30 @@
                 <tbody class='ht' style='display:none;' id='r{$a['id']}'> 
                     <tr>
                         <td colspan='3'>";
-                            if(isset($a['fechaEspecial']) && $a['fechaEspecial'] > date("Y-m-d") ){
-                                echo "<div style='margin: 7px'>  <b style='color:red'>Fecha especial:</b> {$a['fechaEspecial']}, de ".substr($a['horaInicioEspecial'],0,-3)." a ".substr($a['horaFinEspecial'],0,-3)."</div>";
+                            if(!isset($a['motivoSuspension']) ){
+                                if(isset($a['fechaEspecial']) && $a['fechaEspecial'] > date("Y-m-d") ){
+                                    echo "<div style='margin: 7px'>  <b style='color:red'>Fecha especial:</b> {$a['fechaEspecial']}, de ".substr($a['horaInicioEspecial'],0,-3)." a ".substr($a['horaFinEspecial'],0,-3)."</div>";
+                                }
+                                else {
+                                    echo "<div style='margin: 7px'>  <b>Horarios disponibles:</b> {$a['dia']} ".substr($a['horaInicio'],0,-3)." a ".substr($a['horaFin'],0,-3)."</div>";
+                                }
                             }
-                            else {
-                                echo "<div style='margin: 7px'>  <b>Horarios disponibles:</b> {$a['dia']} ".substr($a['horaInicio'],0,-3)." a ".substr($a['horaFin'],0,-3)."</div>";
+                            else{
+                                echo "<div style='margin: 7px'>  <b style='color:red'>Consulta suspendida</b></div>";
+                                echo "<div style='margin: 7px'>  <b>Motivo de suspensión:</b> {$a['motivoSuspension']}</div>";
                             }
-                            echo "
-                            <div style='margin: 7px'> <b>Email:</b> {$a['email']} </div>
-                            <div style='margin: 7px'> <b>Modalidad:</b> {$modalidad} </div>
-                            {$cancelarConsulta}
+                            if(isset($a['comentarioSuspension']) ){
+                                echo "<div style='margin: 7px'>  <b>Comentario del profesor:</b> {$a['comentarioSuspension']}</div>";
+                            }
+                            if(!isset($a['motivoSuspension']) ){
+                                echo "
+                                <div style='margin: 7px'> <b>Email:</b> {$a['email']} </div>
+                                <div style='margin: 7px'> <b>Modalidad:</b> {$modalidad} </div>
+                                ";
+                            }
+                        echo"
                         </td>
-                    </tr> 
+                    </tr>
                 </tbody>                                
                     ";
             }
@@ -117,7 +129,7 @@
 
     }
     else {
-        header("Location: ../../controllers/consultations/consultations.php");
+        header("Location: ../../controllers/consultations/alumn-inscription.php");
     }
 ?>
 

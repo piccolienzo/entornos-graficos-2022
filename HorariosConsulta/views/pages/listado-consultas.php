@@ -44,7 +44,7 @@
         
             foreach($result as $x => $a){ 
                 $modalidad = $a['esVirtual']?'Virtual':'Presencial';
-                $agendarConsulta = $isStudent
+                $agendarConsulta = ( $isStudent && !isset($a['motivoSuspension']) )
                     ? "
                         <div style='margin: 7px; text-align: right'>
                             <button class='btn btn-violeta' style='width: 127px;' onclick='agendarConsulta({$a['id']})'>
@@ -66,16 +66,28 @@
                 <tbody class='ht' style='display:none;' id='r{$a['id']}'> 
                     <tr>
                         <td colspan='3'>";
-                            if(isset($a['fechaEspecial']) && $a['fechaEspecial'] > date("Y-m-d") ){
-                                echo "<div style='margin: 7px'>  <b style='color:red'>Fecha especial:</b> {$a['fechaEspecial']}, de ".substr($a['horaInicioEspecial'],0,-3)." a ".substr($a['horaFinEspecial'],0,-3)."</div>";
+                            if(!isset($a['motivoSuspension']) ){
+                                if(isset($a['fechaEspecial']) && $a['fechaEspecial'] > date("Y-m-d") ){
+                                    echo "<div style='margin: 7px'>  <b style='color:red'>Fecha especial:</b> {$a['fechaEspecial']}, de ".substr($a['horaInicioEspecial'],0,-3)." a ".substr($a['horaFinEspecial'],0,-3)."</div>";
+                                }
+                                else {
+                                    echo "<div style='margin: 7px'>  <b>Horarios disponibles:</b> {$a['dia']} ".substr($a['horaInicio'],0,-3)." a ".substr($a['horaFin'],0,-3)."</div>";
+                                }
                             }
-                            else {
-                                echo "<div style='margin: 7px'>  <b>Horarios disponibles:</b> {$a['dia']} ".substr($a['horaInicio'],0,-3)." a ".substr($a['horaFin'],0,-3)."</div>";
+                            else{
+                                echo "<div style='margin: 7px'>  <b style='color:red'>Consulta suspendida</b></div>";
+                                echo "<div style='margin: 7px'>  <b style='color:red'>Motivo de suspensión:</b> {$a['motivoSuspension']}</div>";
                             }
-                            echo "
-                            <div style='margin: 7px'> <b>Email:</b> {$a['email']} </div>
-                            <div style='margin: 7px'> <b>Modalidad:</b> {$modalidad} </div>
-                            {$agendarConsulta}
+                            if(isset($a['comentarioSuspension']) ){
+                                echo "<div style='margin: 7px'>  <b style='color:red'>Comentario:</b> {$a['comentarioSuspension']}</div>";
+                            }
+                            if(!isset($a['motivoSuspension']) ){
+                                echo "
+                                <div style='margin: 7px'> <b>Email:</b> {$a['email']} </div>
+                                <div style='margin: 7px'> <b>Modalidad:</b> {$modalidad} </div>
+                                {$agendarConsulta}";
+                            }
+                        echo"
                         </td>
                     </tr> 
                 </tbody>                                

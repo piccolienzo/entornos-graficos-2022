@@ -66,15 +66,15 @@
 
             $firstConsultation = array_shift($result);
             $modalidad = $firstConsultation['esVirtual']?'Virtual':'Presencial';
-
+            
+            // <div>
+            //     <p> <b> Visualizar consultas: </b> </p>
+            //     <input class='horizontal no-margen-derecho' type='radio' id='listado' name='searchtype' value='listado' checked>
+            //     <label class='horizontal' for='listado'><b> Listado </b></label>
+            //     <input class='horizontal no-margen-derecho' type='radio' id='calendario' name='searchtype' value='calendario'>
+            //     <label class='horizontal' for='calendario'><b> Calendario </b></label>
+            // </div>
             echo ("
-                <div>
-                    <p> <b> Visualizar consultas: </b> </p>
-                    <input class='horizontal no-margen-derecho' type='radio' id='listado' name='searchtype' value='listado' checked>
-                    <label class='horizontal' for='listado'><b> Listado </b></label>
-                    <input class='horizontal no-margen-derecho' type='radio' id='calendario' name='searchtype' value='calendario'>
-                    <label class='horizontal' for='calendario'><b> Calendario </b></label>
-                </div>
                 <div id='d'style='margin-top: 20px; display: none' ></div>
                 <table id='t'>
                     <thead>
