@@ -7,58 +7,109 @@
     <link rel="stylesheet" href="font/fonts.css" /> 
     <link rel="stylesheet" href="styles/global.css" /> 
     <link rel="stylesheet" href="styles/listado-consultas.css" /> 
-    <title>asd</title>
+    <title>Consultas</title>
 </head>
 
 <body>
 
 <?php
-    require('../components/header.php')
+    require('../components/header.php');
+
+    $isStudent = false;
+
+    if(isset($_SESSION['role'])) {
+        $isStudent = $_SESSION['role'] == 'alumno' ? true : false;
+    }
 ?>
 
 <main class="container">
-    <h1>Listado de Consultas</h1>
+    <h1>Listado de consultas</h1>
 <section class="card">
 
-<table>
-    <thead>
-        <tr>
-            <th>Profesor</th>
-            <th>Materia</th>
-            <th>&nbsp</th>
-        </tr>
-    </thead>
-    <?php
-        if(isset($_SESSION["resultados_consulta"])){
-            $result = $_SESSION["resultados_consulta"];
+<?php
+    if(isset($_SESSION["resultados_consulta"])){
+        $result = $_SESSION["resultados_consulta"];
+        if(count($result)) {
+            
+            echo ("
+            <table>
+                <thead>
+                    <tr>
+                        <th>Profesor</th>
+                        <th>Materia</th>
+                        <th>&nbsp</th>
+                    </tr>
+                </thead>
+            ");
+        
             foreach($result as $x => $a){ 
                 $modalidad = $a['esVirtual']?'Virtual':'Presencial';
+                $agendarConsulta = ( $isStudent && !isset($a['motivoSuspension']) )
+                    ? "
+                        <div style='margin: 7px; text-align: right'>
+                            <button class='btn btn-violeta' style='width: 127px;' onclick='agendarConsulta({$a['id']})'>
+                                Agendar <span class='icon-entrar'></span>
+                            </button>
+                        </div>
+                    "
+                    : "";
                 echo "
                 <tbody class='tb'>
                     <tr>
                         <td>{$a["profNombre"]}</td>
                         <td>{$a["matNombre"]}</td>
                         <td>
-                            <button class='btn btn-detalles' onclick='verDetalles({$a['id']})' >Ver detalles</button>
+                            <button class='btn btn-listado' onclick='verDetalles({$a['id']})' >Ver detalles</button>
                         </td>                       
                     </tr> 
                 <tbody>  
                 <tbody class='ht' style='display:none;' id='r{$a['id']}'> 
                     <tr>
-                        <td colspan='3'>
-                            <div>  Horarios disponibles </div>
-                            <div>  {$a['dia']} {$a['horaInicio']} a {$a['horaFin']} </div>
-                            <div> Email: {$a['email']} </div>
-                            <div>Modalidad: {$modalidad} </div>
-                            <div><button class='btn btn-violeta' onclick='agendarConsulta({$a['id']})'>Agendar Consulta</button></div>
+                        <td colspan='3'>";
+                            if(!isset($a['motivoSuspension']) ){
+                                if(isset($a['fechaEspecial']) && $a['fechaEspecial'] > date("Y-m-d") ){
+                                    echo "<div style='margin: 7px'>  <b style='color:red'>Fecha especial:</b> {$a['fechaEspecial']}, de ".substr($a['horaInicioEspecial'],0,-3)." a ".substr($a['horaFinEspecial'],0,-3)."</div>";
+                                }
+                                else {
+                                    echo "<div style='margin: 7px'>  <b>Horarios disponibles:</b> {$a['dia']} ".substr($a['horaInicio'],0,-3)." a ".substr($a['horaFin'],0,-3)."</div>";
+                                }
+                            }
+                            else{
+                                echo "<div style='margin: 7px'>  <b style='color:red'>Consulta suspendida</b></div>";
+                                echo "<div style='margin: 7px'>  <b style='color:red'>Motivo de suspensión:</b> {$a['motivoSuspension']}</div>";
+                            }
+                            if(isset($a['comentarioSuspension']) ){
+                                echo "<div style='margin: 7px'>  <b style='color:red'>Comentario:</b> {$a['comentarioSuspension']}</div>";
+                            }
+                            if(!isset($a['motivoSuspension']) ){
+                                echo "
+                                <div style='margin: 7px'> <b>Email:</b> {$a['email']} </div>
+                                <div style='margin: 7px'> <b>Modalidad:</b> {$modalidad} </div>
+                                {$agendarConsulta}";
+                            }
+                        echo"
                         </td>
                     </tr> 
                 </tbody>                                
                     ";
             }
+
+            echo("
+                </table>
+            ");
+
         }
-    ?>
-</table>
+        else {
+            echo("
+                <p>No se han encontrado resultados</p>
+            ");
+        }
+
+    }
+    else {
+        header("Location: ../../controllers/consultations/consultations.php");
+    }
+?>
 
 </section>
 </main>
@@ -67,18 +118,6 @@
 ?>
 
 <script>
-    let backurl = "";
-    (function() {
-        document.querySelector("#volver").style.display = "block";
-        document.querySelector("#volver").addEventListener("click", back);      
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        backurl = urlParams.get('backurl');
-    })();
-
-    function back(){
-        window.location.href = atob(backurl);
-    }
 
     function verDetalles(id){
         let element = document.querySelector("#r"+id);
@@ -93,7 +132,7 @@
     }
 
     function agendarConsulta(id){
-        window.location.href = "agendar-consulta.php?id="+btoa(id)+"&backurl="+btoa(window.location.href);
+        window.location.href = "agendar-consulta.php?id=" + btoa(id)+"&backurl=" + btoa(window.location.href);
     }
 </script>
 </body>

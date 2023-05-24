@@ -26,20 +26,26 @@
 <main class="container">
     <h1>Agendar Consulta</h1>
 <section class="card">
-    <h2>Seleccione una Fecha</h2>
+    
+    <form action="../../controllers/inscriptionsConsultations/create.php" method="POST">
+    <h2>Seleccione una Fecha *</h2>
 <?php 
     $consultas = $_SESSION["resultados_consulta"];
     $id = base64_decode($_GET["id"]);
+    $idUsuario = $_SESSION["usuario"]["id"];
     $consulta = array_search( $id, array_column($consultas, 'id'));
     if(isset($_GET["id"])){
         echo "<input type='hidden' name='idConsulta' value='{$id}'>";
+        echo "<input type='hidden' name='idAlumno' value='{$idUsuario}'>";
+        echo "<input type='hidden' name='fechaConsulta' id='fechaConsulta' value=''>";
         $dia = getNroDia($consultas[$consulta]["dia"]);
+        $hora = $consultas[$consulta]["horaInicio"];
         echo "<input type='hidden' id='dia' value='{$dia}'>";
-        echo "<input type='hidden' id='dia' value='{$dia}'>";
+        echo "<input type='hidden' name='hora' value='{$hora}'>";
 
     }
     $modalidad = $consultas[$consulta]["esVirtual"]?"Virtual":"Presencial";
-    echo "<ul class='infoconsulta'>
+    echo "<ul>
         <li><b>Profesor: </b>{$consultas[$consulta]['profNombre']}</li>
         <li><b>Modalidad: </b> {$modalidad}</li>
         <li><b>Materia: </b>{$consultas[$consulta]['matNombre']}</li>
@@ -54,8 +60,13 @@
         if($dia == "SÁBADO") return 6;
     }
 ?>
+    
+    <!-- Calendario -->
     <div id="d" ></div>
 
+    <input type="submit" class="btn btn-violeta" style="margin-top: 10px" value="Confirmar" />
+   </form>
+ 
 </section>
 </main>
 <?php
@@ -63,7 +74,6 @@
 ?>
 
 <script>
-    let backurl = "";
     $( function() {
         Date.prototype.addDays = function(days) {
             var date = new Date(this.valueOf());
@@ -83,17 +93,10 @@
                 return [true, "puedeHabilitar"]
             }
             }
-        }); 
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        backurl = urlParams.get('backurl');
-        document.querySelector("#volver").addEventListener("click", back);
-        document.querySelector("#volver").style.display = "block";
+        });
+        $("#fechaConsulta").val($( "#d" )[0].value);
     });
 
-    function back(){
-        window.location.href = atob(backurl);
-    }
     $.datepicker.regional['es'] = {
         closeText: 'Cerrar',
         prevText: '< Ant',
@@ -105,13 +108,21 @@
         dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
         dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
         weekHeader: 'Sm',
-        dateFormat: 'dd/mm/yy',
+        dateFormat: 'yy-mm-dd',
         firstDay: 1,
         isRTL: false,
         showMonthAfterYear: false,
-        yearSuffix: ''
+        yearSuffix: '',
+        onSelect: selectDate  
     };
     $.datepicker.setDefaults($.datepicker.regional['es']);
+
+    function selectDate(dateText) {
+        $("#fechaConsulta").val(dateText);
+    }
+
+    
+
 </script>
 </body>
 </html>

@@ -1,26 +1,21 @@
 <?php
-    include('../connection.inc');
+    include('../../controllers/connection.inc');
     extract($_GET);
 
     $field = ($typeSearch == "consultas") ? "idConsulta" : "idAlumno";
 
     $query = "
-        select * from inscripciones_consultas
-        inner join consultas on consultas.id = inscripciones_consultas.idConsulta
-        inner join profesores_materias on profesores_materias.id = consultas.idProfesorMateria
-        inner join materias on materias.id = profesores_materias.idMateria
+        select nombre, apellido, email from inscripciones_consultas ic
+        inner join usuarios u on u.id = ic.idAlumno
     ";
-    $query .= " where ".$field." = ".$id;
+    $query .= " where fechaHora > NOW() AND fechaHora <= DATE_ADD(NOW(), INTERVAL 7 DAY) and ".$field." = ".$id;
 
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
-    if(mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_array($result)) {
-            echo($row['nombre']);
-        }
+    $array = array();
+    while($row = mysqli_fetch_array($result)){
+        array_push($array, $row);
     }
-    else {
-        echo("No se encontraron resultados");
-    }
+
     mysqli_close($link);
 ?>
