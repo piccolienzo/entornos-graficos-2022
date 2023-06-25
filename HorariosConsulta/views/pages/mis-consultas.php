@@ -41,7 +41,6 @@
 <section class="card">
 
 <?php
-    if(isset($_SESSION["resultados_consulta"])){
         $isStudent = false;
         if(isset($_SESSION['role']) && isset($_SESSION['usuario']) ) {
             $isStudent = $_SESSION['role'] == 'alumno' ? true : false;
@@ -109,6 +108,7 @@
                                 echo "
                                 <div style='margin: 7px'> <b>Email:</b> {$a['email']} </div>
                                 <div style='margin: 7px'> <b>Modalidad:</b> {$modalidad} </div>
+                                <div style='margin: 7px'> <b>Lugar:</b> {$a['lugar']} </div>
                                 ";
                             }
                         echo"
@@ -128,11 +128,6 @@
                 <p>No se han encontrado resultados</p>
             ");
         }
-
-    }
-    else {
-        header("Location: ../../controllers/consultations/alumn-inscription.php");
-    }
 ?>
 
 </section>

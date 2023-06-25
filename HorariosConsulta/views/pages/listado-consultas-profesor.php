@@ -112,7 +112,7 @@
                             <tr>
                                 <td>{$a["profNombre"]}, {$a["matNombre"]}, ".getNextDay($a['dia'])['label'].", {$modalidad}</td>
                                 <td>
-                                    <button class='btn btn-detalles' onclick='verDetalles({$a['id']})' >Ver detalles</button>
+                                    <button class='btn btn-listado' onclick='verDetalles({$a['id']})' >Ver detalles</button>
                                 </td>                       
                             </tr> 
                         <tbody>        

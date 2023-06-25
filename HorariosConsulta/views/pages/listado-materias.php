@@ -60,7 +60,7 @@
                         foreach($result as $x => $a){ 
                             echo "
                                 <label class='label-check'>
-                                    <input type='radio' name='searchtype' value='".$a["id"]."' required>
+                                    <input type='radio' name='idProfesorMateria' value='".$a["id"]."' required>
                                     ".$a["nombre"]."
                                 </label>
                             ";
