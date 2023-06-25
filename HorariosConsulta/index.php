@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sitio de Consultas UTN</title>
     <link rel="stylesheet" href="styles/global.css" /> 
+    <link rel="stylesheet" href="styles/header.css" /> 
+    <link rel="stylesheet" href="styles/footer.css" /> 
     <link rel="stylesheet" href="font/fonts.css" /> 
 </head>
 <?php
-    require('views/components/header.php');
     if( isset($_GET['success']) ) {
             $successText = "Petición realizada con éxito";
             echo("
@@ -22,7 +23,9 @@
     }
 ?>
 <body>
-
+<?php
+    require('views/components/header.php');
+?>
 <main class="container">
 
 <section>
@@ -62,8 +65,8 @@
 </section>
 
 </main>
-</body>
 <?php
     require('views/components/footer.php')
 ?>
+</body>
 </html>

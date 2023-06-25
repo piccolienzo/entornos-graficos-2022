@@ -7,6 +7,8 @@
     <title>Tipo de Consulta</title>
     <link rel="stylesheet" href="font/fonts.css" /> 
     <link rel="stylesheet" href="styles/global.css" /> 
+    <link rel="stylesheet" href="styles/header.css" /> 
+    <link rel="stylesheet" href="styles/footer.css" /> 
     <link rel="stylesheet" href="styles/tipo-consulta.css" /> 
 </head>
 <body>
