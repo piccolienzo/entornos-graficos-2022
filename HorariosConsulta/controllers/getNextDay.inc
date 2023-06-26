@@ -10,7 +10,7 @@
             3 => "MIÉRCOLES",
             4 => "JUEVES",
             5 => "VIERNES",
-            6 => "SABADO"
+            6 => "SÁBADO"
         );
         
         $getDay = false;
@@ -24,7 +24,7 @@
             $label = "+".$i." days";
             $dayNumber = date('w', strtotime($todayDate. $label));
             $currentDayLabel = $weekdays[$dayNumber];
-                $getDay = true;
+                if($currentDayLabel == $dayLabel)   $getDay = true;
                 $dateNumberDay = date('d', strtotime($todayDate. $label));
                 $dateNumberMonth = date('m', strtotime($todayDate. $label));
             $i++;
