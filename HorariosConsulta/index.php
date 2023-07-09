@@ -28,7 +28,7 @@
 ?>
 <main class="container">
 
-<section>
+<section class="card2">
     <?php
         $links = [];
         array_push(

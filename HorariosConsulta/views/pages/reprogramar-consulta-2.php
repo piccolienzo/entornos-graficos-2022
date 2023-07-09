@@ -19,7 +19,7 @@
         $actionLabel = isset($id) ? "Modificar" : "Crear";
     ?>
 
-    <main class="container">
+    <main class="container" style="height: auto">
         <h1><?php echo($actionLabel); ?> Consulta</h1>
         <?php
             if(isset($fechaEspecial)) {

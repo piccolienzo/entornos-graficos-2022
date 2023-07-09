@@ -13,7 +13,7 @@
                             $sv ="http://localhost/horariosconsulta";
                     }
                     else{
-                        $sv = "https://horariosconsulta.000webhostapp.com";
+                        $sv = "https://tpentornosgraficos.000webhostapp.com/HorariosConsulta/";
                     }
                     if(isset($_SESSION['usuario'])){                  
                         $role = $_SESSION['role'];
