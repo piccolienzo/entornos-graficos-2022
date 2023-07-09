@@ -4,8 +4,8 @@
     extract($_GET);
 
     $query = "
-        select * from profesores_materias
-        inner join materias on materias.id = profesores_materias.idMateria
+        select m.nombre as nombre, pm.id as id from profesores_materias pm
+        inner join materias m on m.id = pm.idMateria
     ";
     $query .= " where idProfesor = ".$teacherId;
 

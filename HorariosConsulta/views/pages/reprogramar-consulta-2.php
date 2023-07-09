@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/css/global.css" /> 
+    <link rel="stylesheet" href="styles/header.css" /> 
+    <link rel="stylesheet" href="styles/footer.css" /> 
     <link rel="stylesheet" href="../../static/css/suspender-consulta.css" /> 
     <title>Reprogramar consulta</title>
 </head>
@@ -17,7 +19,7 @@
         $actionLabel = isset($id) ? "Modificar" : "Crear";
     ?>
 
-    <main class="container">
+    <main class="container" style="height: auto">
         <h1><?php echo($actionLabel); ?> Consulta</h1>
         <?php
             if(isset($fechaEspecial)) {

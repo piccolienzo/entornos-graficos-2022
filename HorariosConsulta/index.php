@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sitio de Consultas UTN</title>
     <link rel="stylesheet" href="styles/global.css" /> 
+    <link rel="stylesheet" href="styles/header.css" /> 
+    <link rel="stylesheet" href="styles/footer.css" /> 
     <link rel="stylesheet" href="font/fonts.css" /> 
 </head>
 <?php
-    require('views/components/header.php');
     if( isset($_GET['success']) ) {
             $successText = "Petición realizada con éxito";
             echo("
@@ -22,10 +23,12 @@
     }
 ?>
 <body>
-
+<?php
+    require('views/components/header.php');
+?>
 <main class="container">
 
-<section>
+<section class="card2">
     <?php
         $links = [];
         array_push(
@@ -62,8 +65,8 @@
 </section>
 
 </main>
-</body>
 <?php
     require('views/components/footer.php')
 ?>
+</body>
 </html>

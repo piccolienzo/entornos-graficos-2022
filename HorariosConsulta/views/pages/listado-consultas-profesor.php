@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="font/fonts.css" /> 
     <link rel="stylesheet" href="styles/global.css" /> 
+    <link rel="stylesheet" href="styles/header.css" /> 
+    <link rel="stylesheet" href="styles/footer.css" /> 
     <link rel="stylesheet" href="styles/listado-consultas.css" /> 
     <link rel="stylesheet" href="styles/datepicker.css" /> 
     <script
@@ -110,7 +112,7 @@
                             <tr>
                                 <td>{$a["profNombre"]}, {$a["matNombre"]}, ".getNextDay($a['dia'])['label'].", {$modalidad}</td>
                                 <td>
-                                    <button class='btn btn-detalles' onclick='verDetalles({$a['id']})' >Ver detalles</button>
+                                    <button class='btn btn-listado' onclick='verDetalles({$a['id']})' >Ver detalles</button>
                                 </td>                       
                             </tr> 
                         <tbody>        

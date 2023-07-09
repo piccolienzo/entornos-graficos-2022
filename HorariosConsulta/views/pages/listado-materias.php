@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="font/fonts.css" /> 
     <link rel="stylesheet" href="styles/global.css" /> 
+    <link rel="stylesheet" href="styles/header.css" /> 
+    <link rel="stylesheet" href="styles/footer.css" /> 
     <link rel="stylesheet" href="styles/tipo-consulta.css" /> 
     <title>Profesores</title>
 </head>
@@ -58,7 +60,7 @@
                         foreach($result as $x => $a){ 
                             echo "
                                 <label class='label-check'>
-                                    <input type='radio' name='searchtype' value='".$a["id"]."' required>
+                                    <input type='radio' name='idProfesorMateria' value='".$a["id"]."' required>
                                     ".$a["nombre"]."
                                 </label>
                             ";

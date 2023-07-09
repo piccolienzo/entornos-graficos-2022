@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +7,8 @@
     <title>Tipo de Consulta</title>
     <link rel="stylesheet" href="font/fonts.css" /> 
     <link rel="stylesheet" href="styles/global.css" /> 
+    <link rel="stylesheet" href="styles/header.css" /> 
+    <link rel="stylesheet" href="styles/footer.css" /> 
     <link rel="stylesheet" href="styles/tipo-consulta.css" /> 
 </head>
 <body>
