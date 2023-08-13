@@ -25,7 +25,7 @@
 
 <main class="container">
 
-<section class="">
+<section>
     <?php
         $links = [];
         array_push(
@@ -38,10 +38,10 @@
         }
         else {
             echo '
-                <h1>
+                <h1 class="title">
                     Bienvenido al sitio web de consultas de la UTN
                 </h1>
-                <h2>
+                <h2 class="title">
                     Facultad Regional Rosario
                 </h2>';
 
@@ -52,7 +52,7 @@
         }
 
         echo '
-            <img src="./static/images/UTN-Rosario.jpg" alt="Imagen ilustrativa de la universidad">
+            <img src="./static/images/UTN-Rosario.jpg" alt="Imagen ilustrativa de la universidad" class="img-index">
             <ul>';
 
         foreach($links as $item) {
