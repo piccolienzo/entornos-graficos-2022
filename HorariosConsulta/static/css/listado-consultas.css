@@ -77,3 +77,14 @@ table {
 	width: 7em;
 	height: 2em;
 }
+
+.horizontal {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.no-margen-derecho {
+	margin-right: 2px;
+}

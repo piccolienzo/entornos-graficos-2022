@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="font/fonts.css" /> 
         <link rel="stylesheet" href="styles/global.css" /> 
+        <link rel="stylesheet" href="styles/header.css" /> 
+        <link rel="stylesheet" href="styles/footer.css" /> 
         <title>Mapa del sitio</title>
     </head>
 
@@ -22,13 +24,14 @@
                     array_push(
                         $links,
                         array("text" => "Buscador de consultas", "href" => "tipo-consulta.php"),
+                        array("text" => "Listado de consultas", "href" => "listado-consultas.php"),
                         array("text" => "Mis inscripciones a consultas", "href" => "listado-consultas.php")
                     );
                 }
                 else if( $role == "profesor"){
                     array_push(
                         $links,
-                        array("text" => "Mis consultas", "href" => "listado-consultas.php")
+                        array("text" => "Mis consultas", "href" => "mis-consultas.php")
                     );
                 }
                 else if( $role == "administrador"){

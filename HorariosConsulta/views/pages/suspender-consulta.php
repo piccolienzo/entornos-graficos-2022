@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../static/css/global.css" /> 
+        <link rel="stylesheet" href="styles/header.css" /> 
+        <link rel="stylesheet" href="styles/footer.css" /> 
         <link rel="stylesheet" href="../../static/css/suspender-consulta.css" /> 
         <title>Listado de consultas</title>
     </head>
@@ -19,10 +21,8 @@
         ?>
 
         <main class="container">
-            <div class="contenedor-volver">
-                <button class="btn btn-violeta show"><span class="icon-volver"></span>Volver</button>
-            </div>
             <h1>Suspender Consulta</h1>
+            <h2 class="contador-pasos">(Paso 1)</h2>
             <section class="card">
                 <?php
                     $esVirtual = $consultation["esVirtual"] ?  "Virtual" : "Presencial";
@@ -33,8 +33,8 @@
                     <div class="contenedor-botones">
                         <?php
                             echo("
-                                <input type='button' class='btn btn-rojo' name='boton' value='No' id='boton-no' onclick='suspender({$id})'></button>
-                                <input type='button' class='btn btn-verde' name='boton' value='Si' id='boton-si' onclick='editar({$id})'></button>
+                                <input type='button' class='btn btn-rojo' style='text-align: center; margin: 5px' name='boton' value='No' id='boton-no' onclick='suspender({$id})'></button>
+                                <input type='button' class='btn' style='text-align: center; margin: 5px' name='boton' value='Si' id='boton-si' onclick='editar({$id})'></button>
                             ")
                         ?>
                     </div>

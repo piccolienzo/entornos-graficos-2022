@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="font/fonts.css" /> 
     <link rel="stylesheet" href="styles/global.css" /> 
+    <link rel="stylesheet" href="styles/header.css" /> 
+    <link rel="stylesheet" href="styles/footer.css" /> 
     <link rel="stylesheet" href="styles/datepicker.css" /> 
     <link rel="stylesheet" href="styles/agendar-consulta.css" />
     <script
@@ -28,7 +30,7 @@
 <section class="card">
     
     <form action="../../controllers/inscriptionsConsultations/create.php" method="POST">
-    <h2>Seleccione una Fecha</h2>
+    <h2>Seleccione una Fecha *</h2>
 <?php 
     $consultas = $_SESSION["resultados_consulta"];
     $id = base64_decode($_GET["id"]);
@@ -45,7 +47,7 @@
 
     }
     $modalidad = $consultas[$consulta]["esVirtual"]?"Virtual":"Presencial";
-    echo "<ul class='infoconsulta'>
+    echo "<ul>
         <li><b>Profesor: </b>{$consultas[$consulta]['profNombre']}</li>
         <li><b>Modalidad: </b> {$modalidad}</li>
         <li><b>Materia: </b>{$consultas[$consulta]['matNombre']}</li>
@@ -64,7 +66,7 @@
     <!-- Calendario -->
     <div id="d" ></div>
 
-    <input type="submit" class="btn btn-violeta" value="Confirmar" />
+    <input type="submit" class="btn btn-violeta" style="margin-top: 10px" value="Confirmar" />
    </form>
  
 </section>
@@ -108,7 +110,7 @@
         dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
         dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
         weekHeader: 'Sm',
-        dateFormat: 'dd/mm/yy',
+        dateFormat: 'yy-mm-dd',
         firstDay: 1,
         isRTL: false,
         showMonthAfterYear: false,

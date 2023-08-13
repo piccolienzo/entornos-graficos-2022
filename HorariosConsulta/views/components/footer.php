@@ -3,7 +3,7 @@
             $sv ="http://localhost/horariosconsulta";
     }
     else{
-        $sv = "https://horariosconsulta.000webhostapp.com";
+        $sv = "https://tpentornosgraficos.000webhostapp.com/HorariosConsulta/";
     }
 ?>
 
@@ -32,48 +32,3 @@
         </p>
     </div>
 </footer>
-<style>
-    
-    /*#region estilos_footer*/
-    
-    .footer{  
-        width: 100%;
-        height: 150px;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-self: flex-end;
-        margin-top: auto;
-    }
-
-    .footer div{
-        width: 20%;
-        margin:0 15px 0 15px;
-        color: var(--violeta);
-    }
-
-    .footer .footer-title{
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 24px;
-        letter-spacing: 0em;
-        text-align: left;
-    }
-
-    .footer .footer-descripcion{
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 16px;
-        letter-spacing: 0em;
-        text-align: left;
-    }
-
-    .footer a{
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 24px;
-        letter-spacing: 0em;
-        text-align: left;
-    }
-    /*#endregion*/
-</style>

@@ -15,13 +15,19 @@
     else {
         $fila = mysqli_fetch_array($result);
 
-        if(isset($password) && $fila["clave"] == ($password)) {
-            $_SESSION["usuario"] = $fila;            
-            include('roles.php');
-            header("Location: ../../index.php");
+        if($fila["habilitado"] == 0) {
+            header("Location: ../../views/pages/login.php?error=disabled");
         }
+
         else {
-            header("Location: ../../views/pages/login.php?error=wrongPassword");
+            if(isset($password) && $fila["clave"] == ($password)) {
+                $_SESSION["usuario"] = $fila;            
+                include('roles.php');
+                header("Location: ../../index.php");
+            }
+            else {
+                header("Location: ../../views/pages/login.php?error=wrongPassword");
+            }
         }
     }
 

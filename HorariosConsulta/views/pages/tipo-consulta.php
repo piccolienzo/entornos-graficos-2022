@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +7,8 @@
     <title>Tipo de Consulta</title>
     <link rel="stylesheet" href="font/fonts.css" /> 
     <link rel="stylesheet" href="styles/global.css" /> 
+    <link rel="stylesheet" href="styles/header.css" /> 
+    <link rel="stylesheet" href="styles/footer.css" /> 
     <link rel="stylesheet" href="styles/tipo-consulta.css" /> 
 </head>
 <body>
@@ -16,19 +18,19 @@
 <main class="container">
     <h1>Tipo de Consulta</h1>
 <section class="card">
-    <h2>¿Cómo desea realizar su consulta?</h2>
+    <h2>¿Cómo desea buscar su consulta? *</h2>
     <form action="../../controllers/consultations/consultations.php" method="GET">
         <input type="hidden" id="thisurl" name="backurl">
         <label  for="materia" class="check"> &nbsp
-            <input type="radio" id="materia" name="searchtype" value="materia">
+            <input type="radio" id="materia" name="searchtype" value="materia" required>
             <span class="checkmark" id="chm"></span>
         </label>
         <label  for="profesor" class="check"> &nbsp
-            <input type="radio" id="profesor" name="searchtype" value="profesor">
+            <input type="radio" id="profesor" name="searchtype" value="profesor" required>
             <span class="checkmark" id="chp"></span>
         </label>
         
-        <input type="text" id="busqueda" name="search" class="input-white input-bordered" style="display:none;" required>
+        <input type="text" id="busqueda" name="search" class="input-white input-bordered select" style="display:none;" required>
 
         <button type="submit" id="submit" class="btn btn-violeta" style="display:none;"> 
             Continuar<span class="icon-entrar"></span>
@@ -69,7 +71,9 @@
             document.querySelector("#volver").addEventListener("click", back);
             document.querySelector("#volver").style.display = "block";
         }
-
+        else {
+            alert("Seleccione una opción para poder continuar");
+        }
         
     }
 
@@ -79,7 +83,7 @@
         });
         document.querySelector("#next").style.display = "block";
 
-        document.querySelector("h2").innerHTML = "¿Cómo desea realizar su consulta?"
+        document.querySelector("h2").innerHTML = "¿Cómo desea buscar su consulta?"
         document.querySelector("#submit").style.display = "none";
         document.querySelector("#busqueda").style.display = "none";
 

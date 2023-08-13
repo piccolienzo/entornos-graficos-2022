@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="font/fonts.css" /> 
     <link rel="stylesheet" href="styles/global.css" /> 
+    <link rel="stylesheet" href="styles/header.css" /> 
+    <link rel="stylesheet" href="styles/footer.css" /> 
     <link rel="stylesheet" href="styles/listado-consultas.css" /> 
     <title>Usuarios</title>
     <?php   
@@ -59,25 +61,32 @@
 <main class="container">
     <h1>Listado de Usuarios</h1>
     <section class="card">
-        <button>
-            <a href="usuario.php?edit=0">Agregar usuario</a>
-        </button>
         <form class="formulario" action="./listado-usuarios.php" method="get">
-            <label for="rol">Filtrar por rol</label>
-            <select name="rol" id="rol">
-                <option value="">Todos</option>
-                <option value="alumnos" <?php if(isset($rol) && $rol == "alumnos")echo("selected"); ?> >Alumno</option>
-                <option value="profesores" <?php if(isset($rol) && $rol == "profesores")echo("selected"); ?> >Profesor</option>
-                <option value="administradores" <?php if(isset($rol) && $rol == "administradores")echo("selected"); ?> >Administrador</option>
-            </select>
-            <label for="textSearch">Buscar por legajo, nombre o apellido</label>
-            <input type="text" id="busqueda" name="textSearch" class="input-white input-bordered" value="<?php if(isset($textSearch))echo($textSearch); ?>">
-            <button type="submit">Buscar</button>
+            <div class="filters">
+                <button type="button" id="btnPrint" class="btn-print" title="Imprimir comprobante" onclick="imprimir()">
+                    <span class="print"></span>
+                </button>
+                <button type="button" class="btn btn-violeta btn-largo-medio" style="text-align: center" onclick="agregarUsuario()">
+                    Nuevo usuario
+                </button>
+                <!-- <label for="textSearch">Buscar por legajo, nombre o apellido</label> -->
+                <input type="text" id="busqueda" name="textSearch" placeholder="Buscar por legajo, nombre o apellido" class="input-white input-bordered" style="margin-left: 10px" value="<?php if(isset($textSearch))echo($textSearch); ?>">
+                <button type="submit" class="btn btn-violeta" style="text-align: center">Buscar</button>
+            </div>
+            <div class="filters">
+                <label for="rol">Filtrar por rol</label>
+                <select name="rol" id="rol" class="input-white input-bordered select">
+                    <option value="">Todos</option>
+                    <option value="alumnos" <?php if(isset($rol) && $rol == "alumnos")echo("selected"); ?> >Alumno</option>
+                    <option value="profesores" <?php if(isset($rol) && $rol == "profesores")echo("selected"); ?> >Profesor</option>
+                    <option value="administradores" <?php if(isset($rol) && $rol == "administradores")echo("selected"); ?> >Administrador</option>
+                </select>
+            </div>
         </form>
         <?php
             if(count($usuarios)) {
                 echo('
-                    <table>
+                    <table id="datosAImprimir">
                         <thead>
                             <tr>
                                 <th>Legajo</th>
@@ -98,8 +107,8 @@
                                 <td>{$user["nombre"]}</td>
                                 <td>{$user["email"]}</td>
                                 <td>
-                                    <a href='' id='linkedit'>Editar</a>
-                                    <a href='../../controllers/users/disable.php?id=".$user["id"]."&habilitado=".$user["habilitado"]."'>".$enabledLabel.".</a>
+                                    <button class='btn-listado' onclick='editarUsuario(".$user["id"].")'>Editar</button>
+                                    <button class='btn-listado'onclick='habilitarUsuario(".$user["id"].",".$user["habilitado"].")'>".$enabledLabel."</button>
                                 </td>
                             </tr> 
                         <tbody>
@@ -117,18 +126,32 @@
 </main>
 
 <?php
-    require('../components/footer.php')
+    require('../components/footer.php');
 ?>
 
-<?php
-    echo("
-        <script>
-            (function() {
-                document.querySelector('#linkedit').href = 'usuario.php?edit=1&id=".$user["id"]."&backurl='+btoa(window.location.href);
-            })();
-        </script>
-    ");
-?>
+<script>
+    function imprimir() {
+        let divContents = document.getElementById("datosAImprimir").innerHTML;
+        let printWindow = window.open('', '_blank', 'fullscreen="yes"');
+        printWindow.document.write('<html><head><title>Usuarios</title>');
+        printWindow.document.write('</head><body > <h1>Listado de usuarios</h1>');
+        printWindow.document.write(divContents);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    };
 
+    function agregarUsuario(){
+        window.location.href = "usuario.php?edit=0" + "&backurl=" + btoa(window.location.href);
+    }
+    
+    function editarUsuario(id){
+        window.location.href = "usuario.php?edit=1&id=" + id + "&backurl=" + btoa(window.location.href);
+    }
+    
+    function habilitarUsuario(id, habilitado){
+        window.location.href = "../../controllers/users/disable.php?id=" + id + "&habilitado=" + habilitado + "&backurl=" + btoa(window.location.href);
+    }
+</script>
 </body>
 </html>

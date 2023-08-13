@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../static/css/global.css" /> 
+        <link rel="stylesheet" href="styles/header.css" /> 
+        <link rel="stylesheet" href="styles/footer.css" /> 
         <link rel="stylesheet" href="../../static/css/suspender-consulta.css" /> 
         <title>Listado de consultas</title>
     </head>
@@ -19,7 +21,8 @@
 
         <main class="container">
             <h1><?php echo($actionLabel); ?> Consulta</h1>
-            <h2>Seleccione modalidad y lugar</h2>
+            <h2 class="contador-pasos">(Paso 5 de 5)</h2>
+            <h3>Seleccione modalidad y lugar</h3>
             <section class="card">
                 <div id="modificar">
                     <form class="formulario" action="<?php echo($actionUrl); ?>" method="post">
@@ -57,24 +60,24 @@
                         }
 
                         if(isset($fechaEspecial)) {
-                            echo($fechaEspecial);
                             echo("<input type='hidden' name='fechaEspecial' value='{$fechaEspecial}'/>");
                             $_SESSION["formulario_consulta"]["fechaEspecial"] = $fechaEspecial;
                         }
                     ?>
-                        <label class="subtitulo">Modalidad</label>
-                        <br>
+                        <h4 class="subtitulo">Modalidad *</h4>
                         <div class="contenedor-botones">
-                            <input type="radio" name="esVirtual" value="1" class="btn" required>Virtual</button>
-                            <input type="radio" name="esVirtual" value="0" class="btn" required>Presencial</button>
+                            <label class='label-check'>    
+                                <input type="radio" name="esVirtual" value="1" required>Virtual
+                            </label>
+                            <label class='label-check'>
+                                <input type="radio" name="esVirtual" value="0" required>Presencial
+                            </label>
                         </div>
-                        <br>
-                        <label class="subtitulo">Lugar o Link de consulta</label>
-                        <br>
+                        <h4 class="subtitulo">Lugar o Link de consulta *</h4>
                         <input type="text" class="input text-area" name="lugar" width="auto" required/>
-                        <label class="subtitulo">Cupo</label>
                         <br>
-                        <input type="number" required class="input text-area" name="cupo" width="auto" required min="1"/>
+                        <h4 class="subtitulo">Cupo *</h4>
+                        <input type="number" class="num-area" required name="cupo" width="auto" min="1"/>
                         <div class="contenedor-botones-derecha">
                             <button type="submit" class="btn btn-violeta"> Confirmar <span class="icon-entrar"></span> </button>
                         </div>
