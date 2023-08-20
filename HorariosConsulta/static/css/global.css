@@ -306,7 +306,10 @@ body {
 	transform: scale(1.05,1.05);
 }
 .btn-largo {
-	width: 160px;
+	width: 280px;
+}
+.btn-largo-medio {
+	width: 220px;
 }
 .btn-listado {
 	height: 35px;
@@ -321,6 +324,12 @@ body {
 	border-radius: 30px;
 	border: none;
 	margin: 2px;
+}
+
+.derecha {
+	margin-top: 10px;
+	width: 80%;
+	text-align: right;
 }
 
 input[type="text"],
@@ -340,6 +349,9 @@ input[type="date"] {
 .input-white {
 	background: #ffffff;
 	border: none;
+	width: 256px;
+	height: 28px;
+	border-radius: 4px;
 }
 
 .input-bordered {
@@ -361,6 +373,7 @@ input[type="date"] {
 }
 
 .img-index {
+	width: 100%;
 	height: 60%;
 	margin-left: auto;
 	margin-right: auto;
@@ -403,6 +416,10 @@ th {
 	margin: 10px;
 }
 
+li {
+	margin-bottom: 5px;
+}
+
 /*#region Iconos*/
 span.check-icon{    
 	width: 100px;
@@ -422,6 +439,18 @@ span.print{
 	height: 25px;
 	background: url("icon/print.svg") no-repeat;
 	display: inline-block;
+}
+
+.icon-entrar {
+	background: url("icon/arrow-left.svg") no-repeat;
+	float: right;
+	margin-top: 2px;
+	width: 20px;
+	height: 20px;
+}
+
+.card2 {
+	height: 100%;
 }
 /*#endregion*/
 

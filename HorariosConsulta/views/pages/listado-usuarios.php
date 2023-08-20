@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="font/fonts.css" /> 
     <link rel="stylesheet" href="styles/global.css" /> 
+    <link rel="stylesheet" href="styles/header.css" /> 
+    <link rel="stylesheet" href="styles/footer.css" /> 
     <link rel="stylesheet" href="styles/listado-consultas.css" /> 
     <title>Usuarios</title>
     <?php   
@@ -64,12 +66,12 @@
                 <button type="button" id="btnPrint" class="btn-print" title="Imprimir comprobante" onclick="imprimir()">
                     <span class="print"></span>
                 </button>
-                <button type="button" class="btn btn-violeta btn-largo" onclick="agregarUsuario()">
+                <button type="button" class="btn btn-violeta btn-largo-medio" style="text-align: center" onclick="agregarUsuario()">
                     Nuevo usuario
                 </button>
                 <!-- <label for="textSearch">Buscar por legajo, nombre o apellido</label> -->
                 <input type="text" id="busqueda" name="textSearch" placeholder="Buscar por legajo, nombre o apellido" class="input-white input-bordered" style="margin-left: 10px" value="<?php if(isset($textSearch))echo($textSearch); ?>">
-                <button type="submit" class="btn btn-violeta">Buscar</button>
+                <button type="submit" class="btn btn-violeta" style="text-align: center">Buscar</button>
             </div>
             <div class="filters">
                 <label for="rol">Filtrar por rol</label>
@@ -131,8 +133,8 @@
     function imprimir() {
         let divContents = document.getElementById("datosAImprimir").innerHTML;
         let printWindow = window.open('', '_blank', 'fullscreen="yes"');
-        printWindow.document.write('<html><head><title>Comprobante</title>');
-        printWindow.document.write('</head><body > <h1>Comprobante de inscripcion a consulta</h1>');
+        printWindow.document.write('<html><head><title>Usuarios</title>');
+        printWindow.document.write('</head><body > <h1>Listado de usuarios</h1>');
         printWindow.document.write(divContents);
         printWindow.document.write('</body></html>');
         printWindow.document.close();

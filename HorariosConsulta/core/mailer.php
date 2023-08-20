@@ -12,6 +12,15 @@ use PHPMailer\PHPMailer\Exception;
         if($mailType == 1){
             $subject = "Inscripcion a consulta exitosa";
         }
+        else if($mailType == 2) {
+            $subject = "Nuevo contacto desde el sitio de consultas";
+        }
+        else if($mailType == 3) {
+            $subject = "Nueva clave";
+        }
+        else {
+            $subject = "Consulta modificada";
+        }
 
         $mail = new PHPMailer();
         $mail -> isSMTP();

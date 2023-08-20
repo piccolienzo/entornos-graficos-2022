@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/css/global.css" /> 
+    <link rel="stylesheet" href="styles/header.css" /> 
+    <link rel="stylesheet" href="styles/footer.css" /> 
     <link rel="stylesheet" href="../../static/css/suspender-consulta.css" /> 
     <title>Reprogramar consulta</title>
 </head>
@@ -17,9 +19,16 @@
         $actionLabel = isset($id) ? "Modificar" : "Crear";
     ?>
 
-    <main class="container">
+    <main class="container" style="height: auto">
         <h1><?php echo($actionLabel); ?> Consulta</h1>
-        <h2 class="contador-pasos">(Paso 4 de 5)</h2>
+        <?php
+            if(isset($fechaEspecial)) {
+                echo'<h2 class="contador-pasos">(Paso 3 de 4)</h2>';
+            }
+            else {
+                echo'<h2 class="contador-pasos">(Paso 4 de 5)</h2>';
+            }
+        ?>
         <h3>Seleccione turno y horario *</h3>
         <section class="card">
             <form class="formulario" id="formulario" action="modificar-consulta.php" method="POST">
@@ -54,8 +63,8 @@
                         $_SESSION["formulario_consulta"]["id"] = $id;
 
                     }
-                    else if(isset($_SESSION["formulario_consulta"]["dia"])) {
-                        echo("<input type='hidden' name='id' value='{$_SESSION["formulario_consulta"]["dia"]}'/>");
+                    else if(isset($_SESSION["formulario_consulta"]["id"])) {
+                        echo("<input type='hidden' name='id' value='{$_SESSION["formulario_consulta"]["id"]}'/>");
                     }
 
                 ?>              
@@ -126,7 +135,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-violeta"> Confirmar <span class="icon-entrar"></span> </button>
+                <button type="submit" class="btn btn-violeta" style="float: right"> Continuar <span class="icon-entrar"></span> </button>
             </form>
         </section>
     </main>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +7,8 @@
     <title>Tipo de Consulta</title>
     <link rel="stylesheet" href="font/fonts.css" /> 
     <link rel="stylesheet" href="styles/global.css" /> 
+    <link rel="stylesheet" href="styles/header.css" /> 
+    <link rel="stylesheet" href="styles/footer.css" /> 
     <link rel="stylesheet" href="styles/tipo-consulta.css" /> 
 </head>
 <body>
@@ -20,11 +22,11 @@
     <form action="../../controllers/consultations/consultations.php" method="GET">
         <input type="hidden" id="thisurl" name="backurl">
         <label  for="materia" class="check"> &nbsp
-            <input type="radio" id="materia" name="searchtype" value="materia">
-            <span class="checkmarkk" id="chm"></span>
+            <input type="radio" id="materia" name="searchtype" value="materia" required>
+            <span class="checkmark" id="chm"></span>
         </label>
         <label  for="profesor" class="check"> &nbsp
-            <input type="radio" id="profesor" name="searchtype" value="profesor">
+            <input type="radio" id="profesor" name="searchtype" value="profesor" required>
             <span class="checkmark" id="chp"></span>
         </label>
         
@@ -69,7 +71,9 @@
             document.querySelector("#volver").addEventListener("click", back);
             document.querySelector("#volver").style.display = "block";
         }
-
+        else {
+            alert("Seleccione una opción para poder continuar");
+        }
         
     }
 

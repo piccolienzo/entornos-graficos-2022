@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/css/global.css" /> 
+    <link rel="stylesheet" href="styles/header.css" /> 
+    <link rel="stylesheet" href="styles/footer.css" />
     <link rel="stylesheet" href="../../static/css/tipo-consulta.css" /> 
     <title>Reprogramar consulta</title>
 </head>
@@ -42,12 +44,13 @@
                         echo("<input type='hidden' name='id' value='{$_SESSION["formulario_consulta"]["id"]}'/>");
                     }
 
-                    $fieldName = 'dia';
-                    if(isset($_SESSION['role'])) {
-                        if($_SESSION['role'] == 'profesor') {
-                            $fieldName = 'fechaEspecial';
-                        }
+                    if(isset($fechaEspecial)) {
+                        echo("<input type='hidden' name='fechaEspecial' value='{$fechaEspecial}'/>");
+                        $_SESSION["formulario_consulta"]["fechaEspecial"] = $fechaEspecial;
                     }
+
+                    $fieldName = 'dia';
+                    
                     echo("
                             <label class='label-check'>
                                 <input type='radio' name='".$fieldName."' required value='LUNES'> Lunes
@@ -70,7 +73,7 @@
                     ");
                 ?>
                 
-                <button type="submit" class="btn btn-violeta"> Confirmar <span class="icon-entrar"></span> </button>
+                <button type="submit" class="btn btn-violeta"> Continuar <span class="icon-entrar"></span> </button>
                 
             </form>
         </section>

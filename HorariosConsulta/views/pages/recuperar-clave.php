@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="font/fonts.css" /> 
         <link rel="stylesheet" href="styles/global.css" /> 
+        <link rel="stylesheet" href="styles/header.css" /> 
+        <link rel="stylesheet" href="styles/footer.css" /> 
         <link rel="stylesheet" href="styles/login.css" /> 
         <title>Recuperar contraseña</title>
         <?php   
@@ -50,17 +52,15 @@
 
         <main class="container">
             
-            <section class="login">
-                <h1>Recuperar contraseña</h1>
-                <h2>Ingrese su correo electrónico</h2>
-                <form class="formulario" action="../../controllers/users/change-password.php" method="post">
-                    <label for="legajo">Legajo *</label>
-                    <input type="text" class="input-white" id="legajo" name="legajo" required />
-                    <label for="email">Correo electrónico *</label>
-                    <input type="email" class="input-white" id="email" name="email" required />
-                    <button type="submit" class="btn btn-violeta"> Recuperar <span class="icon-entrar"></span> </button>
-                </form>
-            </section>
+            <h1>Recuperar contraseña</h1>
+            <h2>Ingrese su correo electrónico</h2>
+            <form class="formulario" action="../../controllers/users/change-password.php" method="post">
+                <label for="legajo">Legajo *</label>
+                <input type="text" class="input-white" id="legajo" name="legajo" required />
+                <label for="email">Correo electrónico *</label>
+                <input type="email" class="input-white" id="email" name="email" required />
+                <button type="submit" class="btn btn-violeta"> Enviar <span class="icon-entrar"></span> </button>
+            </form>
 
         </main>
 

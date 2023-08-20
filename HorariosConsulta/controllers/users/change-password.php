@@ -1,5 +1,6 @@
 <?php
     extract($_POST);
+    require ('../../core/mailer.php');
 
     if(isset($email, $legajo)) {
         
@@ -30,9 +31,13 @@
 
                     $fila = mysqli_fetch_array($result);
                     
-                    
-                    $mensaje = 'Su nueva contraseña es '.$nuevaClave;
+                    $query = "update usuarios set clave = '".$nuevaClave."' where legajo like '".$legajo."'";;
+                    $result = mysqli_query($link, $query) or die(mysqli_error($link));
+
+                    $mensaje = 'Su nueva clave es '.$nuevaClave;
                     mail($email, $correo, $mensaje);
+                    sendEmail($email, $correo, $mensaje, 3);
+
                     header("Location: ../../views/pages/recuperar-clave.php?success=true");
                 }
 
