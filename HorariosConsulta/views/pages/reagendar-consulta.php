@@ -27,7 +27,7 @@
             extract($_GET);
         ?>
 
-        <main class="container">
+        <main class="container" style="height: auto">
             <h1>Reagendar Consulta</h1>
             <h2 class="contador-pasos">(Paso 2 de 4)</h2>
             

@@ -39,7 +39,7 @@
     require('../components/header.php');
 ?>
 
-<main class="container">
+<main class="container listado">
     <h1>Mis consultas</h1>
 <section class="card" id="card">
 

@@ -18,7 +18,7 @@
         require('../components/header.php');
     ?>
 
-        <main class="container">
+        <main class="container listado">
             <h1>Listado de Consultas</h1>
             <section class="card">
 
@@ -28,7 +28,7 @@
                         <span class="print"></span>
                     </button>
                     <button type='button' class='btn btn-violeta btn-largo-medio' style="text-align: center" onclick="nuevaConsulta()">Nueva consulta</button>
-                    <input type="text" id="nombre" name="search" placeholder="Buscar por profesor" style="margin-left: 20px"/>
+                    <input type="text" id="nombre" name="search" placeholder="Buscar por profesor" maxlength="50" style="margin-left: 20px"/>
                     <button class='btn btn-violeta' type="submit" style="text-align: center">Buscar</button>
                 </div>
 
@@ -124,7 +124,6 @@
                 printWindow.document.write('<html><head><title>Usuarios</title>');
                 printWindow.document.write('</head><body > <h1>Listado de usuarios</h1>');
                 printWindow.document.write(divContents);
-                printWindow.document.write('</body></html>');
                 printWindow.document.close();
                 printWindow.print();
 

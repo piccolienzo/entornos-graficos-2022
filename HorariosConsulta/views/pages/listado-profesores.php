@@ -39,7 +39,7 @@
     $actionLabel = isset($id) ? "Modificar" : "Crear";
 ?>
 
-<main class="container">
+<main class="container listado">
     <h1><?php echo($actionLabel) ?> Consulta</h1>
     <h2 class="contador-pasos">(Paso 1 de 5)</h2>
     <section class="card">

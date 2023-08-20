@@ -3,7 +3,7 @@
             $sv ="http://localhost/horariosconsulta";
     }
     else{
-        $sv = "https://tpentornosgraficos.000webhostapp.com/HorariosConsulta/";
+        $sv = "https://tpentornosgraficos.000webhostapp.com/HorariosConsulta";
     }
 ?>
 

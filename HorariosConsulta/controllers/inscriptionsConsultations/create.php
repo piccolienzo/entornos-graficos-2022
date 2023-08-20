@@ -2,13 +2,17 @@
     include('../connection.inc');
     require ('../../core/mailer.php');
     extract($_POST);
+    extract($_GET);
     session_start();
 
-    $fechaHora = $fechaConsulta." ".$hora;
+    if(!isset($fechaHora)) {
+        $fechaHora = $fechaConsulta." ".$hora;
+    }
 
     $query = "
         select * from inscripciones_consultas
         where idAlumno = ".$idAlumno. " and idConsulta = ".$idConsulta." and fechaHora = '".$fechaHora."'";
+
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
     if(mysqli_num_rows($result) > 0) {

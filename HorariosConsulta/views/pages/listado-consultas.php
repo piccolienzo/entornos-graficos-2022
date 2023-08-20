@@ -16,6 +16,7 @@
 
 <?php
     require('../components/header.php');
+    require('../../controllers/amFunction.inc');
 
     $isStudent = false;
 
@@ -24,7 +25,7 @@
     }
 ?>
 
-<main class="container">
+<main class="container listado">
     <h1>Listado de consultas</h1>
 <section class="card">
 
@@ -49,7 +50,7 @@
                 $agendarConsulta = ( $isStudent && !isset($a['motivoSuspension']) )
                     ? "
                         <div style='margin: 7px; text-align: right'>
-                            <button class='btn btn-violeta' style='width: 127px;' onclick='agendarConsulta({$a['id']})'>
+                            <button class='btn btn-violeta' style='width: 127px;' onclick=agendarConsulta({$a['id']},'{$a['fechaEspecial']}','{$a['horaInicioEspecial']}')>
                                 Agendar <span class='icon-entrar'></span>
                             </button>
                         </div>
@@ -70,10 +71,14 @@
                         <td colspan='3'>";
                             if(!isset($a['motivoSuspension']) ){
                                 if(isset($a['fechaEspecial']) && $a['fechaEspecial'] > date("Y-m-d") ){
-                                    echo "<div style='margin: 7px'>  <b style='color:red'>Fecha especial:</b> {$a['fechaEspecial']}, de ".substr($a['horaInicioEspecial'],0,-3)." a ".substr($a['horaFinEspecial'],0,-3)."</div>";
+                                    $amEspecial1 = getAmOrPm($a['horaInicioEspecial']);
+                                    $amEspecial2 = getAmOrPm($a['horaFinEspecial']);
+                                    echo "<div style='margin: 7px'>  <b style='color:red'>Fecha especial:</b> {$a['fechaEspecial']}, de ".substr($a['horaInicioEspecial'],0,-3).$amEspecial1." a ".substr($a['horaFinEspecial'],0,-3).$amEspecial2."</div>";
                                 }
                                 else {
-                                    echo "<div style='margin: 7px'>  <b>Horarios disponibles:</b> {$a['dia']} ".substr($a['horaInicio'],0,-3)." a ".substr($a['horaFin'],0,-3)."</div>";
+                                    $am1 = getAmOrPm($a['horaInicio']);
+                                    $am2 = getAmOrPm($a['horaFin']);
+                                    echo "<div style='margin: 7px'>  <b>Horarios disponibles:</b> {$a['dia']} ".substr($a['horaInicio'],0,-3).$am1." a ".substr($a['horaFin'],0,-3).$am2."</div>";
                                 }
                             }
                             else{
@@ -110,6 +115,7 @@
     }
     else {
         header("Location: ../../controllers/consultations/consultations.php");
+        require('../../controllers/amFunction.inc');
     }
 ?>
 
@@ -133,8 +139,15 @@
          
     }
 
-    function agendarConsulta(id){
-        window.location.href = "agendar-consulta.php?id=" + btoa(id)+"&backurl=" + btoa(window.location.href);
+    function agendarConsulta(id, fechaEspecial, horaInicioEspecial){
+        <?php
+            echo "if(!fechaEspecial) {
+                    window.location.href = 'agendar-consulta.php?id=' + btoa(id)+'&backurl=' + btoa(window.location.href);
+                }
+                else {
+                    window.location.href = '../../controllers/inscriptionsConsultations/create.php?idConsulta=' + id + '&idAlumno=".$_SESSION['usuario']['id']."&fechaHora=' + fechaEspecial + ' ' + horaInicioEspecial;
+                }";
+        ?>
     }
 </script>
 </body>

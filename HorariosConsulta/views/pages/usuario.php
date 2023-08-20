@@ -15,7 +15,25 @@
                 $errorType = $_GET['error'];
                 $errorText;
                 
-                if( $errorType == 'repeatedData') $errorText = "Revise que los datos ingresados no correspondan con otro usuario";
+                if( $errorType == 'repeatedData') $errorText = "Este legajo ya pertenece a otro usuario del sistema";
+                
+                if( $errorType == 'invalidField') {
+                    $validationType = $_GET['validationType'];
+                    $validationField = $_GET['validationField'];
+
+                    if($validationType == 'onlyNumbers') {
+                        $validationText = 'Ingrese únicamente números';
+                    }
+                    else if ($validationType == 'onlyLetters') {
+                        $validationText = 'Ingrese únicamente letras';
+                    }
+                    else {
+                        $validationText = 'Ingrese únicamente letras y números';
+                    }
+
+                    $errorText = "Revise el valor ingresado en el campo ".$validationField.". ".$validationText;
+                }
+
 
                 echo("
                         <script type='text/javascript'>
@@ -67,7 +85,7 @@
                                 echo("value=".$_SESSION['formulario_usuario']['nombre']);
                             }
                         ?>
-                        required/>
+                        required maxlength="40"/>
                     <label for="apellido"> Apellido *</label>
                     <input type="text" class="input-white" id="apellido" name="apellido" 
                         <?php
@@ -78,7 +96,7 @@
                                 echo("value=".$_SESSION['formulario_usuario']['apellido']);
                             }
                         ?>
-                        required/>
+                        required maxlength="40"/>
                     <label for="dni"> DNI *</label>
                     <input type="number" class="input-white" id="dni" name="dni" 
                         <?php
@@ -89,7 +107,7 @@
                                 echo("value=".$_SESSION['formulario_usuario']['dni']);
                             }
                         ?>
-                        required/>
+                        required max="99999999"/>
                     <label for="email"> Email *</label>
                     <input type="email" class="input-white" id="email" name="email" 
                         <?php
@@ -100,7 +118,7 @@
                                 echo("value=".$_SESSION['formulario_usuario']['email']);
                             }
                         ?>
-                        required/>
+                        required maxlength="50"/>
                     <label for="legajo"> Legajo *</label>
                     <input type="text" class="input-white" id="legajo" name="legajo" 
                         <?php
@@ -111,7 +129,7 @@
                                 echo("value=".$_SESSION['formulario_usuario']['legajo']);
                             }
                         ?>
-                        required/>
+                        required maxlength="6"/>
                     <?php
                         if(!$edit) {
                             echo("

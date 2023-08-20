@@ -58,7 +58,7 @@
     require('../components/header.php');
 ?>
 
-<main class="container">
+<main class="container listado">
     <h1>Listado de Usuarios</h1>
     <section class="card">
         <form class="formulario" action="./listado-usuarios.php" method="get">
@@ -136,7 +136,6 @@
         printWindow.document.write('<html><head><title>Usuarios</title>');
         printWindow.document.write('</head><body > <h1>Listado de usuarios</h1>');
         printWindow.document.write(divContents);
-        printWindow.document.write('</body></html>');
         printWindow.document.close();
         printWindow.print();
     };

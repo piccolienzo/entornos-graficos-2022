@@ -16,6 +16,7 @@
 
 <?php
     require('../components/header.php');
+    require('../../controllers/amFunction.inc');
     require("../../controllers/inscriptionsConsultations/alumn-inscription.php");
 
     $alertText;
@@ -36,7 +37,7 @@
     }
 ?>
 
-<main class="container">
+<main class="container listado">
     <h1>Mis consultas</h1>
 <section class="card">
 
@@ -91,10 +92,15 @@
                         <td colspan='3'>";
                             if(!isset($a['motivoSuspension']) ){
                                 if(isset($a['fechaEspecial']) && $a['fechaEspecial'] > date("Y-m-d") ){
-                                    echo "<div style='margin: 7px'>  <b style='color:red'>Fecha especial:</b> {$a['fechaEspecial']}, de ".substr($a['horaInicioEspecial'],0,-3)." a ".substr($a['horaFinEspecial'],0,-3)."</div>";
+                                    $am1 = getAmOrPm($a['horaInicioEspecial']);
+                                    $am2 = getAmOrPm($a['horaFinEspecial']);
+                                    echo "<div style='margin: 7px'>  <b style='color:red'>Fecha especial:</b> {$a['fechaEspecial']}, de ".substr($a['horaInicioEspecial'],0,-3).$am1." a ".substr($a['horaFinEspecial'],0,-3).$am2."</div>";
                                 }
                                 else {
-                                    echo "<div style='margin: 7px'>  <b>Horarios disponibles:</b> {$a['dia']} ".substr($a['horaInicio'],0,-3)." a ".substr($a['horaFin'],0,-3)."</div>";
+                                    $am1 = getAmOrPm($a['horaInicio']);
+                                    $am2 = getAmOrPm($a['horaFin']);
+                                    echo "<div style='margin: 7px'>  <b>Fecha:</b> ".substr($a['fechaHora'],0,-8)." </div>";
+                                    echo "<div style='margin: 7px'>  <b>Horarios disponibles:</b> {$a['dia']} ".substr($a['horaInicio'],0,-3).$am1." a ".substr($a['horaFin'],0,-3).$am2."</div>";
                                 }
                             }
                             else{
@@ -125,7 +131,7 @@
         }
         else {
             echo("
-                <p>No se han encontrado resultados</p>
+                <p>No se han encontrado resultados. Inscríbase a una consulta primero.</p>
             ");
         }
 ?>

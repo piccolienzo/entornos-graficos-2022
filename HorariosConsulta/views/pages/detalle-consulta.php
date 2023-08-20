@@ -34,13 +34,14 @@
 
         <?php
             require('../components/header.php');
+            require('../../controllers/amFunction.inc');
             $role = '';
             if( isset( $_SESSION['role']) ) {
                 $role = $_SESSION['role'];
             }
         ?>
 
-        <main class="container">
+        <main class="container listado">
 
             <h1>Detalle Consultas</h1>
             
@@ -61,7 +62,7 @@
                                 echo("
                                     <div class='detalle-consulta' id='datosAImprimir'>
                                         <p>Día:<b> ".$a["dia"]."</b></p>
-                                        <p>Hora:<b> ".substr($a["horaInicio"], 0, -3)." - ".substr($a["horaFin"], 0, -3)."</b></p>
+                                        <p>Hora:<b> ".substr($a["horaInicio"], 0, -3).getAmOrPm($a["horaInicio"])." - ".substr($a["horaFin"], 0, -3).getAmOrPm($a["horaFin"])."</b></p>
                                         <p>Materia:<b> ".$a["matNombre"]."</b></p>
                                         <p>Modalidad:<b> ".$modalidad."</b></p>
                                         <p>Lugar:<b> ".$a["lugar"]."</b></p>
@@ -107,7 +108,7 @@
                                             <table id='datosAImprimir2'>
                                                 <thead>
                                                     <tr>
-                                                        <th>Listado de alumnos</th>
+                                                        <th>Listado de alumnos para la próxima consulta</th>
                                                     </tr>
                                                 </thead>
                                         ");
@@ -154,7 +155,6 @@
                 printWindow.document.write('</head><body > <h1>Detalle de consulta</h1>');
                 printWindow.document.write(divContents);
                 if(divContents2) printWindow.document.write(divContents2);
-                printWindow.document.write('</body></html>');
                 printWindow.document.close();
                 printWindow.print();
             };

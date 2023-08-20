@@ -25,7 +25,7 @@
     require('../components/header.php')
 ?>
 
-<main class="container">
+<main class="container" style="height: auto">
     <h1>Agendar Consulta</h1>
 <section class="card">
     

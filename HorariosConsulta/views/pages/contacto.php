@@ -46,11 +46,11 @@
             <h1>Contacto</h1>
             <form class="formulario" action="../../controllers/contact/contact.php" method="post">
                 <label for="correo"> Correo electrónico *</label>
-                <input type="email" class="input-white" id="correo" name="correo" required/>
+                <input type="email" class="input-white" id="correo" name="correo" required maxlength="50"/>
                 <!-- <label for="asunto">Asunto *</label>
                 <input type="text" class="input-white" id="asunto" name="asunto" required/> -->
                 <label for="mensaje">Mensaje *</label>
-                <input type="text" class="input-white" id="mensaje" name="mensaje" required/>
+                <input type="text" class="input-white" id="mensaje" name="mensaje" required maxlength="100"/>
                 <button type="submit" class="btn btn-violeta"> Enviar <span class="icon-entrar"></span> </button>
             </form>
 

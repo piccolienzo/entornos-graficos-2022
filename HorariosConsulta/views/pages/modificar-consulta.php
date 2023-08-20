@@ -74,10 +74,10 @@
                             </label>
                         </div>
                         <h4 class="subtitulo">Lugar o Link de consulta *</h4>
-                        <input type="text" class="input text-area" name="lugar" width="auto" required/>
+                        <input type="text" class="input text-area" name="lugar" width="auto" maxlength="50" required/>
                         <br>
                         <h4 class="subtitulo">Cupo *</h4>
-                        <input type="number" class="num-area" required name="cupo" width="auto" min="1"/>
+                        <input type="number" class="num-area" required name="cupo" width="auto" min="1" max="50"/>
                         <div class="contenedor-botones-derecha">
                             <button type="submit" class="btn btn-violeta"> Confirmar <span class="icon-entrar"></span> </button>
                         </div>

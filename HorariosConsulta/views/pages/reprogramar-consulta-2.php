@@ -82,19 +82,19 @@
 
                     <div class="contenedor-botones-vertical" id="manana">    
                             <label class='label-check'>
-                                <input type="radio" name="hora" required value="07:15-08:00"> 7:15 - 8:00 </button>
+                                <input type="radio" name="hora" required value="07:15-08:00"> 7:15 a.m - 8:00 a.m </button>
                             </label>
                             <label class='label-check'>
-                                <input type="radio" name="hora" required value="08:00-08:45"> 8:00 - 8:45 </button>
+                                <input type="radio" name="hora" required value="08:00-08:45"> 8:00 a.m - 8:45 a.m </button>
                             </label>
                             <label class='label-check'>
-                                <input type="radio" name="hora" required value="08:45-09:30"> 8:45 - 9:30 </button>
+                                <input type="radio" name="hora" required value="08:45-09:30"> 8:45 a.m - 9:30 a.m </button>
                             </label>
                             <label class='label-check'>
-                                <input type="radio" name="hora" required value="10:15-11:00"> 10:15 - 11:00 </button>
+                                <input type="radio" name="hora" required value="10:15-11:00"> 10:15 a.m - 11:00 a.m </button>
                             </label>
                             <label class='label-check'>
-                                <input type="radio" name="hora" required value="11:00-11:45"> 11:00 - 11:45 </button>
+                                <input type="radio" name="hora" required value="11:00-11:45"> 11:00 a.m - 11:45 a.m </button>
                             </label>
                     </div>
 

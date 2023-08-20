@@ -18,6 +18,9 @@ use PHPMailer\PHPMailer\Exception;
         else if($mailType == 3) {
             $subject = "Nueva clave";
         }
+        else if($mailType == 4) {
+            $subject = "Ya tienes un usuario para acceder al sitio web de consultas de la UTN";
+        }
         else {
             $subject = "Consulta modificada";
         }

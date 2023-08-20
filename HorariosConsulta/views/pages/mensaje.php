@@ -29,18 +29,10 @@
             ?>  
                 <h1>Consulta Agendada</h1>
                  <section class="card ticket">
-                    <button id= "btnPrint" class="btn-print" title="Imprimir comprobante">  <span class="print"></span></button>
                     <span class="check-icon"></span>
                     
                     <h2>Consulta registrada correctamente</h2>
                     <div id="datosConsulta" class="datosConsulta">
-                        <label>Id transacción: </label><label id="idtransac">{}</label><br>
-                        <label>Fecha: </label><label id="fecha">{}</label><br>
-                        <label>Hora: </label><label id="hora">{}</label><br>
-                        <label>Profesor: </label><label id="profesor">{}</label><br>
-                        <label>Materia: </label><label id="materia">{}</label><br>
-                        <label>Modalidad: </label><label id="modalidad">{}</label><br>
-                        <label>Lugar: </label><label id="lugar">{}</label>
 
                         <style>
                             .ticket{

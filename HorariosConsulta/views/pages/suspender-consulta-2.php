@@ -46,7 +46,7 @@
                     <br>
                     <label class="subtitulo">Comentarios *</label>
                     <br>
-                    <input type="text" class="input text-area" name="comentarioSuspension" style='margin: 15px;' required/>
+                    <input type="text" class="input text-area" name="comentarioSuspension" style='margin: 15px;' maxlength="100" required/>
                     <div class="contenedor-botones-derecha">
                         <button type="submit" class="btn btn-violeta"> Confirmar <span class="icon-entrar"></span></button>
                     </div>
