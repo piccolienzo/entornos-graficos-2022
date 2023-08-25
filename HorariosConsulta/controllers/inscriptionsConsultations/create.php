@@ -1,5 +1,5 @@
 <?php
-    include('../connection.inc');
+    include('../connection.inc.php');
     require ('../../core/mailer.php');
     extract($_POST);
     extract($_GET);
@@ -19,6 +19,7 @@
         echo("Ya estás inscripto en esta consulta");
         $consultation = mysqli_fetch_array($result);; 
         header("Location: ../../views/pages/mensaje.php?success=0"); 
+        exit("");
     }
    else {
         try {
@@ -43,9 +44,11 @@
             $nombreApellido = $_SESSION["usuario"]["nombre"]." ".$_SESSION["usuario"]["apellido"]; 
             sendEmail($mailAddress, $nombreApellido, $mailBody,1);
             header("Location: ../../views/pages/mensaje.php?success=1&result=".$result);     
+            exit("");
         }   
         catch(Exception $e){
             header("Location: ../../views/pages/mensaje.php?success=0"); 
+            exit("");
         } 
     }
     mysqli_close($link);

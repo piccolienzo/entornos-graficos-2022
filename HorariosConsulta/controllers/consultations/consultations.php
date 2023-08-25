@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include('../connection.inc');   
+    include('../connection.inc.php');   
 
     extract($_GET);
 
@@ -19,7 +19,7 @@
             : "where (u.nombre like '%".$search."%' or u.apellido like '%".$search."%')";
     
         if(isset($date) && $date != '') {
-            include('../getDayLabel.inc');   
+            include('../getDayLabel.inc.php');   
             $extraWhere .= " and c.dia = '".$dayLabel."'";
         }
         
@@ -49,12 +49,15 @@
 
     if(isset($admin)) {
         header("Location: ../../views/pages/listado-consultas-admin.php");
+        exit("");
     }
     else if(isset($teacher)) {
         header("Location: ../../views/pages/listado-consultas-profesor.php");
+        exit("");
     }
     else {
         header("Location: ../../views/pages/listado-consultas.php?backurl=".$backurl);
+        exit("");
     }
 
 ?>

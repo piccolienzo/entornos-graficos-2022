@@ -1,6 +1,6 @@
 <?php
 
-    include('../connection.inc');
+    include('../connection.inc.php');
 
     extract($_GET);
 
@@ -11,4 +11,5 @@
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
     header("Location: ../../views/pages/listado-usuarios.php?success=".($habilitado ? 'disabled' : 'enabled'));
+    exit("");
 ?>

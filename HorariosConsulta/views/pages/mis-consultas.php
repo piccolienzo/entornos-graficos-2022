@@ -16,7 +16,7 @@
 
 <?php
     require('../components/header.php');
-    require('../../controllers/amFunction.inc');
+    require('../../controllers/amFunction.inc.php');
     require("../../controllers/inscriptionsConsultations/alumn-inscription.php");
 
     $alertText;

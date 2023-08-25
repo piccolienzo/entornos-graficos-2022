@@ -1,5 +1,5 @@
 <?php
-    include('../connection.inc');
+    include('../connection.inc.php');
     session_start();
     extract($_GET);
 
@@ -22,4 +22,5 @@
     $idParam = isset($id) ? "&id=".$id : "";
 
     header("Location: ../../views/pages/".$nextPage."?backurl=".$backurl.$idParam);
+    exit("");
 ?>

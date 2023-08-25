@@ -1,5 +1,5 @@
 <?php
-    include('../connection.inc');
+    include('../connection.inc.php');
     extract($_POST);
     extract($_GET);
 
@@ -14,4 +14,5 @@
     mysqli_close($link);
 
     header("Location: consultation.php?id=".$id."&success=true&backurl=".$backurl);
+    exit("");
 ?>

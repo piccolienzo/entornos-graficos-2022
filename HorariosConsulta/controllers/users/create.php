@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    include('../connection.inc');
+    include('../connection.inc.php');
     include('../contieneCaracteres.php');
     require ('../../core/mailer.php');
     extract($_POST);
@@ -9,18 +9,22 @@
     if(!contiene($nombre, $letras)) {
         $_SESSION["formulario_usuario"] = $_POST;
         header("Location: ../../views/pages/usuario.php?edit=0&error=invalidField&validationField=nombre&validationType=onlyLetters");
+        exit("");
     }
     else if(!contiene($apellido, $letras)) {
         $_SESSION["formulario_usuario"] = $_POST;
         header("Location: ../../views/pages/usuario.php?edit=0&error=invalidField&validationField=apellido&validationType=onlyLetters");
+        exit("");
     }
     else if(!is_numeric($dni)) {
         $_SESSION["formulario_usuario"] = $_POST;
         header("Location: ../../views/pages/usuario.php?edit=0&error=invalidField&validationField=dni&validationType=onlyNumbers");
+        exit("");
     }
     else if(!is_numeric($legajo)) {
         $_SESSION["formulario_usuario"] = $_POST;
         header("Location: ../../views/pages/usuario.php?edit=0&error=invalidField&validationField=legajo&validationType=onlyNumbers");
+        exit("");
     }
 
     else {
@@ -57,10 +61,12 @@
             sendEmail($mailAddress, $nombreApellido, $mailBody, 4);
     
             header("Location: ../../views/pages/listado-usuarios.php?success=new");
+            exit("");
         }
         else {
             $_SESSION["formulario_usuario"] = $_POST;
             header("Location: ../../views/pages/usuario.php?edit=0&error=repeatedData");
+            exit("");
         }
     }
 ?>

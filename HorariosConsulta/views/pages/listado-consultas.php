@@ -16,7 +16,7 @@
 
 <?php
     require('../components/header.php');
-    require('../../controllers/amFunction.inc');
+    require('../../controllers/amFunction.inc.php');
 
     $isStudent = false;
 
@@ -115,7 +115,7 @@
     }
     else {
         header("Location: ../../controllers/consultations/consultations.php");
-        require('../../controllers/amFunction.inc');
+        require('../../controllers/amFunction.inc.php');
     }
 ?>
 

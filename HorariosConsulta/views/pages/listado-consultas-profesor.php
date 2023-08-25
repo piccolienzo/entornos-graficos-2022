@@ -47,8 +47,8 @@
     if(isset($_SESSION["resultados_consulta"])){
         $result = $_SESSION["resultados_consulta"];
         if(count($result)) {
-            include('../../controllers/getNextDay.inc');
-            include('../../controllers/sortByDate.inc');
+            include('../../controllers/getNextDay.inc.php');
+            include('../../controllers/sortByDate.inc.php');
             usort($result, 'sortByDate');
 
             $nrosDias = array();

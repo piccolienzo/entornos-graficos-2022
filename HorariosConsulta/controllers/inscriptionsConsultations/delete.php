@@ -1,5 +1,5 @@
 <?php
-    include('../connection.inc');
+    include('../connection.inc.php');
     extract($_GET);
 
     $query = "
@@ -23,10 +23,12 @@
         $result = mysqli_query($link, $query) or die(mysqli_error($link));
         mysqli_close($link);
         header("Location: ../../views/pages/mis-consultas.php?success=true"); 
+        exit("");
     }
     else {
         mysqli_close($link);
         header("Location: ../../views/pages/mis-consultas.php?error=true");
+        exit("");
     }
     
 ?>

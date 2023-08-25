@@ -34,7 +34,7 @@
 
         <?php
             require('../components/header.php');
-            require('../../controllers/amFunction.inc');
+            require('../../controllers/amFunction.inc.php');
             $role = '';
             if( isset( $_SESSION['role']) ) {
                 $role = $_SESSION['role'];

@@ -1,9 +1,9 @@
 <?php
-    include('../../controllers/connection.inc');
+    include('../../controllers/connection.inc.php');
 
 
 function getConsultasAlumno(){
-    include('../../controllers/connection.inc');
+    include('../../controllers/connection.inc.php');
     if(isset($_SESSION['usuario'])){
 
         $idUsuario = $_SESSION['usuario']["id"];

@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include('../connection.inc');   
+    include('../connection.inc.php');   
 
     extract($_GET);
 
@@ -25,5 +25,5 @@
     $success = isset($success) ? "&success=true" : "";
 
     header("Location: ../../views/pages/detalle-consulta.php?backurl=".$backurl.$success);
-
+    exit("");
 ?>

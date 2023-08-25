@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include('../connection.inc');
+    include('../connection.inc.php');
     extract($_GET);
 
     $query = "select * from profesores inner join usuarios on profesores.idUsuario = usuarios.id";
@@ -25,4 +25,5 @@
         :   "";
 
     header("Location: ../../views/pages/".$nextPage.$idParam.$backurlParam);
+    exit("");
 ?>

@@ -1,5 +1,5 @@
 <?php
-    include('../connection.inc');
+    include('../connection.inc.php');
     require ('../../core/mailer.php');
     extract($_POST);
     session_start();
@@ -49,4 +49,5 @@
 
     mysqli_close($link);
     header("Location: ../../views/pages/listado-consultas-profesor.php?success=1");
+    exit("");
 ?>

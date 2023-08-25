@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <header class="header  collapsible-menu">
     <button id="volver" class="btn btn-violeta"><span class="icon-volver"></span>Volver</button>
     <img class="utnlogo" src="img/utn-logo.svg" alt="Logo de la universidad">
@@ -6,9 +9,7 @@
     <nav class="menu menu-content">
         
             <ul class=" ">
-                <!-- TODO: terminar   -->               
                 <?php
-                    session_start();
                     if($_SERVER['SERVER_NAME'] == "localhost"){
                             $sv ="http://localhost/horariosconsulta";
                     }

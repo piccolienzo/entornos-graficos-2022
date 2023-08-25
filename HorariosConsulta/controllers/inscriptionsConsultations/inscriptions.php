@@ -1,5 +1,5 @@
 <?php
-    include('../../controllers/connection.inc');
+    include('../../controllers/connection.inc.php');
     extract($_GET);
 
     $field = ($typeSearch == "consultas") ? "idConsulta" : "idAlumno";

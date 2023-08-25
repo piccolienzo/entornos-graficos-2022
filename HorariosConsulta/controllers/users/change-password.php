@@ -8,15 +8,17 @@
 
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 header("Location: ../../views/pages/recuperar-clave.php?error=invalidEmail");
+                exit("");
             }
             else {
-                include('../connection.inc');
+                include('../connection.inc.php');
 
                 $query = "select * from usuarios where legajo like '".$legajo."'";
                 $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
                 if(mysqli_num_rows($result) == 0) {
                     header("Location: ../../views/pages/recuperar-clave.php?error=noUserFound");
+                    exit("");
                 }
                 else {
                     $correo = 'utn@frro.com';
@@ -38,6 +40,7 @@
                     sendEmail($email, $correo, $mensaje, 3);
 
                     header("Location: ../../views/pages/recuperar-clave.php?success=true");
+                    exit("");
                 }
 
             }
@@ -45,9 +48,11 @@
         }
         else {
             header("Location: ../../views/pages/recuperar-clave.php?error=noCode");
+            exit("");
         }
     }
     else {
         header("Location: ../../views/pages/recuperar-clave.php?error=emptyFields");
+        exit("");
     }
 ?>

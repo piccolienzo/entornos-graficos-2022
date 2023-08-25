@@ -15,7 +15,7 @@
 
         <?php
             require('../components/header.php');
-            include('../../controllers/getNextDay.inc');
+            include('../../controllers/getNextDay.inc.php');
             extract($_GET);
             $consultation = $_SESSION["resultado_consulta"][0];
         ?>

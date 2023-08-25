@@ -17,4 +17,5 @@
     mysqli_close($link);
 
     header("Location: ../../views/pages/listado-usuarios.php");
+    exit("");
 ?>

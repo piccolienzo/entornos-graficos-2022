@@ -1,5 +1,5 @@
 <?php
-    include('../connection.inc');
+    include('../connection.inc.php');
     extract($_POST);
 
     $horaInicio = substr($hora, 0, 5);
@@ -12,4 +12,5 @@
 
     mysqli_close($link);
     header("Location: ../../views/pages/listado-consultas-admin.php");
+    exit("");
 ?>
